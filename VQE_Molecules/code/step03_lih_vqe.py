@@ -3,6 +3,7 @@
 Usage (from code/):
     python step03_lih_vqe.py --quick       # 1 bond length, 3 steps, 1 seed: checks the script and gives timings
     python step03_lih_vqe.py               # full experiment; rerunning skips runs already in the CSV
+    python step03_lih_vqe.py --hf-start    # control: HEA started from the HF state, appended to the same CSV
     python step03_lih_vqe.py --plot-only   # redraw the figures from the CSV
 """
 import argparse
@@ -43,6 +44,9 @@ MAX_STEPS = 300
 CONV_TOL = 1e-6
 PATIENCE = 5
 
+# Half-width of the initial angle range for the HEA that starts from the HF state.
+HF_START_ANGLE = 0.1
+
 BOND_LENGTHS = [1.2, 1.6, 2.0, 2.6, 3.2]  # Angstrom; the equilibrium bond length is close to 1.6
 HEA_LAYERS = [2, 4, 6]
 SEEDS = [0, 1, 2, 3, 4]
@@ -70,15 +74,32 @@ def run_uccsd(hamiltonian, n_qubits, n_electrons, max_steps):
     return history, weights.size
 
 
-def run_hea(hamiltonian, n_qubits, n_layers, seed, max_steps):
+def hf_preimage(n_electrons, n_qubits, n_layers):
+    """Basis state that the CNOT rings of an n_layers HEA map onto the HF state.
+
+    With every angle at 0 the rotations are identities and the circuit is only CNOTs, which send
+    one basis state to another. Undoing those CNOTs on the HF bit string, last gate first, gives
+    the state to start from so that the circuit with all angles at 0 outputs the HF state.
+    """
+    bits = [int(b) for b in qml.qchem.hf_state(n_electrons, n_qubits)]
+    for _ in range(n_layers):
+        for wire in reversed(range(n_qubits)):
+            bits[(wire + 1) % n_qubits] ^= bits[wire]
+    return np.array(bits)
+
+
+def run_hea(hamiltonian, n_qubits, n_layers, seed, max_steps, start_bits=None, angle_range=np.pi):
     """Minimise <H> over a layered circuit: RY and RZ on every qubit, then a ring of CNOTs.
 
-    Starts from |0...0> with angles drawn uniformly from [-pi, pi).
+    Starts from |0...0>, or from the basis state start_bits, with angles drawn uniformly
+    from [-angle_range, angle_range).
     """
     dev = qml.device("lightning.qubit", wires=n_qubits)
 
     @qml.qnode(dev, diff_method="adjoint")
     def energy(weights):
+        if start_bits is not None:
+            qml.BasisState(start_bits, wires=range(n_qubits))
         for layer in range(n_layers):
             for wire in range(n_qubits):
                 qml.RY(weights[layer, wire, 0], wires=wire)
@@ -88,7 +109,7 @@ def run_hea(hamiltonian, n_qubits, n_layers, seed, max_steps):
         return qml.expval(hamiltonian)
 
     rng = np.random.default_rng(seed)
-    weights = pnp.array(rng.uniform(-np.pi, np.pi, size=(n_layers, n_qubits, 2)), requires_grad=True)
+    weights = pnp.array(rng.uniform(-angle_range, angle_range, size=(n_layers, n_qubits, 2)), requires_grad=True)
     history, weights = minimise_energy(energy, weights, STEP_SIZE, max_steps, CONV_TOL, PATIENCE)
     return history, weights.size
 
@@ -105,14 +126,17 @@ def read_rows(csv_path):
         return list(csv.DictReader(f))
 
 
-def run_experiment(bond_lengths, hea_layers, seeds, max_steps, csv_path, history_path):
+def run_experiment(bond_lengths, hea_layers, seeds, max_steps, csv_path, history_path, hf_start=False):
     done = {run_key(row) for row in read_rows(csv_path)}
     if not csv_path.exists():
         with open(csv_path, "w", newline="") as f:
             csv.writer(f).writerow(COLUMNS)
 
     for r in bond_lengths:
-        jobs = [("UCCSD", 0, 0)] + [("HEA", layers, seed) for layers in hea_layers for seed in seeds]
+        if hf_start:
+            jobs = [("HEA_HF", layers, seed) for layers in hea_layers for seed in seeds]
+        else:
+            jobs = [("UCCSD", 0, 0)] + [("HEA", layers, seed) for layers in hea_layers for seed in seeds]
         jobs = [job for job in jobs if (f"{r:.2f}", *job) not in done]
         if not jobs:
             print(f"R = {r:.2f} A: all runs already in {csv_path.name}, skipped")
@@ -129,18 +153,21 @@ def run_experiment(bond_lengths, hea_layers, seeds, max_steps, csv_path, history
         print(f"  E_HF = {e_hf:+.6f}   E_exact = {e_exact:+.6f}   lowest over all sectors = {e_lowest:+.6f} Ha")
         if e_lowest < e_exact - 1e-8:
             print("  Note: a state with a different electron number lies below E_exact; HEA can go below it.")
-        print("  ansatz  layers  seed  params  steps  E_VQE        error (mHa)  seconds", flush=True)
+        print("  ansatz  layers  seed  params  steps  start (mHa)  E_VQE        error (mHa)  seconds", flush=True)
 
         for ansatz, layers, seed in jobs:
             start = time.perf_counter()
             if ansatz == "UCCSD":
                 history, n_params = run_uccsd(hamiltonian, n_qubits, n_electrons, max_steps)
+            elif ansatz == "HEA_HF":
+                start_bits = hf_preimage(n_electrons, n_qubits, layers)
+                history, n_params = run_hea(hamiltonian, n_qubits, layers, seed, max_steps, start_bits, HF_START_ANGLE)
             else:
                 history, n_params = run_hea(hamiltonian, n_qubits, layers, seed, max_steps)
             elapsed = time.perf_counter() - start
             error_mha = (history[-1] - e_exact) * 1000
             print(f"  {ansatz:6s}  {layers:6d}  {seed:4d}  {n_params:6d}  {len(history) - 1:5d}  "
-                  f"{history[-1]:+.6f}  {error_mha:11.4f}  {elapsed:7.1f}", flush=True)
+                  f"{(history[0] - e_exact) * 1000:11.4f}  {history[-1]:+.6f}  {error_mha:11.4f}  {elapsed:7.1f}", flush=True)
 
             # Written after every run, so a job that hits its time limit keeps what it finished.
             with open(csv_path, "a", newline="") as f:
@@ -151,15 +178,25 @@ def run_experiment(bond_lengths, hea_layers, seeds, max_steps, csv_path, history
                                     "e_exact": e_exact, "history": history}) + "\n")
 
 
+ANSATZ_ORDER = ["UCCSD", "HEA", "HEA_HF"]
+
+
+def label_of(ansatz, layers):
+    if ansatz == "UCCSD":
+        return "UCCSD"
+    return f"HEA from HF, {layers} layers" if ansatz == "HEA_HF" else f"HEA, {layers} layers"
+
+
 def labels_in(rows):
     """Ansatz labels in plotting order, with the (ansatz, layers) pair each one stands for."""
-    pairs = sorted({(row["ansatz"], int(row["layers"])) for row in rows}, key=lambda p: (p[0] != "UCCSD", p[1]))
-    return [("UCCSD" if ansatz == "UCCSD" else f"HEA, {layers} layers", ansatz, layers) for ansatz, layers in pairs]
+    pairs = sorted({(row["ansatz"], int(row["layers"])) for row in rows},
+                   key=lambda p: (ANSATZ_ORDER.index(p[0]), p[1]))
+    return [(label_of(ansatz, layers), ansatz, layers) for ansatz, layers in pairs]
 
 
 def summarise(rows):
     print("\nSummary: |error| in mHa over seeds, and runs within chemical accuracy")
-    print("  R (A)  ansatz          runs  mean      std       min       max       within 1.6 mHa")
+    print("  R (A)  ansatz                  runs  mean      std       min       max       within 1.6 mHa")
     for r in sorted({float(row["bond_length_A"]) for row in rows}):
         for label, ansatz, layers in labels_in(rows):
             errors = np.array([abs(float(row["error_mHa"])) for row in rows
@@ -167,7 +204,7 @@ def summarise(rows):
             if errors.size == 0:
                 continue
             n_ok = int(np.sum(errors < CHEMICAL_ACCURACY_HA * 1000))
-            print(f"  {r:5.2f}  {label:14s}  {errors.size:4d}  {errors.mean():8.3f}  {errors.std():8.3f}  "
+            print(f"  {r:5.2f}  {label:22s}  {errors.size:4d}  {errors.mean():8.3f}  {errors.std():8.3f}  "
                   f"{errors.min():8.3f}  {errors.max():8.3f}  {n_ok} of {errors.size}")
 
 
@@ -203,7 +240,7 @@ def plot_convergence(history_path, figure_path, bond_length=1.6):
     colours = {}
     plt.figure(figsize=(5.5, 3.8))
     for run in runs:
-        label = "UCCSD" if run["ansatz"] == "UCCSD" else f"HEA, {run['layers']} layers"
+        label = label_of(run["ansatz"], run["layers"])
         first = label not in colours
         colours.setdefault(label, f"C{len(colours)}")
         error = np.abs(np.array(run["history"]) - run["e_exact"]) * 1000 + 1e-9
@@ -222,6 +259,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--quick", action="store_true", help="1 bond length, 3 steps, 1 seed; writes *_quick files")
     parser.add_argument("--plot-only", action="store_true", help="skip the runs and redraw from the CSV")
+    parser.add_argument("--hf-start", action="store_true",
+                        help="run only the HEA that starts from the HF state with small angles; rows go to the same CSV")
     parser.add_argument("--bond-lengths", type=float, nargs="+", default=BOND_LENGTHS, help="in Angstrom")
     args = parser.parse_args()
 
@@ -234,9 +273,9 @@ def main():
     if not args.plot_only:
         print(f"PennyLane {qml.__version__}; Adam, stepsize {STEP_SIZE}, conv_tol {CONV_TOL}, patience {PATIENCE}")
         if args.quick:
-            run_experiment([1.6], HEA_LAYERS, SEEDS[:1], 3, csv_path, history_path)
+            run_experiment([1.6], HEA_LAYERS, SEEDS[:1], 3, csv_path, history_path, args.hf_start)
         else:
-            run_experiment(args.bond_lengths, HEA_LAYERS, SEEDS, MAX_STEPS, csv_path, history_path)
+            run_experiment(args.bond_lengths, HEA_LAYERS, SEEDS, MAX_STEPS, csv_path, history_path, args.hf_start)
 
     rows = read_rows(csv_path)
     summarise(rows)
