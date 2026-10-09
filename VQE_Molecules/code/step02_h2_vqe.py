@@ -20,7 +20,11 @@ from vqe_common import (
     minimise_energy,
 )
 
-ROOT = Path(__file__).resolve().parent.parent
+# __file__ is undefined in Jupyter; there the working directory is code/ (needed for the vqe_common import).
+try:
+    ROOT = Path(__file__).resolve().parent.parent
+except NameError:
+    ROOT = Path.cwd().resolve().parent
 RESULTS = ROOT / "results"
 FIGURES = ROOT / "figures"
 
