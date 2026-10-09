@@ -9,6 +9,7 @@ Usage (from code/):
 import argparse
 import csv
 import json
+import sys
 import time
 from pathlib import Path
 
@@ -28,6 +29,7 @@ from vqe_common import (
     lih_geometry,
     lowest_energy,
     minimise_energy,
+    tee_stdout,
 )
 
 # __file__ is undefined in Jupyter; there the working directory is code/ (needed for the vqe_common import).
@@ -270,15 +272,20 @@ def main():
     csv_path = RESULTS / f"exp1_ansatz{suffix}.csv"
     history_path = RESULTS / f"exp1_histories{suffix}.jsonl"
 
-    if not args.plot_only:
-        print(f"PennyLane {qml.__version__}; Adam, stepsize {STEP_SIZE}, conv_tol {CONV_TOL}, patience {PATIENCE}")
-        if args.quick:
-            run_experiment([1.6], HEA_LAYERS, SEEDS[:1], 3, csv_path, history_path, args.hf_start)
-        else:
-            run_experiment(args.bond_lengths, HEA_LAYERS, SEEDS, MAX_STEPS, csv_path, history_path, args.hf_start)
+    if args.plot_only:
+        summarise(read_rows(csv_path))
+    else:
+        # The console output of every run is appended to this file, so it can be committed with the results.
+        with tee_stdout(RESULTS / f"step03_output{suffix}.txt"):
+            print(f"=== {time.strftime('%Y-%m-%d %H:%M:%S')}  step03_lih_vqe.py {' '.join(sys.argv[1:])}")
+            print(f"PennyLane {qml.__version__}; Adam, stepsize {STEP_SIZE}, conv_tol {CONV_TOL}, patience {PATIENCE}")
+            if args.quick:
+                run_experiment([1.6], HEA_LAYERS, SEEDS[:1], 3, csv_path, history_path, args.hf_start)
+            else:
+                run_experiment(args.bond_lengths, HEA_LAYERS, SEEDS, MAX_STEPS, csv_path, history_path, args.hf_start)
+            summarise(read_rows(csv_path))
 
     rows = read_rows(csv_path)
-    summarise(rows)
     plot_error_vs_bond_length(rows, FIGURES / f"lih_error_vs_bond_length{suffix}.png")
     plot_convergence(history_path, FIGURES / f"lih_convergence{suffix}.png")
 

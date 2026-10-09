@@ -1,4 +1,7 @@
 """Shared helpers for the VQE_Molecules project: Hamiltonians and reference energies."""
+import contextlib
+import sys
+
 import numpy as np
 import pennylane as qml
 from scipy.sparse.linalg import eigsh
@@ -59,6 +62,29 @@ def lowest_energy(hamiltonian, n_qubits):
     """
     matrix = hamiltonian.sparse_matrix(wire_order=range(n_qubits)).tocsr()
     return float(eigsh(matrix, k=1, which="SA", return_eigenvectors=False)[0])
+
+
+class _Tee:
+    """Writes to several streams at once."""
+
+    def __init__(self, *streams):
+        self.streams = streams
+
+    def write(self, text):
+        for stream in self.streams:
+            stream.write(text)
+
+    def flush(self):
+        for stream in self.streams:
+            stream.flush()
+
+
+@contextlib.contextmanager
+def tee_stdout(path):
+    """Inside the block, everything printed also goes to the end of the file at `path`."""
+    with open(path, "a", encoding="utf-8") as f:
+        with contextlib.redirect_stdout(_Tee(sys.stdout, f)):
+            yield
 
 
 def minimise_energy(energy, weights, step_size, max_steps, conv_tol, patience=1):
