@@ -1,0 +1,9 @@
+# Plans, progress logs and study material stay local
+Learning_Plan.md
+Interview/
+*_Plan.md
+*_Progress_Log.md
+notes/
+
+__pycache__/
+*.pyc

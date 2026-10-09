@@ -1,0 +1,26 @@
+﻿PennyLane version : 0.45.1
+Bond length       : 0.74 Angstrom
+Qubits            : 4
+Electrons         : 2
+Pauli terms       : 15
+HF state          : [1 1 0 0]
+HF energy         : -1.116759 Ha
+Exact energy      : -1.137284 Ha
+Correlation energy: -20.525 mHa
+
+Hamiltonian terms (coefficient, Pauli word):
+  -0.097066  I()
+  +0.171413  Z(0)
+  +0.171413  Z(1)
+  +0.168689  Z(0) @ Z(1)
+  -0.223432  Z(2)
+  +0.120625  Z(0) @ Z(2)
+  +0.165928  Z(1) @ Z(2)
+  +0.045303  Y(0) @ X(1) @ X(2) @ Y(3)
+  -0.045303  Y(0) @ Y(1) @ X(2) @ X(3)
+  -0.045303  X(0) @ X(1) @ Y(2) @ Y(3)
+  +0.045303  X(0) @ Y(1) @ Y(2) @ X(3)
+  -0.223432  Z(3)
+  +0.165928  Z(0) @ Z(3)
+  +0.120625  Z(1) @ Z(3)
+  +0.174413  Z(2) @ Z(3)
