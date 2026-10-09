@@ -17,7 +17,7 @@ A comparison of two variational quantum eigensolver (VQE) ansätze on the ground
 | 2 | UCCSD-VQE on H2, dissociation curve | Done |
 | 3 | LiH: UCCSD against HEA, with a control for the starting point | Done |
 | 4 | BeH2 (14 qubits): UCCSD against HEA | Planned |
-| 5 | ADAPT-VQE: error against number of parameters, compared with UCCSD | Planned |
+| 5 | ADAPT-VQE: error against number of parameters, compared with UCCSD | Script written, not run yet |
 | 6 | CPU against GPU statevector simulation time on hydrogen chains | Planned |
 
 ## Files
@@ -29,6 +29,7 @@ A comparison of two variational quantum eigensolver (VQE) ansätze on the ground
 | `step02_h2_vqe.py` | UCCSD-VQE on H2: one geometry, then 22 bond lengths | `results/h2_dissociation.csv`, `results/step02_output.txt`, `figures/h2_*.png` |
 | `step02b_h2_checks.py` | Matrix elements of the H2 Hamiltonian and a single-gate ansatz | `results/step02b_output.txt` |
 | `step03_uccsd_vs_hea.py` | UCCSD against HEA on LiH or BeH2 (`--molecule`): 5 bond lengths, 3 depths, 5 seeds, 2 ways of starting the HEA | `results/lih_ansatz.csv`, `results/lih_histories.jsonl`, `figures/lih_*.png`; the same with `beh2_` for BeH2 |
+| `step04_adapt_vqe.py` | ADAPT-VQE on H2, LiH or BeH2 (`--molecule`): the circuit grows by one UCCSD gate per iteration, chosen by its gradient. Not run yet | `results/<molecule>_adapt.csv`, `results/<molecule>_adapt_histories.jsonl`, `figures/<molecule>_adapt_error_vs_params.png` |
 
 `lih_ansatz.csv` has one row per training run. `lih_histories.jsonl` has the energy at every optimiser step of every run. The `.txt` files are console output.
 
