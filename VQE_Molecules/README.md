@@ -1,31 +1,34 @@
 # VQE_Molecules
 
-A benchmark of variational quantum eigensolver (VQE) ansätze on the ground-state energy of small molecules, on a noiseless statevector simulator.
+A comparison of two variational quantum eigensolver (VQE) ansätze on the ground-state energy of H2 and LiH, on a noiseless statevector simulator.
 
-## Questions
+## Summary
 
-1. Under the same optimisation budget, how far from the exact energy do UCCSD, a hardware-efficient ansatz (HEA) and ADAPT-VQE end up, and with how many parameters and two-qubit gates?
-2. How do those errors change as a bond is stretched, and how sensitive is the HEA to its random initialisation?
-3. How does statevector simulation time grow with the number of qubits, and from what size is a GPU faster than a CPU?
+- **Question.** Under one optimisation budget, which is easier to train to chemical accuracy (1.6 mHa): UCCSD, which is built for the problem, or a generic hardware-efficient ansatz (HEA)?
+- **H2 (4 qubits)** checks the pipeline. UCCSD is within 0.01 mHa of the exact energy at all 22 bond lengths.
+- **LiH (12 qubits)** is the comparison. UCCSD (92 parameters) reached chemical accuracy at 5 of 5 bond lengths, with errors from 0.009 to 0.097 mHa. The HEA with random initial angles reached it in 0 of 75 runs; its best runs ended at the Hartree–Fock energy, which is where UCCSD starts.
+- **Open point.** The two ansätze did not start from the same place, so this result does not separate the circuit structure from the starting point. A control that starts the HEA from the Hartree–Fock state is implemented (`--hf-start`); its results are not included yet.
 
-## Status
+## Files
 
-| Step | Content | Status |
+| Script in `code/` | What it does | Output |
 |---|---|---|
-| 1 | H2 Hamiltonian and reference energies | Done |
-| 2 | UCCSD-VQE on H2, dissociation curve | Done |
-| 3 | LiH and BeH2: UCCSD against HEA (5 seeds) | Planned |
-| 4 | ADAPT-VQE | Planned |
-| 5 | CPU against GPU timing on hydrogen chains | Planned |
+| `vqe_common.py` | Shared helpers: geometry, Hamiltonian, reference energies, optimisation loop | |
+| `step01_h2_hamiltonian.py` | H2 Hamiltonian at 0.74 Å and its reference energies | `results/step01_output.txt` |
+| `step02_h2_vqe.py` | UCCSD-VQE on H2: one geometry, then 22 bond lengths | `results/h2_dissociation.csv`, `results/step02_output.txt`, `figures/h2_*.png` |
+| `step02b_h2_checks.py` | Matrix elements of the H2 Hamiltonian and a single-gate ansatz | `results/step02b_output.txt` |
+| `step03_lih_vqe.py` | UCCSD against HEA on LiH: 5 bond lengths, 3 depths, 5 seeds | `results/exp1_ansatz.csv`, `results/exp1_histories.jsonl`, `figures/lih_*.png` |
 
-Only H2 has results so far. Questions 1 to 3 are not answered yet: H2 is too small to separate the ansätze.
+`exp1_ansatz.csv` has one row per training run. `exp1_histories.jsonl` has the energy at every optimiser step of every run. The `.txt` files are console output.
 
 ## Method
 
-- Hamiltonian: `qml.qchem`, STO-3G basis, Jordan–Wigner mapping.
-- Reference energies: the Hartree–Fock energy is the diagonal element of the Hamiltonian at the HF basis state. The exact energy is the lowest eigenvalue of the Hamiltonian restricted to basis states with the correct number of electrons, which equals the FCI energy in the same basis.
-- VQE: UCCSD starting from the HF state (all parameters zero), `lightning.qubit` with adjoint differentiation, Adam with step size 0.05, at most 300 steps, stopping after 5 consecutive steps that each change the energy by less than 1e-6 Ha.
-- Errors are reported against the exact energy, with chemical accuracy taken as 1.6 mHa.
+- **Hamiltonian.** `qml.qchem`, STO-3G basis, Jordan–Wigner mapping. The chemistry is used as a black box that turns a geometry into a qubit Hamiltonian.
+- **Loss.** The energy ⟨H⟩ of the circuit's output state. No reference value enters the training.
+- **Reference values.** The Hartree–Fock (HF) energy is the diagonal element of the Hamiltonian at the HF basis state. The exact energy is the lowest eigenvalue of the Hamiltonian restricted to basis states with the correct number of electrons, which equals the FCI energy in the same basis. Errors are reported against the exact energy.
+- **Budget, shared by all runs.** `lightning.qubit` with adjoint differentiation; Adam with step size 0.05; at most 300 steps; stop after 5 consecutive steps that each change the energy by less than 1e-6 Ha.
+- **UCCSD.** Starts from the HF state with all parameters at zero. Deterministic, so one run per geometry.
+- **HEA.** Each layer applies RY and RZ to every qubit, then a ring of CNOTs. Starts from |0…0⟩ with angles drawn uniformly from [−π, π). Depths of 2, 4 and 6 layers, 5 seeds each.
 
 ## Results for H2
 
@@ -47,24 +50,68 @@ Along the dissociation curve, 22 bond lengths from 0.4 to 2.5 Å ([results/h2_di
 
 ![H2 dissociation curve](figures/h2_dissociation.png)
 
-A single `DoubleExcitation` gate on the HF state already gives the exact energy at 0.74 Å (θ = 0.2256, [results/step02b_output.txt](results/step02b_output.txt)), because the ground state is a superposition of |1100⟩ and |0011⟩ only. The errors above therefore come from the optimiser, not from the ansatz. The stopping rule shows this directly: with `PATIENCE = 1` in `step02_h2_vqe.py`, which stops at the first step below the tolerance, the largest error was 0.77 mHa at 1.1 Å after 34 steps and 5 of the 22 points were above 0.1 mHa. The stored results use `PATIENCE = 5`.
+A single `DoubleExcitation` gate on the HF state already gives the exact energy at 0.74 Å (θ = 0.2256, [results/step02b_output.txt](results/step02b_output.txt)), because the ground state is a superposition of |1100⟩ and |0011⟩ only. The errors above therefore come from the optimiser, not from the ansatz. The stopping rule shows this directly: when the optimiser stopped at the first step below the tolerance, the largest error was 0.77 mHa at 1.1 Å after 34 steps and 5 of the 22 points were above 0.1 mHa. The stored results require 5 consecutive steps.
+
+## Results for LiH
+
+LiH has 12 qubits, 4 electrons and 631 Pauli terms. All numbers below are from [results/exp1_ansatz.csv](results/exp1_ansatz.csv): 80 training runs, each done once.
+
+Errors against the exact energy, in mHa:
+
+| Bond length (Å) | HF state, before training | UCCSD, 92 parameters | Best of 15 HEA runs | HEA runs within 1.6 mHa |
+|---|---|---|---|---|
+| 1.20 | 16.815 | 0.009 | 16.818 | 0 of 15 |
+| 1.60 | 20.460 | 0.013 | 20.388 | 0 of 15 |
+| 2.00 | 30.182 | 0.020 | 27.186 | 0 of 15 |
+| 2.60 | 58.996 | 0.051 | 58.996 | 0 of 15 |
+| 3.20 | 103.858 | 0.097 | 83.112 | 0 of 15 |
+
+![Error against bond length](figures/lih_error_vs_bond_length.png)
+
+Points are the mean over seeds; bars run from the smallest to the largest error.
+
+**UCCSD** stopped after 95 to 106 steps at every bond length, so the 300-step budget did not limit it. Its error grows with the bond length. Its first Adam step raises the error at all 5 bond lengths (from 20.5 to 49.8 mHa at 1.60 Å); the energy then oscillates downwards and first passes 1.6 mHa after 30 to 35 steps.
+
+**HEA** by depth, over the 25 runs at each depth (5 bond lengths × 5 seeds):
+
+| Layers | Parameters | Mean error (mHa) | Median error (mHa) | Runs that used all 300 steps |
+|---|---|---|---|---|
+| 2 | 48 | 657 | 467 | 4 of 25 |
+| 4 | 96 | 369 | 300 | 16 of 25 |
+| 6 | 144 | 418 | 397 | 24 of 25 |
+
+- Ten of the 75 runs ended at the HF energy or below it (no more than 0.2 mHa above). The other 65 ended above the HF energy, which UCCSD has before any training.
+- The lowest HEA error relative to the HF energy was at 3.20 Å: 83.1 mHa against 103.9 mHa.
+- The spread over seeds is as large as the mean. At 1.60 Å with 2 layers, the errors of the 5 seeds run from 20.5 to 1825 mHa. With this spread, 4 and 6 layers cannot be ranked.
+- 31 runs met the stopping rule before 300 steps, all of them with an error of at least 16.8 mHa. Meeting the stopping rule says the energy has stopped changing, not that it is close to the exact energy.
+- The HEA does not conserve the number of electrons, so it could in principle go below the exact energy of the 4-electron sector. It did not: at all 5 bond lengths the lowest eigenvalue over all sectors equals the exact energy, and no run has a negative error.
+
+![Training curves at 1.60 Å](figures/lih_convergence.png)
 
 ## Reproduce
 
-From the repository root, with the environment from the top-level README:
+From `VQE_Molecules/code/`, with the environment from the top-level README:
 
 ```
-python VQE_Molecules/code/step01_h2_hamiltonian.py
-python VQE_Molecules/code/step02_h2_vqe.py
-python VQE_Molecules/code/step02b_note_checks.py
+python step01_h2_hamiltonian.py
+python step02_h2_vqe.py
+python step02b_h2_checks.py
+python step03_lih_vqe.py --quick       # 3 steps per run: checks the script and gives timings
+python step03_lih_vqe.py               # 80 runs; 39 minutes of training on a cluster CPU node
+python step03_lih_vqe.py --hf-start    # control: HEA started from the HF state
+python step03_lih_vqe.py --plot-only   # redraw the figures from the CSV
 ```
 
-`step02_h2_vqe.py` rewrites `results/h2_dissociation.csv` and both figures. The `.txt` files in `results/` are the console output of the three scripts.
+`step03_lih_vqe.py` appends one row to the CSV after every run and skips runs that are already there, so an interrupted job can be restarted with the same command.
 
 ## Limitations
 
 - Noiseless statevector simulation: no shot noise, no device noise.
 - STO-3G is a minimal basis. "Exact" means exact within this basis, not the energy of the real molecule.
 - Each number comes from a single run.
-- The VQE energies and step counts are not identical across machines. A rerun on a Linux cluster gave the same HF and exact energies but a largest error of 0.052 mHa at 2.3 Å, with 81 to 110 steps.
-- H2 in this basis is solved exactly by UCCSD, so these results check the pipeline and say nothing yet about how the ansätze compare.
+- The LiH comparison confounds the circuit with its starting point: UCCSD starts at the HF state, the HEA from random angles on |0…0⟩. The `--hf-start` control addresses this and has not been run for the stored results.
+- 24 of the 25 six-layer HEA runs used the whole 300-step budget, so for that depth "hard to train" and "budget too small" are not separated.
+- The 5 HEA seeds give the same initial angles at every bond length, so results at different bond lengths are not independent samples.
+- The HEA conclusions hold for this layer structure, this initialisation and this budget only.
+- The VQE energies and step counts are not identical across machines. A rerun of the H2 curve on a Linux cluster gave the same HF and exact energies but a largest error of 0.052 mHa at 2.3 Å, with 81 to 110 steps.
+- The number of two-qubit gates is not recorded. The HEA has 12 CNOTs per layer; the UCCSD circuit was not counted.
