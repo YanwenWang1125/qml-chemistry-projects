@@ -28,9 +28,9 @@ A comparison of two variational quantum eigensolver (VQE) ansätze on the ground
 | `step01_h2_hamiltonian.py` | H2 Hamiltonian at 0.74 Å and its reference energies | `results/step01_output.txt` |
 | `step02_h2_vqe.py` | UCCSD-VQE on H2: one geometry, then 22 bond lengths | `results/h2_dissociation.csv`, `results/step02_output.txt`, `figures/h2_*.png` |
 | `step02b_h2_checks.py` | Matrix elements of the H2 Hamiltonian and a single-gate ansatz | `results/step02b_output.txt` |
-| `step03_lih_vqe.py` | UCCSD against HEA on LiH: 5 bond lengths, 3 depths, 5 seeds, 2 ways of starting the HEA | `results/exp1_ansatz.csv`, `results/exp1_histories.jsonl`, `figures/lih_*.png` |
+| `step03_uccsd_vs_hea.py` | UCCSD against HEA on LiH or BeH2 (`--molecule`): 5 bond lengths, 3 depths, 5 seeds, 2 ways of starting the HEA | `results/lih_ansatz.csv`, `results/lih_histories.jsonl`, `figures/lih_*.png`; the same with `beh2_` for BeH2 |
 
-`exp1_ansatz.csv` has one row per training run. `exp1_histories.jsonl` has the energy at every optimiser step of every run. The `.txt` files are console output.
+`lih_ansatz.csv` has one row per training run. `lih_histories.jsonl` has the energy at every optimiser step of every run. The `.txt` files are console output.
 
 ## Method
 
@@ -66,7 +66,7 @@ A single `DoubleExcitation` gate on the HF state already gives the exact energy 
 
 ## Results for LiH
 
-LiH has 12 qubits, 4 electrons and 631 Pauli terms. All numbers below are from [results/exp1_ansatz.csv](results/exp1_ansatz.csv) and [results/exp1_histories.jsonl](results/exp1_histories.jsonl): 155 training runs, each done once.
+LiH has 12 qubits, 4 electrons and 631 Pauli terms. All numbers below are from [results/lih_ansatz.csv](results/lih_ansatz.csv) and [results/lih_histories.jsonl](results/lih_histories.jsonl): 155 training runs, each done once.
 
 Errors against the exact energy, in mHa:
 
@@ -118,13 +118,12 @@ From `VQE_Molecules/code/`, with the environment from the top-level README:
 python step01_h2_hamiltonian.py
 python step02_h2_vqe.py
 python step02b_h2_checks.py
-python step03_lih_vqe.py --quick       # 3 steps per run: checks the script and gives timings
-python step03_lih_vqe.py               # 80 runs; 39 minutes of training on a cluster CPU node
-python step03_lih_vqe.py --hf-start    # control, 75 runs; 9 minutes of training
-python step03_lih_vqe.py --plot-only   # redraw the figures from the CSV
+python step03_uccsd_vs_hea.py --molecule LiH --quick       # 3 steps per run: checks the script and gives timings
+python step03_uccsd_vs_hea.py --molecule LiH               # 155 runs; 48 minutes of training on a cluster CPU node
+python step03_uccsd_vs_hea.py --molecule LiH --plot-only   # redraw the figures from the CSV
 ```
 
-`step03_lih_vqe.py` appends one row to the CSV after every run and skips runs that are already there, so an interrupted job can be restarted with the same command. It also appends its console output to `results/step03_output.txt`; the stored results were produced before this was added, so that file is not in the repository yet. Both LiH figures were redrawn from the CSV with `--plot-only` after the runs.
+`step03_uccsd_vs_hea.py` appends one row to the CSV after every run and skips runs that are already there, so an interrupted job can be restarted with the same command. It also appends its console output to `results/step03_lih_output.txt`. The stored LiH results were produced by an earlier version of the script, `step03_lih_vqe.py`, in two invocations (80 runs, then the 75 control runs) and before the console log was added, so that file is not in the repository. Both LiH figures were redrawn from the CSV with `--plot-only` after the runs. `--molecule BeH2` has not been run yet.
 
 ## Limitations
 

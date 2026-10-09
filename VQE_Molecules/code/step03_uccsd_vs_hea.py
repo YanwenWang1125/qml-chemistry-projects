@@ -1,10 +1,9 @@
-"""Step 3: UCCSD against a hardware-efficient ansatz (HEA) for LiH, under one optimisation budget.
+"""Step 3: UCCSD against a hardware-efficient ansatz (HEA) on LiH or BeH2, under one optimisation budget.
 
 Usage (from code/):
-    python step03_lih_vqe.py --quick       # 1 bond length, 3 steps, 1 seed: checks the script and gives timings
-    python step03_lih_vqe.py               # full experiment; rerunning skips runs already in the CSV
-    python step03_lih_vqe.py --hf-start    # control: HEA started from the HF state, appended to the same CSV
-    python step03_lih_vqe.py --plot-only   # redraw the figures from the CSV
+    python step03_uccsd_vs_hea.py --molecule BeH2 --quick      # 1 bond length, 3 steps, 1 seed: checks and timings
+    python step03_uccsd_vs_hea.py --molecule BeH2              # full experiment; rerunning skips runs in the CSV
+    python step03_uccsd_vs_hea.py --molecule LiH --plot-only   # redraw the figures from the CSV
 """
 import argparse
 import csv
@@ -24,6 +23,7 @@ from pennylane import numpy as pnp
 from vqe_common import (
     CHEMICAL_ACCURACY_HA,
     build_hamiltonian,
+    beh2_geometry,
     exact_energy,
     hf_energy,
     lih_geometry,
@@ -40,7 +40,7 @@ except NameError:
 RESULTS = ROOT / "results"
 FIGURES = ROOT / "figures"
 
-# Same budget as step02_h2_vqe.py, shared by both ansatz families.
+# Same budget as step02_h2_vqe.py, shared by every run.
 STEP_SIZE = 0.05
 MAX_STEPS = 300
 CONV_TOL = 1e-6
@@ -49,7 +49,12 @@ PATIENCE = 5
 # Half-width of the initial angle range for the HEA that starts from the HF state.
 HF_START_ANGLE = 0.1
 
-BOND_LENGTHS = [1.2, 1.6, 2.0, 2.6, 3.2]  # Angstrom; the equilibrium bond length is close to 1.6
+# Bond lengths in Angstrom. "reference" is close to the equilibrium bond length; it is the one
+# used by --quick and by the convergence figure.
+MOLECULES = {
+    "LiH": {"geometry": lih_geometry, "bond_lengths": [1.2, 1.6, 2.0, 2.6, 3.2], "reference": 1.6, "bond": "Li-H"},
+    "BeH2": {"geometry": beh2_geometry, "bond_lengths": [1.0, 1.3, 1.7, 2.2, 2.8], "reference": 1.3, "bond": "Be-H"},
+}
 HEA_LAYERS = [2, 4, 6]
 SEEDS = [0, 1, 2, 3, 4]
 
@@ -128,29 +133,29 @@ def read_rows(csv_path):
         return list(csv.DictReader(f))
 
 
-def run_experiment(bond_lengths, hea_layers, seeds, max_steps, csv_path, history_path, hf_start=False):
+def run_experiment(molecule, bond_lengths, hea_layers, seeds, max_steps, csv_path, history_path):
     done = {run_key(row) for row in read_rows(csv_path)}
     if not csv_path.exists():
         with open(csv_path, "w", newline="") as f:
             csv.writer(f).writerow(COLUMNS)
 
     for r in bond_lengths:
-        if hf_start:
-            jobs = [("HEA_HF", layers, seed) for layers in hea_layers for seed in seeds]
-        else:
-            jobs = [("UCCSD", 0, 0)] + [("HEA", layers, seed) for layers in hea_layers for seed in seeds]
+        # HEA starts from random angles on |0...0>; HEA_HF is the same circuit started next to the HF state.
+        jobs = ([("UCCSD", 0, 0)]
+                + [("HEA", layers, seed) for layers in hea_layers for seed in seeds]
+                + [("HEA_HF", layers, seed) for layers in hea_layers for seed in seeds])
         jobs = [job for job in jobs if (f"{r:.2f}", *job) not in done]
         if not jobs:
             print(f"R = {r:.2f} A: all runs already in {csv_path.name}, skipped")
             continue
 
         start = time.perf_counter()
-        symbols, coordinates = lih_geometry(r)
+        symbols, coordinates = MOLECULES[molecule]["geometry"](r)
         hamiltonian, n_qubits, n_electrons = build_hamiltonian(symbols, coordinates)
         e_hf = hf_energy(hamiltonian, n_qubits, n_electrons)
         e_exact = exact_energy(hamiltonian, n_qubits, n_electrons)
         e_lowest = lowest_energy(hamiltonian, n_qubits)
-        print(f"\nLiH at R = {r:.2f} A  ({n_qubits} qubits, {n_electrons} electrons, "
+        print(f"\n{molecule} at R = {r:.2f} A  ({n_qubits} qubits, {n_electrons} electrons, "
               f"{len(hamiltonian.terms()[0])} Pauli terms, built in {time.perf_counter() - start:.0f} s)")
         print(f"  E_HF = {e_hf:+.6f}   E_exact = {e_exact:+.6f}   lowest over all sectors = {e_lowest:+.6f} Ha")
         if e_lowest < e_exact - 1e-8:
@@ -173,7 +178,7 @@ def run_experiment(bond_lengths, hea_layers, seeds, max_steps, csv_path, history
 
             # Written after every run, so a job that hits its time limit keeps what it finished.
             with open(csv_path, "a", newline="") as f:
-                csv.writer(f).writerow(["LiH", r, ansatz, layers, seed, n_params, len(history) - 1,
+                csv.writer(f).writerow([molecule, r, ansatz, layers, seed, n_params, len(history) - 1,
                                         e_hf, e_exact, e_lowest, history[-1], error_mha, elapsed])
             with open(history_path, "a") as f:
                 f.write(json.dumps({"bond_length_A": r, "ansatz": ansatz, "layers": layers, "seed": seed,
@@ -210,7 +215,7 @@ def summarise(rows):
                   f"{errors.min():8.3f}  {errors.max():8.3f}  {n_ok} of {errors.size}")
 
 
-def plot_error_vs_bond_length(rows, figure_path):
+def plot_error_vs_bond_length(molecule, rows, figure_path):
     plt.figure(figsize=(7, 3.8))
     for label, ansatz, layers in labels_in(rows):
         selected = [row for row in rows if row["ansatz"] == ansatz and int(row["layers"]) == layers]
@@ -224,9 +229,9 @@ def plot_error_vs_bond_length(rows, figure_path):
         plt.errorbar(bond_lengths, mean, yerr=[low, high], marker="o", markersize=3, capsize=2, label=label)
     plt.axhline(CHEMICAL_ACCURACY_HA * 1000, color="gray", linestyle="--", label="1.6 mHa")
     plt.yscale("log")
-    plt.xlabel("Li-H bond length (Angstrom)")
+    plt.xlabel(f"{MOLECULES[molecule]['bond']} bond length (Angstrom)")
     plt.ylabel("|Error| vs exact (mHa)")
-    plt.title("LiH, STO-3G: mean over seeds, bars min to max")
+    plt.title(f"{molecule}, STO-3G: mean over seeds, bars min to max")
     # Outside the axes: with seven series a legend inside covers the curves.
     plt.legend(fontsize=7, loc="center left", bbox_to_anchor=(1.01, 0.5))
     plt.tight_layout()
@@ -234,8 +239,9 @@ def plot_error_vs_bond_length(rows, figure_path):
     plt.close()
 
 
-def plot_convergence(history_path, figure_path, bond_length=1.6):
-    """Training curves at the bond length closest to `bond_length`: one line per run."""
+def plot_convergence(molecule, history_path, figure_path):
+    """Training curves at the bond length closest to the molecule's reference one: one line per run."""
+    bond_length = MOLECULES[molecule]["reference"]
     with open(history_path) as f:
         runs = [json.loads(line) for line in f]
     r = min({run["bond_length_A"] for run in runs}, key=lambda x: abs(x - bond_length))
@@ -251,7 +257,7 @@ def plot_convergence(history_path, figure_path, bond_length=1.6):
     plt.axhline(CHEMICAL_ACCURACY_HA * 1000, color="gray", linestyle="--", label="1.6 mHa")
     plt.xlabel("Optimiser step")
     plt.ylabel("|Error| vs exact (mHa)")
-    plt.title(f"LiH, STO-3G, {r:.2f} Angstrom")
+    plt.title(f"{molecule}, STO-3G, {r:.2f} Angstrom")
     # Outside the axes: with seven series a legend inside covers the curves.
     plt.legend(fontsize=7, loc="center left", bbox_to_anchor=(1.01, 0.5))
     plt.tight_layout()
@@ -261,35 +267,37 @@ def plot_convergence(history_path, figure_path, bond_length=1.6):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--molecule", choices=list(MOLECULES), default="LiH")
     parser.add_argument("--quick", action="store_true", help="1 bond length, 3 steps, 1 seed; writes *_quick files")
     parser.add_argument("--plot-only", action="store_true", help="skip the runs and redraw from the CSV")
-    parser.add_argument("--hf-start", action="store_true",
-                        help="run only the HEA that starts from the HF state with small angles; rows go to the same CSV")
-    parser.add_argument("--bond-lengths", type=float, nargs="+", default=BOND_LENGTHS, help="in Angstrom")
+    parser.add_argument("--bond-lengths", type=float, nargs="+", help="in Angstrom; default: the molecule's list")
     args = parser.parse_args()
 
     RESULTS.mkdir(exist_ok=True)
     FIGURES.mkdir(exist_ok=True)
-    suffix = "_quick" if args.quick else ""
-    csv_path = RESULTS / f"exp1_ansatz{suffix}.csv"
-    history_path = RESULTS / f"exp1_histories{suffix}.jsonl"
+    molecule = args.molecule
+    settings = MOLECULES[molecule]
+    name = molecule.lower() + ("_quick" if args.quick else "")
+    csv_path = RESULTS / f"{name}_ansatz.csv"
+    history_path = RESULTS / f"{name}_histories.jsonl"
 
     if args.plot_only:
         summarise(read_rows(csv_path))
     else:
         # The console output of every run is appended to this file, so it can be committed with the results.
-        with tee_stdout(RESULTS / f"step03_output{suffix}.txt"):
-            print(f"=== {time.strftime('%Y-%m-%d %H:%M:%S')}  step03_lih_vqe.py {' '.join(sys.argv[1:])}")
+        with tee_stdout(RESULTS / f"step03_{name}_output.txt"):
+            print(f"=== {time.strftime('%Y-%m-%d %H:%M:%S')}  step03_uccsd_vs_hea.py {' '.join(sys.argv[1:])}")
             print(f"PennyLane {qml.__version__}; Adam, stepsize {STEP_SIZE}, conv_tol {CONV_TOL}, patience {PATIENCE}")
             if args.quick:
-                run_experiment([1.6], HEA_LAYERS, SEEDS[:1], 3, csv_path, history_path, args.hf_start)
+                run_experiment(molecule, [settings["reference"]], HEA_LAYERS, SEEDS[:1], 3, csv_path, history_path)
             else:
-                run_experiment(args.bond_lengths, HEA_LAYERS, SEEDS, MAX_STEPS, csv_path, history_path, args.hf_start)
+                bond_lengths = args.bond_lengths or settings["bond_lengths"]
+                run_experiment(molecule, bond_lengths, HEA_LAYERS, SEEDS, MAX_STEPS, csv_path, history_path)
             summarise(read_rows(csv_path))
 
     rows = read_rows(csv_path)
-    plot_error_vs_bond_length(rows, FIGURES / f"lih_error_vs_bond_length{suffix}.png")
-    plot_convergence(history_path, FIGURES / f"lih_convergence{suffix}.png")
+    plot_error_vs_bond_length(molecule, rows, FIGURES / f"{name}_error_vs_bond_length.png")
+    plot_convergence(molecule, history_path, FIGURES / f"{name}_convergence.png")
 
 
 if __name__ == "__main__":

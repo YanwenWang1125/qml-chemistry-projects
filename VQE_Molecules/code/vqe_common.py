@@ -25,6 +25,14 @@ def lih_geometry(bond_length_angstrom):
     return symbols, coordinates
 
 
+def beh2_geometry(bond_length_angstrom):
+    """Linear H-Be-H along the z axis, Be at the origin, both Be-H bonds of the given length. In bohr."""
+    d = bond_length_angstrom * ANGSTROM_TO_BOHR
+    symbols = ["H", "Be", "H"]
+    coordinates = np.array([[0.0, 0.0, -d], [0.0, 0.0, 0.0], [0.0, 0.0, d]])
+    return symbols, coordinates
+
+
 def build_hamiltonian(symbols, coordinates, basis="sto-3g"):
     """Qubit Hamiltonian (Jordan-Wigner) in Hartree, with the number of qubits and electrons."""
     molecule = qml.qchem.Molecule(symbols, coordinates, basis_name=basis)
