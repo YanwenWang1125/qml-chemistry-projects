@@ -14,6 +14,8 @@ Each experiment is set up the same way: a fixed optimisation budget shared by ev
 
 Error against the exact energy during training, LiH at 1.60 Å. One line per run; the dashed line is chemical accuracy (1.6 mHa). Details and limitations are in the [project README](VQE_Molecules/README.md).
 
+Next in this project: the same comparison on BeH2 (14 qubits), ADAPT-VQE, and CPU against GPU simulation time on hydrogen chains.
+
 ## Repository layout
 
 ```

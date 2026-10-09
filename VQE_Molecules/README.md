@@ -9,6 +9,17 @@ A comparison of two variational quantum eigensolver (VQE) ansätze on the ground
 - **LiH (12 qubits)** is the comparison. UCCSD (92 parameters) reached chemical accuracy at 5 of 5 bond lengths, with errors from 0.009 to 0.097 mHa. The HEA with random initial angles reached it in 0 of 75 runs; its best runs ended at the Hartree–Fock energy, which is where UCCSD starts.
 - **Open point.** The two ansätze did not start from the same place, so this result does not separate the circuit structure from the starting point. A control that starts the HEA from the Hartree–Fock state is implemented (`--hf-start`); its results are not included yet.
 
+## Roadmap
+
+| Step | Content | Status |
+|---|---|---|
+| 1 | H2 Hamiltonian and reference energies | Done |
+| 2 | UCCSD-VQE on H2, dissociation curve | Done |
+| 3 | LiH: UCCSD against HEA | Main experiment done; HF-start control pending |
+| 4 | BeH2 (14 qubits): UCCSD against HEA | Planned |
+| 5 | ADAPT-VQE: error against number of parameters, compared with UCCSD | Planned |
+| 6 | CPU against GPU statevector simulation time on hydrogen chains | Planned |
+
 ## Files
 
 | Script in `code/` | What it does | Output |
