@@ -8,7 +8,7 @@ Each experiment is set up the same way: a fixed optimisation budget shared by ev
 
 | Project | Question | Result so far |
 |---|---|---|
-| [VQE_Molecules](VQE_Molecules/) | Under one optimisation budget, which is easier to train to chemical accuracy: an ansatz built for the problem (UCCSD) or a generic layered one (hardware-efficient, HEA)? | On LiH (12 qubits, 5 bond lengths), UCCSD reached chemical accuracy at 5 of 5 geometries. The HEA, started from random angles, reached it in 0 of 75 runs. A control that starts the HEA from the Hartree–Fock state is implemented; its results are not included yet. |
+| [VQE_Molecules](VQE_Molecules/) | Under one optimisation budget, which is easier to train to chemical accuracy: an ansatz built for the problem (UCCSD) or a generic layered one (hardware-efficient, HEA)? | On LiH (12 qubits, 5 bond lengths), UCCSD reached chemical accuracy at 5 of 5 geometries. The HEA reached it in 0 of 75 runs from random angles, and in 0 of 75 runs when started next to the Hartree–Fock state, where every run settled on the Hartree–Fock energy. |
 
 ![Training curves for LiH at 1.60 Å](VQE_Molecules/figures/lih_convergence.png)
 

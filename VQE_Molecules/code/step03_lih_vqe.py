@@ -211,7 +211,7 @@ def summarise(rows):
 
 
 def plot_error_vs_bond_length(rows, figure_path):
-    plt.figure(figsize=(5.5, 3.8))
+    plt.figure(figsize=(7, 3.8))
     for label, ansatz, layers in labels_in(rows):
         selected = [row for row in rows if row["ansatz"] == ansatz and int(row["layers"]) == layers]
         bond_lengths = sorted({float(row["bond_length_A"]) for row in selected})
@@ -227,9 +227,10 @@ def plot_error_vs_bond_length(rows, figure_path):
     plt.xlabel("Li-H bond length (Angstrom)")
     plt.ylabel("|Error| vs exact (mHa)")
     plt.title("LiH, STO-3G: mean over seeds, bars min to max")
-    plt.legend(fontsize=7)
+    # Outside the axes: with seven series a legend inside covers the curves.
+    plt.legend(fontsize=7, loc="center left", bbox_to_anchor=(1.01, 0.5))
     plt.tight_layout()
-    plt.savefig(figure_path, dpi=150)
+    plt.savefig(figure_path, dpi=150, bbox_inches="tight")
     plt.close()
 
 
@@ -240,7 +241,7 @@ def plot_convergence(history_path, figure_path, bond_length=1.6):
     r = min({run["bond_length_A"] for run in runs}, key=lambda x: abs(x - bond_length))
     runs = [run for run in runs if run["bond_length_A"] == r]
     colours = {}
-    plt.figure(figsize=(5.5, 3.8))
+    plt.figure(figsize=(7, 3.8))
     for run in runs:
         label = label_of(run["ansatz"], run["layers"])
         first = label not in colours
@@ -251,9 +252,10 @@ def plot_convergence(history_path, figure_path, bond_length=1.6):
     plt.xlabel("Optimiser step")
     plt.ylabel("|Error| vs exact (mHa)")
     plt.title(f"LiH, STO-3G, {r:.2f} Angstrom")
-    plt.legend(fontsize=7)
+    # Outside the axes: with seven series a legend inside covers the curves.
+    plt.legend(fontsize=7, loc="center left", bbox_to_anchor=(1.01, 0.5))
     plt.tight_layout()
-    plt.savefig(figure_path, dpi=150)
+    plt.savefig(figure_path, dpi=150, bbox_inches="tight")
     plt.close()
 
 
