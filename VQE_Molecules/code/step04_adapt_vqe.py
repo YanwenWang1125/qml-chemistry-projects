@@ -118,7 +118,7 @@ def run_adapt(hamiltonian, n_qubits, n_electrons, e_hf, e_exact, max_gates, max_
             apply_gate(gate, candidates[k])
         return qml.expval(hamiltonian)
 
-    score = qml.grad(energy_with_candidates, argnum=1)
+    score = qml.grad(energy_with_candidates, argnums=1)
 
     theta = np.zeros(0)
     records = [{"iteration": 0, "gate": "", "excitation": "", "max_gradient": "", "n_params": 0, "steps": 0,
