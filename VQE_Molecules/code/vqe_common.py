@@ -15,6 +15,13 @@ def h2_geometry(bond_length_angstrom):
     return symbols, coordinates
 
 
+def lih_geometry(bond_length_angstrom):
+    """LiH along the z axis, Li at the origin. Coordinates are returned in bohr."""
+    symbols = ["Li", "H"]
+    coordinates = np.array([[0.0, 0.0, 0.0], [0.0, 0.0, bond_length_angstrom * ANGSTROM_TO_BOHR]])
+    return symbols, coordinates
+
+
 def build_hamiltonian(symbols, coordinates, basis="sto-3g"):
     """Qubit Hamiltonian (Jordan-Wigner) in Hartree, with the number of qubits and electrons."""
     molecule = qml.qchem.Molecule(symbols, coordinates, basis_name=basis)
@@ -42,6 +49,16 @@ def exact_energy(hamiltonian, n_qubits, n_electrons):
     if block.shape[0] <= 512:
         return float(np.linalg.eigvalsh(block.toarray())[0])
     return float(eigsh(block, k=1, which="SA", return_eigenvectors=False)[0])
+
+
+def lowest_energy(hamiltonian, n_qubits):
+    """Lowest eigenvalue over all basis states, with no restriction on the number of electrons.
+
+    A circuit that does not conserve the electron number (such as a hardware-efficient ansatz)
+    is bounded below by this value, not by exact_energy.
+    """
+    matrix = hamiltonian.sparse_matrix(wire_order=range(n_qubits)).tocsr()
+    return float(eigsh(matrix, k=1, which="SA", return_eigenvectors=False)[0])
 
 
 def minimise_energy(energy, weights, step_size, max_steps, conv_tol, patience=1):
