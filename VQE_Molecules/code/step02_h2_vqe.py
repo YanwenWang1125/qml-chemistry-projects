@@ -31,8 +31,8 @@ FIGURES = ROOT / "figures"
 STEP_SIZE = 0.05
 MAX_STEPS = 300
 CONV_TOL = 1e-6
-# Consecutive steps below CONV_TOL needed to stop. 1 reproduces the 2026-10-08 run.
-PATIENCE = 1
+# Consecutive steps below CONV_TOL needed to stop. 1 stops too early at some bond lengths (0.77 mHa at 1.1 Angstrom).
+PATIENCE = 5
 
 
 def run_uccsd(hamiltonian, n_qubits, n_electrons):
