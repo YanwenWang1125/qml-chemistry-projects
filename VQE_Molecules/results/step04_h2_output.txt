@@ -1,0 +1,19 @@
+=== 2026-10-09 13:06:54  step04_adapt_vqe.py --molecule H2
+PennyLane 0.45.1; Adam, stepsize 0.05, conv_tol 1e-06, patience 5; grad_tol 0.001, max_gates 40
+
+H2 at R = 0.74 A  (4 qubits, 2 electrons)
+  E_HF = -1.116759   E_exact = -1.137284 Ha
+=== 2026-10-09 13:08:29  step04_adapt_vqe.py --molecule H2
+PennyLane 0.45.1; Adam, stepsize 0.05, conv_tol 1e-06, patience 5; grad_tol 0.001, max_gates 40
+
+H2 at R = 0.74 A  (4 qubits, 2 electrons)
+  E_HF = -1.116759   E_exact = -1.137284 Ha
+  pool: 3 gates (1 doubles, 2 singles)
+  iter  gate  excitation        max |grad|  params  steps  E_VQE        error (mHa)  seconds
+     0  HF                                       0      0  -1.116759      20.5245      0.0
+     1  D     [0, 1, 2, 3]        0.181210       1     86  -1.137284       0.0003      6.9
+  stop: largest gradient 6.95e-04 is below 1e-03
+
+Summary: parameters needed for chemical accuracy (1.6 mHa)
+  R (A)  first within 1.6 mHa  final params  final error (mHa)  stop       UCCSD params  UCCSD error (mHa)
+   0.74  1 params                         1             0.0003  gradient              -                  -
