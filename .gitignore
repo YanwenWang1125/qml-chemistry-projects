@@ -11,3 +11,6 @@ learning-style.md
 
 __pycache__/
 *.pyc
+
+# Jupyter autosave copies
+.ipynb_checkpoints/
