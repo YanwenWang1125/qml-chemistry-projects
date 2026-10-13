@@ -163,6 +163,10 @@ def run_experiment(molecule, bond_lengths, hea_layers, seeds, max_steps, csv_pat
         print("  ansatz  layers  seed  params  steps  start (mHa)  E_VQE        error (mHa)  seconds", flush=True)
 
         for ansatz, layers, seed in jobs:
+            # Checked again before every run: a second process started on the same CSV would
+            # otherwise repeat every run of this one.
+            if (f"{r:.2f}", ansatz, layers, seed) in {run_key(row) for row in read_rows(csv_path)}:
+                continue
             start = time.perf_counter()
             if ansatz == "UCCSD":
                 history, n_params = run_uccsd(hamiltonian, n_qubits, n_electrons, max_steps)
