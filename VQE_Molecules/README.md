@@ -17,10 +17,11 @@ A comparison of variational quantum eigensolver (VQE) ansätze on the ground-sta
 |---|---|---|
 | 1 | H2 Hamiltonian and reference energies | Done |
 | 2 | UCCSD-VQE on H2, dissociation curve | Done |
+| 2c | The H2 VQE again in Qiskit, as a cross-check | Done |
 | 3 | LiH: UCCSD against HEA, with a control for the starting point | Done |
 | 4 | BeH2 (14 qubits): UCCSD against HEA | Done |
 | 5 | ADAPT-VQE: error against number of parameters, compared with UCCSD | H2 check and LiH at 1.60 Å done; 4 LiH bond lengths to run |
-| 6 | CPU against GPU statevector simulation time on hydrogen chains | Planned |
+| 6 | CPU against GPU statevector simulation time on hydrogen chains | Script written (`step05_gpu_scaling.py`), not yet run |
 
 ## Files
 
@@ -30,6 +31,7 @@ A comparison of variational quantum eigensolver (VQE) ansätze on the ground-sta
 | `step01_h2_hamiltonian.py` | H2 Hamiltonian at 0.74 Å and its reference energies | `results/step01_output.txt` |
 | `step02_h2_vqe.py` | UCCSD-VQE on H2: one geometry, then 22 bond lengths | `results/h2_dissociation.csv`, `results/step02_output.txt`, `figures/h2_*.png` |
 | `step02b_h2_checks.py` | Matrix elements of the H2 Hamiltonian and a single-gate ansatz | `results/step02b_output.txt` |
+| `step02c_h2_qiskit.py` | The H2 VQE in Qiskit: the same Hamiltonian as a `SparsePauliOp`, a one-parameter circuit with three CNOTs | `results/h2_qiskit.csv`, `results/step02c_output.txt` |
 | `step03_uccsd_vs_hea.py` | UCCSD against HEA on LiH or BeH2 (`--molecule`): 5 bond lengths, 3 depths, 5 seeds, 2 ways of starting the HEA | `results/lih_ansatz.csv`, `results/lih_histories.jsonl`, `figures/lih_*.png`; the same with `beh2_` for BeH2 |
 | `step04_adapt_vqe.py` | ADAPT-VQE on H2, LiH or BeH2 (`--molecule`): the circuit grows by one UCCSD gate per iteration, chosen by its gradient | `results/<molecule>_adapt.csv`, `results/<molecule>_adapt_histories.jsonl`, `figures/<molecule>_adapt_error_vs_params.png` |
 
@@ -66,6 +68,8 @@ Along the dissociation curve, 22 bond lengths from 0.4 to 2.5 Å ([results/h2_di
 ![H2 dissociation curve](figures/h2_dissociation.png)
 
 A single `DoubleExcitation` gate on the HF state already gives the exact energy at 0.74 Å (θ = 0.2256, [results/step02b_output.txt](results/step02b_output.txt)), because the ground state is a superposition of |1100⟩ and |0011⟩ only. The errors above therefore come from the optimiser, not from the ansatz. The stopping rule shows this directly: when the optimiser stopped at the first step below the tolerance, the largest error was 0.77 mHa at 1.1 Å after 34 steps and 5 of the 22 points were above 0.1 mHa. The stored results require 5 consecutive steps.
+
+**Cross-check in Qiskit** ([results/step02c_output.txt](results/step02c_output.txt)). The Hamiltonian built by PennyLane was converted to a Qiskit `SparsePauliOp` and minimised over a hand-built circuit that prepares cos(θ/2)|1100⟩ + sin(θ/2)|0011⟩ with one RY and three CNOTs, using Qiskit's statevector estimator (Qiskit 2.5.2). At 6 bond lengths from 0.5 to 2.5 Å the minimum agrees with the exact energy to within 1e-12 Ha, and the HF energy from the Qiskit circuit agrees with the PennyLane matrix element to 2e-16 Ha. At 0.74 Å the optimal angle is −0.2256, the same magnitude as the `DoubleExcitation` angle above. One run, on a Windows laptop.
 
 ## Results for LiH
 

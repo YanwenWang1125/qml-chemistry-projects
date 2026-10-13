@@ -75,6 +75,9 @@ def lowest_energy(hamiltonian, n_qubits):
 class _Tee:
     """Writes to several streams at once."""
 
+    # Some libraries (Qiskit's text drawer) read sys.stdout.encoding; the log file is opened as UTF-8.
+    encoding = "utf-8"
+
     def __init__(self, *streams):
         self.streams = streams
 
