@@ -1,0 +1,10 @@
+=== 2026-10-13 10:43:43  step05_gpu_scaling.py 
+PennyLane 0.45.1; HEA with 4 layers; H-H spacing 1.0 A; times are the smallest of the repeats and exclude building the Hamiltonian
+CPU cores available: 2; OMP_NUM_THREADS = not set
+GPU: NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.
+  atoms  qubits  terms   device           build (s)  energy (s)  gradient (s)
+      2       4      15  lightning.qubit        0.0      0.0031        0.0038
+  lightning.gpu is not available, skipped from here on: DeviceError: Device lightning.gpu does not exist. Make sure the required plugin is installed.
+      4       8     185  lightning.qubit        0.2      0.0087        0.0105
+      6      12     919  lightning.qubit        1.2      0.0437        0.0431
+      8      16    2913  lightning.qubit        4.0      0.5597        0.5831
