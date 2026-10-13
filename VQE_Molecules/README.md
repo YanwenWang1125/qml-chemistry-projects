@@ -9,7 +9,7 @@ A comparison of variational quantum eigensolver (VQE) ansätze on the ground-sta
 - **LiH (12 qubits)** is the comparison. UCCSD (92 parameters) reached chemical accuracy at 5 of 5 bond lengths, with errors from 0.009 to 0.097 mHa. The HEA with random initial angles reached it in 0 of 75 runs; its best runs ended at the Hartree–Fock energy, which is where UCCSD starts.
 - **Control for the starting point.** Starting the HEA next to the Hartree–Fock state removed the spread between seeds, but all 75 control runs settled on the Hartree–Fock energy and none went below it. The starting point explains the large errors of the randomly initialised HEA; it does not explain its failure to reach chemical accuracy.
 - **BeH2 (14 qubits)** repeats the comparison on a larger molecule. UCCSD (204 parameters) reached chemical accuracy at 3 of 5 bond lengths and ended at 5.7 and 5.3 mHa at the two stretched ones. Both HEA results carried over: 0 of 75 runs within chemical accuracy from random angles, and all 75 runs started from Hartree–Fock ended on the Hartree–Fock energy.
-- **ADAPT-VQE**, first result. Selecting UCCSD's gates one at a time by gradient, LiH at 1.60 Å reached chemical accuracy with 5 parameters and matched UCCSD's final error with 26, against 92 for UCCSD. It needed 2308 optimiser steps in total against 97. The other four bond lengths have not been run.
+- **ADAPT-VQE** selects UCCSD's gates one at a time by gradient. On LiH it reached chemical accuracy with 4 to 7 parameters at all 5 bond lengths and stopped with 26 to 29, against 92 for UCCSD. Its final error is between 11% below and 9% above UCCSD's at four bond lengths and about twice UCCSD's at 3.20 Å. It needed about 2300 to 2600 optimiser steps per bond length against about 100.
 
 ## Roadmap
 
@@ -20,8 +20,8 @@ A comparison of variational quantum eigensolver (VQE) ansätze on the ground-sta
 | 2c | The H2 VQE again in Qiskit, as a cross-check | Done |
 | 3 | LiH: UCCSD against HEA, with a control for the starting point | Done |
 | 4 | BeH2 (14 qubits): UCCSD against HEA | Done |
-| 5 | ADAPT-VQE: error against number of parameters, compared with UCCSD | H2 check and LiH at 1.60 Å done; 4 LiH bond lengths to run |
-| 6 | CPU against GPU statevector simulation time on hydrogen chains | Script written (`step05_gpu_scaling.py`), not yet run |
+| 5 | ADAPT-VQE: error against number of parameters, compared with UCCSD | Done for H2 and LiH |
+| 6 | CPU against GPU statevector simulation time on hydrogen chains | CPU timed up to 16 qubits; GPU not run yet |
 
 ## Files
 
@@ -36,6 +36,8 @@ A comparison of variational quantum eigensolver (VQE) ansätze on the ground-sta
 | `step04_adapt_vqe.py` | ADAPT-VQE on H2, LiH or BeH2 (`--molecule`): the circuit grows by one UCCSD gate per iteration, chosen by its gradient | `results/<molecule>_adapt.csv`, `results/<molecule>_adapt_histories.jsonl`, `figures/<molecule>_adapt_error_vs_params.png` |
 
 `lih_ansatz.csv` has one row per training run. `lih_histories.jsonl` has the energy at every optimiser step of every run. The `.txt` files are console output.
+
+`notebooks/` holds the Jupyter notebooks in which the scripts were run on the cluster, with their output. They are a record of those sessions and are not kept in step with the scripts: `step03.ipynb` calls the script and result files by their earlier names (`step03_lih_vqe.py`, `exp1_ansatz.csv`), and its first cell is a failed attempt to run the script by pasting it into a cell. To reproduce a result, use the commands under Reproduce.
 
 ## Method
 
@@ -146,27 +148,47 @@ What carried over from LiH, and what did not:
 
 ![Training curves at 1.30 Å](figures/beh2_convergence.png)
 
-## ADAPT-VQE: first results
+## ADAPT-VQE
 
 ADAPT-VQE starts from the HF state with no gates. Each iteration computes, for every gate in a pool, the gradient of the energy if that gate were appended at angle zero; appends the gate with the largest gradient; and retrains all angles with the same Adam budget as above. It stops when the largest gradient is below 1e-3 Ha per radian or after 40 gates. Neither rule uses the exact energy. The pool is the set of gates UCCSD is built from, so the only difference from UCCSD is that gates are selected one at a time.
 
 **H2 at 0.74 Å** ([results/h2_adapt.csv](results/h2_adapt.csv)). The pool has 3 gates. The first iteration selected the double excitation, with gradient 0.181210 Ha per radian, and training gave an error of 0.0003 mHa in 86 steps. The second iteration stopped: the largest remaining gradient was 6.95e-4. One parameter, against 3 for UCCSD.
 
-**LiH at 1.60 Å** ([results/lih_adapt.csv](results/lih_adapt.csv)), one run. The pool has 92 gates (76 doubles, 16 singles).
+**LiH** ([results/lih_adapt.csv](results/lih_adapt.csv)), one run per bond length. The pool has 92 gates (76 doubles, 16 singles). UCCSD columns are from step 3.
 
-| | ADAPT-VQE | UCCSD |
-|---|---|---|
-| Parameters when the error first falls below 1.6 mHa | 5 | 92 (fixed) |
-| Parameters at the end | 26 | 92 |
-| Final error (mHa) | 0.0127 | 0.0131 |
-| Optimiser steps, summed over iterations | 2308 | 97 |
+| Bond length (Å) | Parameters when the error first falls below 1.6 mHa | Parameters at the end | ADAPT final error (mHa) | UCCSD error, 92 parameters (mHa) | ADAPT optimiser steps, summed | UCCSD optimiser steps |
+|---|---|---|---|---|---|---|
+| 1.20 | 4 | 28 | 0.0079 | 0.0089 | 2517 | 95 |
+| 1.60 | 5 | 26 | 0.0127 | 0.0131 | 2308 | 97 |
+| 2.00 | 6 | 28 | 0.0195 | 0.0204 | 2507 | 100 |
+| 2.60 | 7 | 26 | 0.0556 | 0.0511 | 2306 | 106 |
+| 3.20 | 6 | 29 | 0.1845 | 0.0969 | 2600 | 104 |
 
 ![Error after each added gate](figures/lih_adapt_error_vs_params.png)
 
-- The largest gradient fell from 0.124 at the first iteration to 0.001 at the last; the run stopped on the gradient rule at 8.94e-4.
-- The 26 selected gates are all different. The first 14 are doubles.
-- Gradient order is not gain order. Gates 8 to 14, all doubles, lowered the error from 0.56 to 0.45 mHa. The next three, the first singles to be selected, lowered it from 0.45 to 0.03 mHa. Whether selecting those singles earlier would have reached the same error with fewer gates was not tested.
-- Wall time is not compared: this run shared two CPU cores with other jobs.
+Lines are ADAPT-VQE; stars are UCCSD at the same bond lengths.
+
+- **Chemical accuracy needs 4 to 7 of the 92 gates** at every bond length.
+- **All five runs stopped on the gradient rule**, with 26 to 29 gates, none at the 40-gate limit. The selected gates are all different within a run.
+- **The final error matches UCCSD except at 3.20 Å**, where ADAPT stopped at 0.18 mHa against 0.10 mHa. Both are far below 1.6 mHa. The gradient threshold was not varied, so this does not say whether a lower threshold would close the gap.
+- **The first gate is the same at every bond length**: the double excitation on spin orbitals 2, 3, 10, 11, with a gradient of 0.11 to 0.13.
+- **Single excitations are selected earlier as the bond is stretched**: the first one appears at iteration 16, 15, 11, 6 and 5 for the five bond lengths in increasing order.
+- **Gradient order is not gain order.** At 1.60 Å, gates 8 to 14, all doubles, lowered the error from 0.56 to 0.45 mHa; the next three, the first singles, lowered it from 0.45 to 0.03 mHa. Whether selecting those singles earlier would have reached the same error with fewer gates was not tested.
+- The error rose from one iteration to the next three times in the five runs, each time by less than 0.001 mHa.
+- The price of the shorter circuit is training: 22 to 27 times as many optimiser steps as UCCSD, plus one gradient evaluation of the whole pool per iteration. Wall time is not compared, because the run at 1.60 Å shared two CPU cores with other jobs.
+
+## Simulation time against the number of qubits
+
+`step05_gpu_scaling.py` times one energy evaluation and one adjoint gradient of a 4-layer HEA on linear hydrogen chains, without training. So far it has run only on CPU (`lightning.qubit`, 2 cores, smallest of 3 repeats; [results/gpu_scaling.csv](results/gpu_scaling.csv)):
+
+| Chain | Qubits | Pauli terms | Parameters | Energy (s) | Gradient (s) |
+|---|---|---|---|---|---|
+| H2 | 4 | 15 | 32 | 0.0031 | 0.0038 |
+| H4 | 8 | 185 | 64 | 0.0087 | 0.0105 |
+| H6 | 12 | 919 | 96 | 0.0437 | 0.0431 |
+| H8 | 16 | 2913 | 128 | 0.5597 | 0.5831 |
+
+The session had no GPU and `pennylane-lightning-gpu` was not installed, so the GPU column and the chains beyond H8 are missing. No comparison can be made yet.
 
 ## Reproduce
 
@@ -181,7 +203,8 @@ python step03_uccsd_vs_hea.py --molecule LiH               # 155 runs; 48 minute
 python step03_uccsd_vs_hea.py --molecule LiH --plot-only   # redraw the figures from the CSV
 python step03_uccsd_vs_hea.py --molecule BeH2              # 155 runs
 python step04_adapt_vqe.py --molecule H2
-python step04_adapt_vqe.py --molecule LiH --bond-lengths 1.6
+python step04_adapt_vqe.py --molecule LiH                 # 5 bond lengths, 14 to 23 minutes each
+python step05_gpu_scaling.py                             # CPU, and GPU when lightning.gpu is installed
 ```
 
 `step03_uccsd_vs_hea.py` appends one row to the CSV after every run and skips runs that are already there, so an interrupted job can be restarted with the same command. It also appends its console output to `results/step03_lih_output.txt`. The stored LiH results were produced by an earlier version of the script, `step03_lih_vqe.py`, in two invocations (80 runs, then the 75 control runs) and before the console log was added, so that file is not in the repository. Both LiH figures were redrawn from the CSV with `--plot-only` after the runs.
@@ -197,6 +220,6 @@ The BeH2 experiment was started in two processes at the same time, so every run 
 - 24 of the 25 six-layer HEA runs used the whole 300-step budget, so for that depth "hard to train" and "budget too small" are not separated.
 - The 5 HEA seeds give the same initial angles at every bond length, so results at different bond lengths are not independent samples.
 - The HEA conclusions hold for this layer structure, this initialisation and this budget only.
-- The ADAPT-VQE result is one bond length of one molecule. Its gradient threshold and gate limit were not varied, and its count is of parameters, not of two-qubit gates.
+- The ADAPT-VQE results are for one molecule, with one run per bond length. The gradient threshold and gate limit were not varied, and the count is of parameters, not of two-qubit gates.
 - The VQE energies and step counts are not identical across machines. A rerun of the H2 curve on a Linux cluster gave the same HF and exact energies but a largest error of 0.052 mHa at 2.3 Å, with 81 to 110 steps.
 - The number of two-qubit gates is not recorded. The HEA has 12 CNOTs per layer; the UCCSD circuit was not counted.

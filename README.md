@@ -8,13 +8,13 @@ Each experiment is set up the same way: a fixed optimisation budget shared by ev
 
 | Project | Question | Result so far |
 |---|---|---|
-| [VQE_Molecules](VQE_Molecules/) | Under one optimisation budget, which is easier to train to chemical accuracy: an ansatz built for the problem (UCCSD) or a generic layered one (hardware-efficient, HEA)? | On LiH (12 qubits, 5 bond lengths), UCCSD reached chemical accuracy at 5 of 5 geometries. The HEA reached it in 0 of 75 runs from random angles, and in 0 of 75 runs when started next to the Hartree–Fock state, where every run settled on the Hartree–Fock energy. On BeH2 (14 qubits) both HEA results repeated, and UCCSD reached chemical accuracy at 3 of 5 geometries. ADAPT-VQE, which selects UCCSD's gates one at a time, reached chemical accuracy on LiH at 1.60 Å with 5 parameters against 92. |
+| [VQE_Molecules](VQE_Molecules/) | Under one optimisation budget, which is easier to train to chemical accuracy: an ansatz built for the problem (UCCSD) or a generic layered one (hardware-efficient, HEA)? | On LiH (12 qubits, 5 bond lengths), UCCSD reached chemical accuracy at 5 of 5 geometries. The HEA reached it in 0 of 75 runs from random angles, and in 0 of 75 runs when started next to the Hartree–Fock state, where every run settled on the Hartree–Fock energy. On BeH2 (14 qubits) both HEA results repeated, and UCCSD reached chemical accuracy at 3 of 5 geometries. ADAPT-VQE, which selects UCCSD's gates one at a time, reached chemical accuracy on LiH with 4 to 7 parameters at all 5 geometries, against 92 for UCCSD. |
 
 ![Training curves for LiH at 1.60 Å](VQE_Molecules/figures/lih_convergence.png)
 
 Error against the exact energy during training, LiH at 1.60 Å. One line per run; the dashed line is chemical accuracy (1.6 mHa). Details and limitations are in the [project README](VQE_Molecules/README.md).
 
-Next in this project: ADAPT-VQE at the remaining LiH bond lengths, and CPU against GPU simulation time on hydrogen chains.
+Next in this project: CPU against GPU simulation time on hydrogen chains (CPU timed up to 16 qubits so far).
 
 ## Repository layout
 
@@ -25,6 +25,7 @@ qml-chemistry-projects/
 └── VQE_Molecules/
     ├── README.md     questions, method, results, limitations
     ├── code/         one script per step, plus shared helpers
+    ├── notebooks/    the notebooks the scripts were run from on the cluster, with output
     ├── results/      CSV files and console output written by the scripts
     └── figures/      figures written by the scripts
 ```
