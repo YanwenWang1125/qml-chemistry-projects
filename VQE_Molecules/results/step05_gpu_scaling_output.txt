@@ -8,3 +8,14 @@ GPU: NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA drive
       4       8     185  lightning.qubit        0.2      0.0087        0.0105
       6      12     919  lightning.qubit        1.2      0.0437        0.0431
       8      16    2913  lightning.qubit        4.0      0.5597        0.5831
+=== 2026-10-13 12:07:21  step05_gpu_scaling.py 
+PennyLane 0.45.1; HEA with 4 layers; H-H spacing 1.0 A; times are the smallest of the repeats and exclude building the Hamiltonian
+CPU cores available: 4; OMP_NUM_THREADS = not set
+GPU: NVIDIA H100 80GB HBM3, 81559 MiB
+  atoms  qubits  terms   device           build (s)  energy (s)  gradient (s)
+      2       4      15  lightning.gpu          0.6      0.0097        0.0103
+      4       8     185  lightning.gpu          0.3      0.0273        0.0283
+      6      12     919  lightning.gpu          1.4      0.1111        0.1127
+      8      16    2913  lightning.gpu          4.5      0.4549        0.4560
+     10      20    7151  lightning.qubit       12.0     50.9494       50.9952
+     10      20    7151  lightning.gpu         12.0      8.9617        9.0333
