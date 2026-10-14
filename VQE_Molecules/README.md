@@ -10,7 +10,7 @@ A comparison of variational quantum eigensolver (VQE) ansätze on the ground-sta
 - **Control for the starting point.** Starting the HEA next to the Hartree–Fock state removed the spread between seeds, but all 75 control runs settled on the Hartree–Fock energy and none went below it. The starting point explains the large errors of the randomly initialised HEA; it does not explain its failure to reach chemical accuracy.
 - **BeH2 (14 qubits)** repeats the comparison on a larger molecule. UCCSD (204 parameters) reached chemical accuracy at 3 of 5 bond lengths and ended at 5.7 and 5.3 mHa at the two stretched ones. Both HEA results carried over: 0 of 75 runs within chemical accuracy from random angles, and all 75 runs started from Hartree–Fock ended on the Hartree–Fock energy.
 - **ADAPT-VQE** selects UCCSD's gates one at a time by gradient. On LiH it reached chemical accuracy with 4 to 7 parameters at all 5 bond lengths and stopped with 26 to 29, against 92 for UCCSD. Its final error is between 11% below and 9% above UCCSD's at four bond lengths and about twice UCCSD's at 3.20 Å. It needed about 2300 to 2600 optimiser steps per bond length against about 100.
-- **Simulation time.** On hydrogen chains, one adjoint gradient on an NVIDIA H100 GPU slice was slower than on CPU up to 12 qubits and 5.6 times faster at 20 qubits (9.0 s against 51.0 s on 4 CPU cores).
+- **Simulation time.** On hydrogen chains, one adjoint gradient on an NVIDIA H100 GPU slice was slower than on 4 CPU cores up to 16 qubits and 5.6 times faster at 20 qubits (9.0 s against 51.0 s). At 24 qubits the GPU took 298 s.
 
 ## Roadmap
 
@@ -22,7 +22,7 @@ A comparison of variational quantum eigensolver (VQE) ansätze on the ground-sta
 | 3 | LiH: UCCSD against HEA, with a control for the starting point | Done |
 | 4 | BeH2 (14 qubits): UCCSD against HEA | Done |
 | 5 | ADAPT-VQE: error against number of parameters, compared with UCCSD | Done for H2 and LiH |
-| 6 | CPU against GPU statevector simulation time on hydrogen chains | Done up to 20 qubits; 24 qubits not reached |
+| 6 | CPU against GPU statevector simulation time on hydrogen chains | Done: CPU and GPU to 20 qubits, GPU at 24 |
 
 ## Files
 
@@ -186,18 +186,19 @@ Seconds for one adjoint gradient:
 
 | Chain | Qubits | Pauli terms | Parameters | CPU | GPU | CPU / GPU |
 |---|---|---|---|---|---|---|
-| H2 | 4 | 15 | 32 | 0.0038 | 0.0103 | 0.37 |
-| H4 | 8 | 185 | 64 | 0.0105 | 0.0283 | 0.37 |
-| H6 | 12 | 919 | 96 | 0.0431 | 0.1127 | 0.38 |
-| H8 | 16 | 2913 | 128 | 0.583 | 0.456 | 1.28 |
+| H2 | 4 | 15 | 32 | 0.0036 | 0.0103 | 0.35 |
+| H4 | 8 | 185 | 64 | 0.0103 | 0.0283 | 0.36 |
+| H6 | 12 | 919 | 96 | 0.0422 | 0.1127 | 0.37 |
+| H8 | 16 | 2913 | 128 | 0.369 | 0.456 | 0.81 |
 | H10 | 20 | 7151 | 160 | 51.0 | 9.03 | 5.6 |
+| H12 | 24 | 14905 | 192 | not run | 298 | |
 
 ![CPU and GPU time per gradient](figures/gpu_scaling.png)
 
-- Up to 12 qubits the GPU is about 2.6 times slower than the CPU: the state vector is small and the fixed cost of each GPU call dominates. The two curves cross between 12 and 16 qubits, and at 20 qubits the GPU is 5.6 times faster.
-- From 16 to 20 qubits the CPU time grows 87-fold and the GPU time 20-fold. Both the state vector (16 times larger) and the number of Pauli terms (2.5 times more) grow over that step.
-- Hardware: GPU runs on one MIG slice (1g.10gb, about 10 GB) of an NVIDIA H100 80GB HBM3 on the Fir cluster, PennyLane 0.45.1 with `pennylane-lightning-gpu` 0.45.0 and cuQuantum 25.06. The CPU rows for 4 to 16 qubits were measured in an earlier session with 2 cores; the 20-qubit CPU row was measured in the GPU job with 4 cores. The CPU side therefore did not have the same core count throughout.
-- H12 (24 qubits) is missing: the job reached its 2-hour limit, most likely during the CPU timing at 24 qubits. This was not checked.
+- Up to 16 qubits the CPU is faster: 2.7 to 2.9 times at 4 to 12 qubits, where the state vector is small and the fixed cost of each GPU call dominates, and 1.2 times at 16 qubits. The curves cross between 16 and 20 qubits, and at 20 qubits the GPU is 5.6 times faster.
+- From 16 to 20 qubits the CPU time grows 138-fold and the GPU time 20-fold. Both the state vector (16 times larger) and the number of Pauli terms (2.5 times more) grow over that step.
+- At 24 qubits the GPU took 298 s per gradient, 33 times its 20-qubit time. The energy alone took the same time (298.13 s against 298.14 s for energy and gradient), so at this size the cost is the expectation value of the 14,905-term Hamiltonian, not the adjoint differentiation. The CPU was not run at 24 qubits. Scaling its 20-qubit time by the GPU's 20-to-24 growth gives about half an hour per gradient, and by its own 16-to-20 growth about two hours; both are extrapolations, not measurements.
+- Hardware: one MIG slice (1g.10gb, about 10 GB) of an NVIDIA H100 80GB HBM3 and 4 CPU cores on the Fir cluster, PennyLane 0.45.1 with `pennylane-lightning-gpu` 0.45.0 and cuQuantum 25.06. All CPU rows use 4 cores. The 24-qubit time is a single repeat; the others are the smallest of 3.
 
 ## Reproduce
 
