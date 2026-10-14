@@ -11,6 +11,8 @@ Usage (from code/):
     python step05_gpu_scaling.py --quick                 # H2 and H4, 1 repeat: checks the script
     python step05_gpu_scaling.py                         # H2 to H12; rerunning skips rows already in the CSV
     python step05_gpu_scaling.py --atoms 2 4 6 8 10      # stop at 20 qubits
+    python step05_gpu_scaling.py --atoms 2 4 6 8 --devices lightning.qubit --redo   # measure these rows again
+    python step05_gpu_scaling.py --atoms 12 --devices lightning.gpu --repeats 1     # 24 qubits on GPU only
     python step05_gpu_scaling.py --plot-only
 """
 import argparse
@@ -110,7 +112,19 @@ def read_rows(csv_path):
         return list(csv.DictReader(f))
 
 
-def run_experiment(atoms, devices, repeats, csv_path):
+def write_row(csv_path, row, replace):
+    """Appends one measurement. With replace, an earlier row for the same chain and device is dropped first."""
+    if replace:
+        kept = [r for r in read_rows(csv_path) if (int(r["n_atoms"]), r["device"]) != (row[0], row[5])]
+        with open(csv_path, "w", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(COLUMNS)
+            writer.writerows([[r[c] for c in COLUMNS] for r in kept])
+    with open(csv_path, "a", newline="") as f:
+        csv.writer(f).writerow(row)
+
+
+def run_experiment(atoms, devices, repeats, csv_path, redo=False):
     if not csv_path.exists():
         with open(csv_path, "w", newline="") as f:
             csv.writer(f).writerow(COLUMNS)
@@ -118,7 +132,8 @@ def run_experiment(atoms, devices, repeats, csv_path):
     unavailable = set()
     print("  atoms  qubits  terms   device           build (s)  energy (s)  gradient (s)")
     for n_atoms in atoms:
-        done = {(int(row["n_atoms"]), row["device"]) for row in read_rows(csv_path)}
+        # With redo, rows already in the CSV are measured again and replaced once the new value exists.
+        done = set() if redo else {(int(row["n_atoms"]), row["device"]) for row in read_rows(csv_path)}
         todo = [d for d in devices if (n_atoms, d) not in done and d not in unavailable]
         if not todo:
             print(f"  {n_atoms:5d}  all devices already in {csv_path.name} or unavailable, skipped")
@@ -140,9 +155,8 @@ def run_experiment(atoms, devices, repeats, csv_path):
             print(f"  {n_atoms:5d}  {n_qubits:6d}  {n_terms:6d}  {device_name:15s}  {build_seconds:9.1f}  "
                   f"{energy_seconds:10.4f}  {gradient_seconds:12.4f}", flush=True)
             # Written after every measurement, so a job that hits its time limit keeps what it finished.
-            with open(csv_path, "a", newline="") as f:
-                csv.writer(f).writerow([n_atoms, n_qubits, n_terms, LAYERS, n_params, device_name, build_seconds,
-                                        energy_seconds, gradient_seconds, repeats])
+            write_row(csv_path, [n_atoms, n_qubits, n_terms, LAYERS, n_params, device_name, build_seconds,
+                                 energy_seconds, gradient_seconds, repeats], replace=redo)
 
 
 def summarise(rows):
@@ -183,6 +197,8 @@ def main():
     parser.add_argument("--plot-only", action="store_true", help="skip the timings and redraw from the CSV")
     parser.add_argument("--atoms", type=int, nargs="+", help="even chain lengths; default 2 4 6 8 10 12")
     parser.add_argument("--devices", nargs="+", default=DEVICES)
+    parser.add_argument("--repeats", type=int, default=REPEATS, help="timed repeats per measurement; default 3")
+    parser.add_argument("--redo", action="store_true", help="measure again rows already in the CSV and replace them")
     args = parser.parse_args()
 
     RESULTS.mkdir(exist_ok=True)
@@ -199,7 +215,7 @@ def main():
             if args.quick:
                 run_experiment([2, 4], args.devices, 1, csv_path)
             else:
-                run_experiment(args.atoms or ATOMS, args.devices, REPEATS, csv_path)
+                run_experiment(args.atoms or ATOMS, args.devices, args.repeats, csv_path, args.redo)
             summarise(read_rows(csv_path))
     else:
         summarise(read_rows(csv_path))
