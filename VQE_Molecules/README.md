@@ -10,6 +10,7 @@ A comparison of variational quantum eigensolver (VQE) ansätze on the ground-sta
 - **Control for the starting point.** Starting the HEA next to the Hartree–Fock state removed the spread between seeds, but all 75 control runs settled on the Hartree–Fock energy and none went below it. The starting point explains the large errors of the randomly initialised HEA; it does not explain its failure to reach chemical accuracy.
 - **BeH2 (14 qubits)** repeats the comparison on a larger molecule. UCCSD (204 parameters) reached chemical accuracy at 3 of 5 bond lengths and ended at 5.7 and 5.3 mHa at the two stretched ones. Both HEA results carried over: 0 of 75 runs within chemical accuracy from random angles, and all 75 runs started from Hartree–Fock ended on the Hartree–Fock energy.
 - **ADAPT-VQE** selects UCCSD's gates one at a time by gradient. On LiH it reached chemical accuracy with 4 to 7 parameters at all 5 bond lengths and stopped with 26 to 29, against 92 for UCCSD. Its final error is between 11% below and 9% above UCCSD's at four bond lengths and about twice UCCSD's at 3.20 Å. It needed about 2300 to 2600 optimiser steps per bond length against about 100.
+- **Simulation time.** On hydrogen chains, one adjoint gradient on an NVIDIA H100 GPU slice was slower than on CPU up to 12 qubits and 5.6 times faster at 20 qubits (9.0 s against 51.0 s on 4 CPU cores).
 
 ## Roadmap
 
@@ -21,7 +22,7 @@ A comparison of variational quantum eigensolver (VQE) ansätze on the ground-sta
 | 3 | LiH: UCCSD against HEA, with a control for the starting point | Done |
 | 4 | BeH2 (14 qubits): UCCSD against HEA | Done |
 | 5 | ADAPT-VQE: error against number of parameters, compared with UCCSD | Done for H2 and LiH |
-| 6 | CPU against GPU statevector simulation time on hydrogen chains | CPU timed up to 16 qubits; GPU not run yet |
+| 6 | CPU against GPU statevector simulation time on hydrogen chains | Done up to 20 qubits; 24 qubits not reached |
 
 ## Files
 
@@ -179,16 +180,24 @@ Lines are ADAPT-VQE; stars are UCCSD at the same bond lengths.
 
 ## Simulation time against the number of qubits
 
-`step05_gpu_scaling.py` times one energy evaluation and one adjoint gradient of a 4-layer HEA on linear hydrogen chains, without training. So far it has run only on CPU (`lightning.qubit`, 2 cores, smallest of 3 repeats; [results/gpu_scaling.csv](results/gpu_scaling.csv)):
+`step05_gpu_scaling.py` times one energy evaluation and one adjoint gradient of a 4-layer HEA on linear hydrogen chains (H–H spacing 1.0 Å), without training, on CPU (`lightning.qubit`) and on GPU (`lightning.gpu`, built on NVIDIA cuQuantum). Each time is the smallest of 3 repeats after one untimed call, and excludes building the Hamiltonian. All numbers are from [results/gpu_scaling.csv](results/gpu_scaling.csv), one run.
 
-| Chain | Qubits | Pauli terms | Parameters | Energy (s) | Gradient (s) |
-|---|---|---|---|---|---|
-| H2 | 4 | 15 | 32 | 0.0031 | 0.0038 |
-| H4 | 8 | 185 | 64 | 0.0087 | 0.0105 |
-| H6 | 12 | 919 | 96 | 0.0437 | 0.0431 |
-| H8 | 16 | 2913 | 128 | 0.5597 | 0.5831 |
+Seconds for one adjoint gradient:
 
-The session had no GPU and `pennylane-lightning-gpu` was not installed, so the GPU column and the chains beyond H8 are missing. No comparison can be made yet.
+| Chain | Qubits | Pauli terms | Parameters | CPU | GPU | CPU / GPU |
+|---|---|---|---|---|---|---|
+| H2 | 4 | 15 | 32 | 0.0038 | 0.0103 | 0.37 |
+| H4 | 8 | 185 | 64 | 0.0105 | 0.0283 | 0.37 |
+| H6 | 12 | 919 | 96 | 0.0431 | 0.1127 | 0.38 |
+| H8 | 16 | 2913 | 128 | 0.583 | 0.456 | 1.28 |
+| H10 | 20 | 7151 | 160 | 51.0 | 9.03 | 5.6 |
+
+![CPU and GPU time per gradient](figures/gpu_scaling.png)
+
+- Up to 12 qubits the GPU is about 2.6 times slower than the CPU: the state vector is small and the fixed cost of each GPU call dominates. The two curves cross between 12 and 16 qubits, and at 20 qubits the GPU is 5.6 times faster.
+- From 16 to 20 qubits the CPU time grows 87-fold and the GPU time 20-fold. Both the state vector (16 times larger) and the number of Pauli terms (2.5 times more) grow over that step.
+- Hardware: GPU runs on one MIG slice (1g.10gb, about 10 GB) of an NVIDIA H100 80GB HBM3 on the Fir cluster, PennyLane 0.45.1 with `pennylane-lightning-gpu` 0.45.0 and cuQuantum 25.06. The CPU rows for 4 to 16 qubits were measured in an earlier session with 2 cores; the 20-qubit CPU row was measured in the GPU job with 4 cores. The CPU side therefore did not have the same core count throughout.
+- H12 (24 qubits) is missing: the job reached its 2-hour limit, most likely during the CPU timing at 24 qubits. This was not checked.
 
 ## Reproduce
 
@@ -204,7 +213,7 @@ python step03_uccsd_vs_hea.py --molecule LiH --plot-only   # redraw the figures 
 python step03_uccsd_vs_hea.py --molecule BeH2              # 155 runs
 python step04_adapt_vqe.py --molecule H2
 python step04_adapt_vqe.py --molecule LiH                 # 5 bond lengths, 14 to 23 minutes each
-python step05_gpu_scaling.py                             # CPU, and GPU when lightning.gpu is installed
+python step05_gpu_scaling.py                             # CPU, and GPU when lightning.gpu is installed (GPU node)
 ```
 
 `step03_uccsd_vs_hea.py` appends one row to the CSV after every run and skips runs that are already there, so an interrupted job can be restarted with the same command. It also appends its console output to `results/step03_lih_output.txt`. The stored LiH results were produced by an earlier version of the script, `step03_lih_vqe.py`, in two invocations (80 runs, then the 75 control runs) and before the console log was added, so that file is not in the repository. Both LiH figures were redrawn from the CSV with `--plot-only` after the runs.

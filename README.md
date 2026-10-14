@@ -14,7 +14,7 @@ Each experiment is set up the same way: a fixed optimisation budget shared by ev
 
 Error against the exact energy during training, LiH at 1.60 Å. One line per run; the dashed line is chemical accuracy (1.6 mHa). Details and limitations are in the [project README](VQE_Molecules/README.md).
 
-Next in this project: CPU against GPU simulation time on hydrogen chains (CPU timed up to 16 qubits so far).
+Simulation time on hydrogen chains: on an NVIDIA H100 GPU slice, one VQE gradient at 20 qubits took 9.0 s against 51.0 s on 4 CPU cores; up to 12 qubits the CPU was faster. Details in the [project README](VQE_Molecules/README.md#simulation-time-against-the-number-of-qubits).
 
 ## Repository layout
 
