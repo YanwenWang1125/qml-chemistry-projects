@@ -14,3 +14,5 @@ __pycache__/
 
 # Jupyter autosave copies
 .ipynb_checkpoints/
+
+desktop.ini
