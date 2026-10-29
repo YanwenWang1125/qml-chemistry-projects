@@ -1,0 +1,891 @@
+{
+ "tables": {
+  "baseline/Z": {
+   "gadgets": [
+    {
+     "gadget": "Z[0, 1, 2, 3]",
+     "faults_raising_flag": 43,
+     "table": {}
+    },
+    {
+     "gadget": "Z[1, 2, 4, 5]",
+     "faults_raising_flag": 43,
+     "table": {}
+    },
+    {
+     "gadget": "Z[2, 3, 5, 6]",
+     "faults_raising_flag": 43,
+     "table": {}
+    },
+    {
+     "gadget": "X[0, 1, 2, 3]",
+     "faults_raising_flag": 43,
+     "table": {
+      "110": "1010000",
+      "001": "1000000",
+      "011": "0100000"
+     }
+    },
+    {
+     "gadget": "X[1, 2, 4, 5]",
+     "faults_raising_flag": 43,
+     "table": {
+      "001": "0100100",
+      "011": "0100000",
+      "111": "0010000"
+     }
+    },
+    {
+     "gadget": "X[2, 3, 5, 6]",
+     "faults_raising_flag": 43,
+     "table": {
+      "001": "0100100",
+      "111": "0010000",
+      "101": "0001000"
+     }
+    }
+   ],
+   "conflicts": 0
+  },
+  "baseline/X": {
+   "gadgets": [
+    {
+     "gadget": "Z[0, 1, 2, 3]",
+     "faults_raising_flag": 43,
+     "table": {
+      "110": "1010000",
+      "001": "1000000",
+      "011": "0100000"
+     }
+    },
+    {
+     "gadget": "Z[1, 2, 4, 5]",
+     "faults_raising_flag": 43,
+     "table": {
+      "001": "0100100",
+      "011": "0100000",
+      "111": "0010000"
+     }
+    },
+    {
+     "gadget": "Z[2, 3, 5, 6]",
+     "faults_raising_flag": 43,
+     "table": {
+      "001": "0100100",
+      "111": "0010000",
+      "101": "0001000"
+     }
+    },
+    {
+     "gadget": "X[0, 1, 2, 3]",
+     "faults_raising_flag": 43,
+     "table": {}
+    },
+    {
+     "gadget": "X[1, 2, 4, 5]",
+     "faults_raising_flag": 43,
+     "table": {}
+    },
+    {
+     "gadget": "X[2, 3, 5, 6]",
+     "faults_raising_flag": 43,
+     "table": {}
+    }
+   ],
+   "conflicts": 0
+  },
+  "reduced/Z": {
+   "gadgets": [
+    {
+     "gadget": "Z[0, 1, 2, 3]",
+     "faults_raising_flag": 34,
+     "table": {
+      "001": "1000000"
+     }
+    },
+    {
+     "gadget": "Z[1, 2, 4, 5]",
+     "faults_raising_flag": 34,
+     "table": {
+      "011": "0100000"
+     }
+    },
+    {
+     "gadget": "Z[2, 3, 5, 6]",
+     "faults_raising_flag": 34,
+     "table": {
+      "111": "0010000"
+     }
+    },
+    {
+     "gadget": "X[0, 1, 2, 3]",
+     "faults_raising_flag": 34,
+     "table": {
+      "111": "0010000",
+      "110": "1010000",
+      "011": "0100000"
+     }
+    },
+    {
+     "gadget": "X[1, 2, 4, 5]",
+     "faults_raising_flag": 34,
+     "table": {
+      "010": "0000100",
+      "001": "0100100",
+      "111": "0010000"
+     }
+    },
+    {
+     "gadget": "X[2, 3, 5, 6]",
+     "faults_raising_flag": 34,
+     "table": {
+      "110": "0000010",
+      "001": "0100100",
+      "101": "0001000"
+     }
+    }
+   ],
+   "conflicts": 0
+  },
+  "reduced/X": {
+   "gadgets": [
+    {
+     "gadget": "Z[0, 1, 2, 3]",
+     "faults_raising_flag": 34,
+     "table": {
+      "111": "0010000",
+      "110": "1010000",
+      "011": "0100000"
+     }
+    },
+    {
+     "gadget": "Z[1, 2, 4, 5]",
+     "faults_raising_flag": 34,
+     "table": {
+      "010": "0000100",
+      "001": "0100100",
+      "111": "0010000"
+     }
+    },
+    {
+     "gadget": "Z[2, 3, 5, 6]",
+     "faults_raising_flag": 34,
+     "table": {
+      "110": "0000010",
+      "001": "0100100",
+      "101": "0001000"
+     }
+    },
+    {
+     "gadget": "X[0, 1, 2, 3]",
+     "faults_raising_flag": 34,
+     "table": {
+      "001": "1000000"
+     }
+    },
+    {
+     "gadget": "X[1, 2, 4, 5]",
+     "faults_raising_flag": 34,
+     "table": {
+      "011": "0100000"
+     }
+    },
+    {
+     "gadget": "X[2, 3, 5, 6]",
+     "faults_raising_flag": 34,
+     "table": {
+      "111": "0010000"
+     }
+    }
+   ],
+   "conflicts": 0
+  }
+ },
+ "p0": [
+  {
+   "gadget": "baseline",
+   "n_cycles": 10,
+   "memory": "Z",
+   "p": 0.0,
+   "shots": 2000,
+   "schedule": "asap",
+   "idle_factor": 0.1,
+   "failures": 0,
+   "ler": 0.0,
+   "ci95": [
+    1.0842021724855044e-19,
+    0.001917047281252934
+   ],
+   "flag_rounds_per_cycle": 0.0,
+   "shots_with_flag": 0.0
+  },
+  {
+   "gadget": "baseline",
+   "n_cycles": 10,
+   "memory": "Z",
+   "p": 0.0,
+   "shots": 2000,
+   "schedule": "serial",
+   "idle_factor": 0.1,
+   "failures": 0,
+   "ler": 0.0,
+   "ci95": [
+    1.0842021724855044e-19,
+    0.001917047281252934
+   ],
+   "flag_rounds_per_cycle": 0.0,
+   "shots_with_flag": 0.0
+  },
+  {
+   "gadget": "baseline",
+   "n_cycles": 10,
+   "memory": "X",
+   "p": 0.0,
+   "shots": 2000,
+   "schedule": "asap",
+   "idle_factor": 0.1,
+   "failures": 0,
+   "ler": 0.0,
+   "ci95": [
+    1.0842021724855044e-19,
+    0.001917047281252934
+   ],
+   "flag_rounds_per_cycle": 0.0,
+   "shots_with_flag": 0.0
+  },
+  {
+   "gadget": "baseline",
+   "n_cycles": 10,
+   "memory": "X",
+   "p": 0.0,
+   "shots": 2000,
+   "schedule": "serial",
+   "idle_factor": 0.1,
+   "failures": 0,
+   "ler": 0.0,
+   "ci95": [
+    1.0842021724855044e-19,
+    0.001917047281252934
+   ],
+   "flag_rounds_per_cycle": 0.0,
+   "shots_with_flag": 0.0
+  },
+  {
+   "gadget": "reduced",
+   "n_cycles": 10,
+   "memory": "Z",
+   "p": 0.0,
+   "shots": 2000,
+   "schedule": "asap",
+   "idle_factor": 0.1,
+   "failures": 0,
+   "ler": 0.0,
+   "ci95": [
+    1.0842021724855044e-19,
+    0.001917047281252934
+   ],
+   "flag_rounds_per_cycle": 0.0,
+   "shots_with_flag": 0.0
+  },
+  {
+   "gadget": "reduced",
+   "n_cycles": 10,
+   "memory": "Z",
+   "p": 0.0,
+   "shots": 2000,
+   "schedule": "serial",
+   "idle_factor": 0.1,
+   "failures": 0,
+   "ler": 0.0,
+   "ci95": [
+    1.0842021724855044e-19,
+    0.001917047281252934
+   ],
+   "flag_rounds_per_cycle": 0.0,
+   "shots_with_flag": 0.0
+  },
+  {
+   "gadget": "reduced",
+   "n_cycles": 10,
+   "memory": "X",
+   "p": 0.0,
+   "shots": 2000,
+   "schedule": "asap",
+   "idle_factor": 0.1,
+   "failures": 0,
+   "ler": 0.0,
+   "ci95": [
+    1.0842021724855044e-19,
+    0.001917047281252934
+   ],
+   "flag_rounds_per_cycle": 0.0,
+   "shots_with_flag": 0.0
+  },
+  {
+   "gadget": "reduced",
+   "n_cycles": 10,
+   "memory": "X",
+   "p": 0.0,
+   "shots": 2000,
+   "schedule": "serial",
+   "idle_factor": 0.1,
+   "failures": 0,
+   "ler": 0.0,
+   "ci95": [
+    1.0842021724855044e-19,
+    0.001917047281252934
+   ],
+   "flag_rounds_per_cycle": 0.0,
+   "shots_with_flag": 0.0
+  }
+ ],
+ "n10": [
+  {
+   "gadget": "baseline",
+   "n_cycles": 10,
+   "memory": "Z",
+   "p": 0.001,
+   "shots": 200000,
+   "schedule": "asap",
+   "idle_factor": 0.1,
+   "failures": 12024,
+   "ler": 0.06012,
+   "ci95": [
+    0.05908663784928555,
+    0.06117025963521997
+   ],
+   "flag_rounds_per_cycle": 0.102505,
+   "shots_with_flag": 0.648615
+  },
+  {
+   "gadget": "reduced",
+   "n_cycles": 10,
+   "memory": "Z",
+   "p": 0.001,
+   "shots": 200000,
+   "schedule": "asap",
+   "idle_factor": 0.1,
+   "failures": 12838,
+   "ler": 0.06419,
+   "ci95": [
+    0.06312420893276811,
+    0.06527253220736633
+   ],
+   "flag_rounds_per_cycle": 0.09104200000000001,
+   "shots_with_flag": 0.60373
+  },
+  {
+   "gadget": "baseline",
+   "n_cycles": 10,
+   "memory": "X",
+   "p": 0.001,
+   "shots": 200000,
+   "schedule": "asap",
+   "idle_factor": 0.1,
+   "failures": 10849,
+   "ler": 0.054245,
+   "ci95": [
+    0.05326087019299638,
+    0.055246252972880126
+   ],
+   "flag_rounds_per_cycle": 0.102505,
+   "shots_with_flag": 0.648615
+  },
+  {
+   "gadget": "reduced",
+   "n_cycles": 10,
+   "memory": "X",
+   "p": 0.001,
+   "shots": 200000,
+   "schedule": "asap",
+   "idle_factor": 0.1,
+   "failures": 11225,
+   "ler": 0.056125,
+   "ci95": [
+    0.05512478405732132,
+    0.05714226689051647
+   ],
+   "flag_rounds_per_cycle": 0.09104200000000001,
+   "shots_with_flag": 0.60373
+  },
+  {
+   "gadget": "baseline",
+   "n_cycles": 10,
+   "memory": "Z",
+   "p": 0.001,
+   "shots": 200000,
+   "schedule": "serial",
+   "idle_factor": 0.1,
+   "failures": 21168,
+   "ler": 0.10584,
+   "ci95": [
+    0.10449932719930254,
+    0.10719581400396357
+   ],
+   "flag_rounds_per_cycle": 0.102265,
+   "shots_with_flag": 0.647315
+  },
+  {
+   "gadget": "reduced",
+   "n_cycles": 10,
+   "memory": "Z",
+   "p": 0.001,
+   "shots": 200000,
+   "schedule": "serial",
+   "idle_factor": 0.1,
+   "failures": 17683,
+   "ler": 0.088415,
+   "ci95": [
+    0.08717867934872359,
+    0.08966713121588538
+   ],
+   "flag_rounds_per_cycle": 0.07525649999999999,
+   "shots_with_flag": 0.532745
+  },
+  {
+   "gadget": "baseline",
+   "n_cycles": 10,
+   "memory": "X",
+   "p": 0.001,
+   "shots": 200000,
+   "schedule": "serial",
+   "idle_factor": 0.1,
+   "failures": 20789,
+   "ler": 0.103945,
+   "ci95": [
+    0.10261507222477431,
+    0.10529014177273824
+   ],
+   "flag_rounds_per_cycle": 0.102265,
+   "shots_with_flag": 0.647315
+  },
+  {
+   "gadget": "reduced",
+   "n_cycles": 10,
+   "memory": "X",
+   "p": 0.001,
+   "shots": 200000,
+   "schedule": "serial",
+   "idle_factor": 0.1,
+   "failures": 17714,
+   "ler": 0.08857,
+   "ci95": [
+    0.08733269216119798,
+    0.08982311244926418
+   ],
+   "flag_rounds_per_cycle": 0.07525649999999999,
+   "shots_with_flag": 0.532745
+  },
+  {
+   "gadget": "baseline",
+   "n_cycles": 10,
+   "memory": "Z",
+   "p": 0.001,
+   "shots": 200000,
+   "schedule": "asap",
+   "idle_factor": 0.0,
+   "failures": 8431,
+   "ler": 0.042155,
+   "ci95": [
+    0.041283104456373586,
+    0.043044483132954024
+   ],
+   "flag_rounds_per_cycle": 0.09664349999999998,
+   "shots_with_flag": 0.625475
+  },
+  {
+   "gadget": "reduced",
+   "n_cycles": 10,
+   "memory": "Z",
+   "p": 0.001,
+   "shots": 200000,
+   "schedule": "asap",
+   "idle_factor": 0.0,
+   "failures": 4678,
+   "ler": 0.02339,
+   "ci95": [
+    0.022736714915188198,
+    0.02406159351004181
+   ],
+   "flag_rounds_per_cycle": 0.0708235,
+   "shots_with_flag": 0.511705
+  },
+  {
+   "gadget": "baseline",
+   "n_cycles": 10,
+   "memory": "X",
+   "p": 0.001,
+   "shots": 200000,
+   "schedule": "asap",
+   "idle_factor": 0.0,
+   "failures": 8273,
+   "ler": 0.041365,
+   "ci95": [
+    0.0405010502414168,
+    0.042246567694852605
+   ],
+   "flag_rounds_per_cycle": 0.09664349999999998,
+   "shots_with_flag": 0.625475
+  },
+  {
+   "gadget": "reduced",
+   "n_cycles": 10,
+   "memory": "X",
+   "p": 0.001,
+   "shots": 200000,
+   "schedule": "asap",
+   "idle_factor": 0.0,
+   "failures": 4638,
+   "ler": 0.02319,
+   "ci95": [
+    0.022539488864332387,
+    0.02385882724366769
+   ],
+   "flag_rounds_per_cycle": 0.0708235,
+   "shots_with_flag": 0.511705
+  },
+  {
+   "gadget": "baseline",
+   "n_cycles": 10,
+   "memory": "Z",
+   "p": 0.001,
+   "shots": 200000,
+   "schedule": "serial",
+   "idle_factor": 0.0,
+   "failures": 8360,
+   "ler": 0.0418,
+   "ci95": [
+    0.04093166446874057,
+    0.04268593675750393
+   ],
+   "flag_rounds_per_cycle": 0.096406,
+   "shots_with_flag": 0.625285
+  },
+  {
+   "gadget": "reduced",
+   "n_cycles": 10,
+   "memory": "Z",
+   "p": 0.001,
+   "shots": 200000,
+   "schedule": "serial",
+   "idle_factor": 0.0,
+   "failures": 4613,
+   "ler": 0.023065,
+   "ci95": [
+    0.02241622909813549,
+    0.023732091811595885
+   ],
+   "flag_rounds_per_cycle": 0.070909,
+   "shots_with_flag": 0.51183
+  },
+  {
+   "gadget": "baseline",
+   "n_cycles": 10,
+   "memory": "X",
+   "p": 0.001,
+   "shots": 200000,
+   "schedule": "serial",
+   "idle_factor": 0.0,
+   "failures": 8030,
+   "ler": 0.04015,
+   "ci95": [
+    0.03929844049819787,
+    0.04101922411089975
+   ],
+   "flag_rounds_per_cycle": 0.096406,
+   "shots_with_flag": 0.625285
+  },
+  {
+   "gadget": "reduced",
+   "n_cycles": 10,
+   "memory": "X",
+   "p": 0.001,
+   "shots": 200000,
+   "schedule": "serial",
+   "idle_factor": 0.0,
+   "failures": 4734,
+   "ler": 0.02367,
+   "ci95": [
+    0.023012852671108943,
+    0.024345444998242958
+   ],
+   "flag_rounds_per_cycle": 0.070909,
+   "shots_with_flag": 0.51183
+  }
+ ],
+ "sweep": [
+  {
+   "gadget": "baseline",
+   "n_cycles": 1,
+   "memory": "Z",
+   "p": 0.00025,
+   "shots": 2000000,
+   "schedule": "asap",
+   "idle_factor": 0.1,
+   "failures": 296,
+   "ler": 0.000148,
+   "ci95": [
+    0.00013207377982584156,
+    0.0001658463773604976
+   ],
+   "flag_rounds_per_cycle": 0.0180745,
+   "shots_with_flag": 0.017987
+  },
+  {
+   "gadget": "baseline",
+   "n_cycles": 1,
+   "memory": "Z",
+   "p": 0.0005,
+   "shots": 2000000,
+   "schedule": "asap",
+   "idle_factor": 0.1,
+   "failures": 1165,
+   "ler": 0.0005825,
+   "ci95": [
+    0.0005500064240154025,
+    0.0006169120640602851
+   ],
+   "flag_rounds_per_cycle": 0.0358185,
+   "shots_with_flag": 0.0354885
+  },
+  {
+   "gadget": "baseline",
+   "n_cycles": 1,
+   "memory": "Z",
+   "p": 0.001,
+   "shots": 2000000,
+   "schedule": "asap",
+   "idle_factor": 0.1,
+   "failures": 4448,
+   "ler": 0.002224,
+   "ci95": [
+    0.0021596636117627555,
+    0.002290248570570389
+   ],
+   "flag_rounds_per_cycle": 0.0704835,
+   "shots_with_flag": 0.069253
+  },
+  {
+   "gadget": "baseline",
+   "n_cycles": 1,
+   "memory": "Z",
+   "p": 0.002,
+   "shots": 2000000,
+   "schedule": "asap",
+   "idle_factor": 0.1,
+   "failures": 16604,
+   "ler": 0.008302,
+   "ci95": [
+    0.008177189201239932,
+    0.008428699632751346
+   ],
+   "flag_rounds_per_cycle": 0.138355,
+   "shots_with_flag": 0.1335385
+  },
+  {
+   "gadget": "reduced",
+   "n_cycles": 1,
+   "memory": "Z",
+   "p": 0.00025,
+   "shots": 2000000,
+   "schedule": "asap",
+   "idle_factor": 0.1,
+   "failures": 301,
+   "ler": 0.0001505,
+   "ci95": [
+    0.0001344322301874059,
+    0.00016848791739530468
+   ],
+   "flag_rounds_per_cycle": 0.0158205,
+   "shots_with_flag": 0.0157545
+  },
+  {
+   "gadget": "reduced",
+   "n_cycles": 1,
+   "memory": "Z",
+   "p": 0.0005,
+   "shots": 2000000,
+   "schedule": "asap",
+   "idle_factor": 0.1,
+   "failures": 1211,
+   "ler": 0.0006055,
+   "ci95": [
+    0.000572353257675365,
+    0.0006405651420469394
+   ],
+   "flag_rounds_per_cycle": 0.0316115,
+   "shots_with_flag": 0.0313695
+  },
+  {
+   "gadget": "reduced",
+   "n_cycles": 1,
+   "memory": "Z",
+   "p": 0.001,
+   "shots": 2000000,
+   "schedule": "asap",
+   "idle_factor": 0.1,
+   "failures": 4743,
+   "ler": 0.0023715,
+   "ci95": [
+    0.00230503835884673,
+    0.0024398732568723267
+   ],
+   "flag_rounds_per_cycle": 0.062869,
+   "shots_with_flag": 0.061879
+  },
+  {
+   "gadget": "reduced",
+   "n_cycles": 1,
+   "memory": "Z",
+   "p": 0.002,
+   "shots": 2000000,
+   "schedule": "asap",
+   "idle_factor": 0.1,
+   "failures": 17949,
+   "ler": 0.0089745,
+   "ci95": [
+    0.00884473832795657,
+    0.009106147922658611
+   ],
+   "flag_rounds_per_cycle": 0.123459,
+   "shots_with_flag": 0.1196075
+  },
+  {
+   "gadget": "baseline",
+   "n_cycles": 1,
+   "memory": "Z",
+   "p": 0.00025,
+   "shots": 2000000,
+   "schedule": "serial",
+   "idle_factor": 0.1,
+   "failures": 571,
+   "ler": 0.0002855,
+   "ci95": [
+    0.0002630262514178051,
+    0.00030989337756896085
+   ],
+   "flag_rounds_per_cycle": 0.0178085,
+   "shots_with_flag": 0.0177205
+  },
+  {
+   "gadget": "baseline",
+   "n_cycles": 1,
+   "memory": "Z",
+   "p": 0.0005,
+   "shots": 2000000,
+   "schedule": "serial",
+   "idle_factor": 0.1,
+   "failures": 2323,
+   "ler": 0.0011615,
+   "ci95": [
+    0.0011152432007722746,
+    0.0012096730631030279
+   ],
+   "flag_rounds_per_cycle": 0.0356745,
+   "shots_with_flag": 0.0353485
+  },
+  {
+   "gadget": "baseline",
+   "n_cycles": 1,
+   "memory": "Z",
+   "p": 0.001,
+   "shots": 2000000,
+   "schedule": "serial",
+   "idle_factor": 0.1,
+   "failures": 8527,
+   "ler": 0.0042635,
+   "ci95": [
+    0.004174147097103785,
+    0.004354757250589144
+   ],
+   "flag_rounds_per_cycle": 0.0703495,
+   "shots_with_flag": 0.069081
+  },
+  {
+   "gadget": "baseline",
+   "n_cycles": 1,
+   "memory": "Z",
+   "p": 0.002,
+   "shots": 2000000,
+   "schedule": "serial",
+   "idle_factor": 0.1,
+   "failures": 31701,
+   "ler": 0.0158505,
+   "ci95": [
+    0.015678332351026145,
+    0.01602452748576892
+   ],
+   "flag_rounds_per_cycle": 0.1388415,
+   "shots_with_flag": 0.133991
+  },
+  {
+   "gadget": "reduced",
+   "n_cycles": 1,
+   "memory": "Z",
+   "p": 0.00025,
+   "shots": 2000000,
+   "schedule": "serial",
+   "idle_factor": 0.1,
+   "failures": 458,
+   "ler": 0.000229,
+   "ci95": [
+    0.00020896785504669968,
+    0.0002509519909820727
+   ],
+   "flag_rounds_per_cycle": 0.0131855,
+   "shots_with_flag": 0.0131435
+  },
+  {
+   "gadget": "reduced",
+   "n_cycles": 1,
+   "memory": "Z",
+   "p": 0.0005,
+   "shots": 2000000,
+   "schedule": "serial",
+   "idle_factor": 0.1,
+   "failures": 1865,
+   "ler": 0.0009325,
+   "ci95": [
+    0.0008911463345966599,
+    0.0009757708089710226
+   ],
+   "flag_rounds_per_cycle": 0.0264085,
+   "shots_with_flag": 0.0262275
+  },
+  {
+   "gadget": "reduced",
+   "n_cycles": 1,
+   "memory": "Z",
+   "p": 0.001,
+   "shots": 2000000,
+   "schedule": "serial",
+   "idle_factor": 0.1,
+   "failures": 7244,
+   "ler": 0.003622,
+   "ci95": [
+    0.0035396912911553786,
+    0.003706215520828649
+   ],
+   "flag_rounds_per_cycle": 0.052285,
+   "shots_with_flag": 0.051631
+  },
+  {
+   "gadget": "reduced",
+   "n_cycles": 1,
+   "memory": "Z",
+   "p": 0.002,
+   "shots": 2000000,
+   "schedule": "serial",
+   "idle_factor": 0.1,
+   "failures": 26075,
+   "ler": 0.0130375,
+   "ci95": [
+    0.01288122254087471,
+    0.013195648101923262
+   ],
+   "flag_rounds_per_cycle": 0.102669,
+   "shots_with_flag": 0.100058
+  }
+ ],
+ "seconds": 116.3
+}

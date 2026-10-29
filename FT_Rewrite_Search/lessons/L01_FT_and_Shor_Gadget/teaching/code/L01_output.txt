@@ -1,0 +1,31 @@
+========================================================================
+baseline without verification
+  resources: {'ancillas': 4, 'cnots': 7, 'cnot_depth': 3}
+  noiseless, data |+>^7 (X0X1X2X3 = +1): syndrome parity seen [0], flag seen [0]
+  noiseless, data Z0|+>^7 (X0X1X2X3 = -1): syndrome parity seen [1], flag seen [0]
+  single faults: 128, raise the flag: 0, undetected: 128
+  undetected faults by data weight mod S: {0: 45, 1: 66, 2: 17}
+  FT_1: False
+    violation: prep X on q8                             data error X1X3         weight mod S = 2
+    violation: IX on (q7,q8) after CX7->8               data error X1X3         weight mod S = 2
+    violation: IY on (q7,q8) after CX7->8               data error X1X3         weight mod S = 2
+    violation: XI on (q7,q8) after CX7->8               data error X0X2         weight mod S = 2
+    violation: XZ on (q7,q8) after CX7->8               data error X0X2         weight mod S = 2
+    violation: YI on (q7,q8) after CX7->8               data error X0X2         weight mod S = 2
+    ... 17 violations in total
+========================================================================
+baseline (Fig. 1a)
+  resources: {'ancillas': 5, 'cnots': 9, 'cnot_depth': 5}
+  noiseless, data |+>^7 (X0X1X2X3 = +1): syndrome parity seen [0], flag seen [0]
+  noiseless, data Z0|+>^7 (X0X1X2X3 = -1): syndrome parity seen [1], flag seen [0]
+  single faults: 160, raise the flag: 43, undetected: 117
+  undetected faults by data weight mod S: {0: 51, 1: 66}
+  FT_1: True
+========================================================================
+reduced (Fig. 1b)
+  resources: {'ancillas': 3, 'cnots': 7, 'cnot_depth': 6}
+  noiseless, data |+>^7 (X0X1X2X3 = +1): syndrome parity seen [0], flag seen [0]
+  noiseless, data Z0|+>^7 (X0X1X2X3 = -1): syndrome parity seen [1], flag seen [0]
+  single faults: 120, raise the flag: 34, undetected: 86
+  undetected faults by data weight mod S: {0: 31, 1: 55}
+  FT_1: True

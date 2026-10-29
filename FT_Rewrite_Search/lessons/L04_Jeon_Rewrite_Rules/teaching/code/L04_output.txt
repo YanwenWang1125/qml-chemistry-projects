@@ -1,0 +1,14 @@
+Part 1: Bell reduction on the smallest example
+  A: Bell pair of ancillas   {'ancillas': 2, 'cnots': 3, 'cnot_depth': 2}, single-fault locations: 58, noiseless syndrome {'X0X1=+1': [0], 'X0X1=-1': [1]}
+  B: one ancilla             {'ancillas': 1, 'cnots': 2, 'cnot_depth': 2}, single-fault locations: 38, noiseless syndrome {'X0X1=+1': [0], 'X0X1=-1': [1]}
+  effects only in A: none
+  effects only in B: none
+  passes the single-fault check: True
+
+  Monte Carlo at p = 0.01, 2000000 shots, data in |0>^2:
+    A: Bell pair of ancillas   P(data X error mod X0X1) = 0.02567
+    B: one ancilla             P(data X error mod X0X1) = 0.01065
+
+Part 2: Jeon et al.'s Shor gadget before and after two Bell reductions
+  baseline (Fig. 1a)   {'ancillas': 5, 'cnots': 9, 'cnot_depth': 5}, FT_1: True, undetected single faults: 117
+  reduced (Fig. 1b)    {'ancillas': 3, 'cnots': 7, 'cnot_depth': 6}, FT_1: True, undetected single faults: 86

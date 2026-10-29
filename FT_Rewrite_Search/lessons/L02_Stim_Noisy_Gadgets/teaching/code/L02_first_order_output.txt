@@ -1,0 +1,19 @@
+prep X on q8                               data X1X3     probability / p = 1.0000
+IX on (q7,q8) after CX7->8                 data X1X3     probability / p = 0.0667
+IY on (q7,q8) after CX7->8                 data X1X3     probability / p = 0.0667
+XI on (q7,q8) after CX7->8                 data X0X2     probability / p = 0.0667
+XZ on (q7,q8) after CX7->8                 data X0X2     probability / p = 0.0667
+YI on (q7,q8) after CX7->8                 data X0X2     probability / p = 0.0667
+YZ on (q7,q8) after CX7->8                 data X0X2     probability / p = 0.0667
+ZX on (q7,q8) after CX7->8                 data X1X3     probability / p = 0.0667
+ZY on (q7,q8) after CX7->8                 data X1X3     probability / p = 0.0667
+XX on (q7,q9) after CX7->9                 data X0X2     probability / p = 0.0667
+XY on (q7,q9) after CX7->9                 data X0X2     probability / p = 0.0667
+YX on (q7,q9) after CX7->9                 data X0X2     probability / p = 0.0667
+YY on (q7,q9) after CX7->9                 data X0X2     probability / p = 0.0667
+XX on (q8,q10) after CX8->10               data X1X3     probability / p = 0.0667
+XY on (q8,q10) after CX8->10               data X1X3     probability / p = 0.0667
+YX on (q8,q10) after CX8->10               data X1X3     probability / p = 0.0667
+YY on (q8,q10) after CX8->10               data X1X3     probability / p = 0.0667
+first-order coefficient c1 = 2.0667
+predicted P(malignant) at p = 2e-3: 4.13e-03;  at p = 5e-3: 1.03e-02

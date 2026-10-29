@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "C:\Users\Administrator\OneDrive - The University of Western Ontario\Documents\ywan3625\Research\Projects\FT_Rewrite_Search\code\e1_2_shor_search.py", line 18, in <module>
+    r = bfs(BASELINE, dedup=dedup)
+  File "C:\Users\Administrator\OneDrive - The University of Western Ontario\Documents\ywan3625\Research\Projects\FT_Rewrite_Search\code\ftrs\search.py", line 104, in bfs
+    rejected.append((path + steps, why))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+MemoryError

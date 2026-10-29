@@ -1,0 +1,116 @@
+tables (Z memory): {
+ "baseline/Z": {
+  "gadgets": [
+   {
+    "gadget": "Z[0, 1, 2, 3]",
+    "faults_raising_flag": 43,
+    "table": {}
+   },
+   {
+    "gadget": "Z[1, 2, 4, 5]",
+    "faults_raising_flag": 43,
+    "table": {}
+   },
+   {
+    "gadget": "Z[2, 3, 5, 6]",
+    "faults_raising_flag": 43,
+    "table": {}
+   },
+   {
+    "gadget": "X[0, 1, 2, 3]",
+    "faults_raising_flag": 43,
+    "table": {
+     "110": "1010000",
+     "001": "1000000",
+     "011": "0100000"
+    }
+   },
+   {
+    "gadget": "X[1, 2, 4, 5]",
+    "faults_raising_flag": 43,
+    "table": {
+     "001": "0100100",
+     "011": "0100000",
+     "111": "0010000"
+    }
+   },
+   {
+    "gadget": "X[2, 3, 5, 6]",
+    "faults_raising_flag": 43,
+    "table": {
+     "001": "0100100",
+     "111": "0010000",
+     "101": "0001000"
+    }
+   }
+  ],
+  "conflicts": 0
+ },
+ "reduced/Z": {
+  "gadgets": [
+   {
+    "gadget": "Z[0, 1, 2, 3]",
+    "faults_raising_flag": 34,
+    "table": {
+     "001": "1000000"
+    }
+   },
+   {
+    "gadget": "Z[1, 2, 4, 5]",
+    "faults_raising_flag": 34,
+    "table": {
+     "011": "0100000"
+    }
+   },
+   {
+    "gadget": "Z[2, 3, 5, 6]",
+    "faults_raising_flag": 34,
+    "table": {
+     "111": "0010000"
+    }
+   },
+   {
+    "gadget": "X[0, 1, 2, 3]",
+    "faults_raising_flag": 34,
+    "table": {
+     "111": "0010000",
+     "110": "1010000",
+     "011": "0100000"
+    }
+   },
+   {
+    "gadget": "X[1, 2, 4, 5]",
+    "faults_raising_flag": 34,
+    "table": {
+     "010": "0000100",
+     "001": "0100100",
+     "111": "0010000"
+    }
+   },
+   {
+    "gadget": "X[2, 3, 5, 6]",
+    "faults_raising_flag": 34,
+    "table": {
+     "110": "0000010",
+     "001": "0100100",
+     "101": "0001000"
+    }
+   }
+  ],
+  "conflicts": 0
+ }
+}
+p=0: all settings 0 failures
+asap   idle=0.1  Z: baseline 6.012e-02 [5.91e-02,6.12e-02] flags/cycle 0.103 | reduced 6.419e-02 [6.31e-02,6.53e-02] flags/cycle 0.091 | ratio 1.068 [1.041,1.095]  (paper 4.23e-02 -> 3.45e-02, 0.82)
+asap   idle=0.1  X: baseline 5.425e-02 [5.33e-02,5.52e-02] flags/cycle 0.103 | reduced 5.613e-02 [5.51e-02,5.71e-02] flags/cycle 0.091 | ratio 1.035 [1.008,1.062]  (paper 4.03e-02 -> 3.37e-02, 0.84)
+serial idle=0.1  Z: baseline 1.058e-01 [1.04e-01,1.07e-01] flags/cycle 0.102 | reduced 8.841e-02 [8.72e-02,8.97e-02] flags/cycle 0.075 | ratio 0.835 [0.819,0.852]  (paper 4.23e-02 -> 3.45e-02, 0.82)
+serial idle=0.1  X: baseline 1.039e-01 [1.03e-01,1.05e-01] flags/cycle 0.102 | reduced 8.857e-02 [8.73e-02,8.98e-02] flags/cycle 0.075 | ratio 0.852 [0.835,0.869]  (paper 4.03e-02 -> 3.37e-02, 0.84)
+asap   idle=0.0  Z: baseline 4.215e-02 [4.13e-02,4.30e-02] flags/cycle 0.097 | reduced 2.339e-02 [2.27e-02,2.41e-02] flags/cycle 0.071 | ratio 0.555 [0.535,0.575]  (paper 4.23e-02 -> 3.45e-02, 0.82)
+asap   idle=0.0  X: baseline 4.136e-02 [4.05e-02,4.22e-02] flags/cycle 0.097 | reduced 2.319e-02 [2.25e-02,2.39e-02] flags/cycle 0.071 | ratio 0.561 [0.541,0.581]  (paper 4.03e-02 -> 3.37e-02, 0.84)
+serial idle=0.0  Z: baseline 4.180e-02 [4.09e-02,4.27e-02] flags/cycle 0.096 | reduced 2.306e-02 [2.24e-02,2.37e-02] flags/cycle 0.071 | ratio 0.552 [0.532,0.572]  (paper 4.23e-02 -> 3.45e-02, 0.82)
+serial idle=0.0  X: baseline 4.015e-02 [3.93e-02,4.10e-02] flags/cycle 0.096 | reduced 2.367e-02 [2.30e-02,2.43e-02] flags/cycle 0.071 | ratio 0.590 [0.569,0.611]  (paper 4.03e-02 -> 3.37e-02, 0.84)
+slope N=1 asap idle=0.1 baseline: 1.94  LER 0.00025:1.48e-04, 0.0005:5.83e-04, 0.001:2.22e-03, 0.002:8.30e-03
+slope N=1 asap idle=0.1 reduced: 1.97  LER 0.00025:1.50e-04, 0.0005:6.06e-04, 0.001:2.37e-03, 0.002:8.97e-03
+slope N=1 serial idle=0.1 baseline: 1.93  LER 0.00025:2.86e-04, 0.0005:1.16e-03, 0.001:4.26e-03, 0.002:1.59e-02
+slope N=1 serial idle=0.1 reduced: 1.95  LER 0.00025:2.29e-04, 0.0005:9.32e-04, 0.001:3.62e-03, 0.002:1.30e-02
+done in 116.3 s

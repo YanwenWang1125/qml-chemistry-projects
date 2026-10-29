@@ -1,0 +1,64 @@
+{
+ "baseline/Z": {
+  "columns": 273,
+  "total_prior": 0.24981839728413574,
+  "single_fail": 0,
+  "pairs": 37128,
+  "bad_pairs": 3553,
+  "bad_pair_mass": 0.0012110916866557562,
+  "min_undetectable_logical": 3,
+  "paths": {
+   "empty": 0,
+   "w1": 2733,
+   "w2": 34668,
+   "bposd": 0
+  }
+ },
+ "baseline/X": {
+  "columns": 273,
+  "total_prior": 0.24981839728413574,
+  "single_fail": 0,
+  "pairs": 37128,
+  "bad_pairs": 3543,
+  "bad_pair_mass": 0.0010732446309632431,
+  "min_undetectable_logical": 3,
+  "paths": {
+   "empty": 0,
+   "w1": 2733,
+   "w2": 34668,
+   "bposd": 0
+  }
+ },
+ "reduced/Z": {
+  "columns": 321,
+  "total_prior": 0.22523785333238677,
+  "single_fail": 0,
+  "pairs": 51360,
+  "bad_pairs": 5329,
+  "bad_pair_mass": 0.001403221537260249,
+  "min_undetectable_logical": 3,
+  "paths": {
+   "empty": 0,
+   "w1": 3573,
+   "w2": 48108,
+   "bposd": 0
+  }
+ },
+ "reduced/X": {
+  "columns": 321,
+  "total_prior": 0.22523785333238677,
+  "single_fail": 0,
+  "pairs": 51360,
+  "bad_pairs": 5305,
+  "bad_pair_mass": 0.0011849722220369356,
+  "min_undetectable_logical": 3,
+  "paths": {
+   "empty": 0,
+   "w1": 3573,
+   "w2": 48108,
+   "bposd": 0
+  }
+ },
+ "task": 120,
+ "seconds": 6.5
+}

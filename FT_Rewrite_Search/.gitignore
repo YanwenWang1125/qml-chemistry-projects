@@ -1,0 +1,5 @@
+# ClawsGO packages are kept verbatim locally only; papers and zips are not committed
+clawsgo/handoff/
+clawsgo/returns/
+*.zip
+*.pdf

@@ -1,0 +1,30 @@
+{
+ "gadget": "reduced",
+ "memory": "X",
+ "n_cycles": 10,
+ "p": 0.001,
+ "shots": 10000,
+ "chunk": 9,
+ "seed": 9017,
+ "paths": {
+  "empty": [
+   408,
+   0
+  ],
+  "w1": [
+   1298,
+   5
+  ],
+  "w2": [
+   2065,
+   13
+  ],
+  "bposd": [
+   6229,
+   493
+  ]
+ },
+ "failures": 511,
+ "task": 119,
+ "seconds": 162.9
+}

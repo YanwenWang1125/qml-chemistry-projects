@@ -1,0 +1,16 @@
+inject {'columns': 273, 'single_fail': 0, 'pairs': 3985, 'pair_fail': 380, 'paths': {'empty': 0, 'w1': 546, 'w2': 3712, 'bposd': 0}}
+slope {'p': 0.0001, 'n_cycles': 1, 'memory': 'Z', 'shots': 160000, 'failures': 0, 'ler': 0.0, 'ci95': [0.0, np.float64(2.4008541205448374e-05)], 'path_counts': {'empty': 156112, 'w1': 3842, 'w2': 45, 'bposd': 1}, 'decode_seconds': 0.4}
+slope {'p': 0.0003, 'n_cycles': 1, 'memory': 'Z', 'shots': 80000, 'failures': 8, 'ler': 0.0001, 'ci95': [np.float64(5.067332858576303e-05), np.float64(0.00019733299784678528)], 'path_counts': {'empty': 74254, 'w1': 5572, 'w2': 171, 'bposd': 3}, 'decode_seconds': 0.4}
+slope {'p': 0.001, 'n_cycles': 1, 'memory': 'Z', 'shots': 40000, 'failures': 57, 'ler': 0.001425, 'ci95': [np.float64(0.0011001355611745913), np.float64(0.001845618009566814)], 'path_counts': {'empty': 31152, 'w1': 7957, 'w2': 846, 'bposd': 45}, 'decode_seconds': 0.6}
+slope {'p': 3e-05, 'n_cycles': 10, 'memory': 'Z', 'shots': 40000, 'failures': 0, 'ler': 0.0, 'ci95': [0.0, np.float64(9.602724839934337e-05)], 'path_counts': {'empty': 35682, 'w1': 4100, 'w2': 215, 'bposd': 3}, 'decode_seconds': 0.4}
+slope {'p': 0.0001, 'n_cycles': 10, 'memory': 'Z', 'shots': 40000, 'failures': 19, 'ler': 0.000475, 'ci95': [np.float64(0.0003041251293854884), np.float64(0.0007418108931278756)], 'path_counts': {'empty': 27829, 'w1': 10146, 'w2': 1781, 'bposd': 244}, 'decode_seconds': 7.9}
+slope {'p': 0.0003, 'n_cycles': 10, 'memory': 'Z', 'shots': 20000, 'failures': 149, 'ler': 0.00745, 'ci95': [np.float64(0.006349197504474758), np.float64(0.008739977214393908)], 'path_counts': {'empty': 6742, 'w1': 7352, 'w2': 4058, 'bposd': 1848}, 'decode_seconds': 41.9}
+slope {'p': 0.001, 'n_cycles': 10, 'memory': 'Z', 'shots': 10000, 'failures': 481, 'ler': 0.0481, 'ci95': [np.float64(0.044076862159560894), np.float64(0.0524701955678566)], 'path_counts': {'empty': 288, 'w1': 939, 'w2': 1752, 'bposd': 7021}, 'decode_seconds': 237.3}
+slopes {'N=1': {'0.0003->0.001': 2.21}, 'N=10': {'0.0001->0.0003': 2.51, '0.0003->0.001': 1.55}}
+ratio {'p': 0.001, 'n_cycles': 10, 'memory': 'Z', 'shots': 10000, 'failures': 469, 'ler': 0.0469, 'ci95': [np.float64(0.04292728623240085), np.float64(0.051220693091106266)], 'path_counts': {'empty': 252, 'w1': 983, 'w2': 1834, 'bposd': 6931}, 'decode_seconds': 342.4, 'gadget': 'baseline'}
+ratio {'p': 0.001, 'n_cycles': 10, 'memory': 'Z', 'shots': 10000, 'failures': 622, 'ler': 0.0622, 'ci95': [np.float64(0.05763236397801853), np.float64(0.06710386499534587)], 'path_counts': {'empty': 384, 'w1': 1242, 'w2': 2099, 'bposd': 6275}, 'decode_seconds': 353.6, 'gadget': 'reduced'}
+Z ratio reduced/baseline = 1.326
+ratio {'p': 0.001, 'n_cycles': 10, 'memory': 'X', 'shots': 10000, 'failures': 429, 'ler': 0.0429, 'ci95': [np.float64(0.03910090304217032), np.float64(0.04705014826830221)], 'path_counts': {'empty': 252, 'w1': 983, 'w2': 1834, 'bposd': 6931}, 'decode_seconds': 243.2, 'gadget': 'baseline'}
+ratio {'p': 0.001, 'n_cycles': 10, 'memory': 'X', 'shots': 10000, 'failures': 508, 'ler': 0.0508, 'ci95': [np.float64(0.04666599590665272), np.float64(0.05527898822956311)], 'path_counts': {'empty': 384, 'w1': 1242, 'w2': 2099, 'bposd': 6275}, 'decode_seconds': 290.1, 'gadget': 'reduced'}
+X ratio reduced/baseline = 1.184
+done in 1526.8 s

@@ -1,0 +1,33 @@
+========================================================================
+A = baseline (Fig. 1a)
+B = baseline without verification
+  baseline (Fig. 1a)                            ideal syndrome correct: True; FT_1: True; {'ancillas': 5, 'cnots': 9, 'cnot_depth': 5}
+  baseline without verification                 ideal syndrome correct: True; FT_1: False; {'ancillas': 4, 'cnots': 7, 'cnot_depth': 3}
+  effects only in A: none
+  effect only in B: data X0X2       syndrome flip 0   e.g. prep X on q8
+  effect only in B: data X0X2       syndrome flip 1   e.g. IY on (q7,q8) after CX7->8
+  passes the single-fault check: False
+========================================================================
+A = baseline (Fig. 1a)
+B = baseline, CX7->8 and CX7->9 swapped (q7 freshly prepared in |+>)
+  baseline (Fig. 1a)                            ideal syndrome correct: True; FT_1: True; {'ancillas': 5, 'cnots': 9, 'cnot_depth': 5}
+  baseline, CX7->8 and CX7->9 swapped (q7 fresh ideal syndrome correct: True; FT_1: True; {'ancillas': 5, 'cnots': 9, 'cnot_depth': 5}
+  effects only in A: none
+  effects only in B: none
+  passes the single-fault check: True
+========================================================================
+A = baseline (Fig. 1a)
+B = baseline, CX7->11 (flag) and CX7->0 (data) swapped
+  baseline (Fig. 1a)                            ideal syndrome correct: True; FT_1: True; {'ancillas': 5, 'cnots': 9, 'cnot_depth': 5}
+  baseline, CX7->11 (flag) and CX7->0 (data) sw ideal syndrome correct: True; FT_1: True; {'ancillas': 5, 'cnots': 9, 'cnot_depth': 6}
+  effects only in A: none
+  effects only in B: none
+  passes the single-fault check: True
+========================================================================
+A = baseline (Fig. 1a)
+B = reduced (Fig. 1b)
+  baseline (Fig. 1a)                            ideal syndrome correct: True; FT_1: True; {'ancillas': 5, 'cnots': 9, 'cnot_depth': 5}
+  reduced (Fig. 1b)                             ideal syndrome correct: True; FT_1: True; {'ancillas': 3, 'cnots': 7, 'cnot_depth': 6}
+  effects only in A: none
+  effects only in B: none
+  passes the single-fault check: True

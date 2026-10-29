@@ -1,0 +1,30 @@
+{
+ "gadget": "baseline",
+ "memory": "X",
+ "n_cycles": 10,
+ "p": 0.001,
+ "shots": 10000,
+ "chunk": 8,
+ "seed": 8017,
+ "paths": {
+  "empty": [
+   261,
+   0
+  ],
+  "w1": [
+   954,
+   1
+  ],
+  "w2": [
+   1769,
+   15
+  ],
+  "bposd": [
+   7016,
+   440
+  ]
+ },
+ "failures": 456,
+ "task": 98,
+ "seconds": 138.1
+}
