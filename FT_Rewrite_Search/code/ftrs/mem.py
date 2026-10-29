@@ -96,6 +96,27 @@ def schedule_serial(ops, block_len):
     return base, lay
 
 
+def schedule_jit(ops):
+    """ASAP, then push every op that precedes its ancilla's first data interaction as late as
+    the next op on its qubits allows (cat states are prepared just in time; data stays ASAP)."""
+    n_layers, lay = schedule(ops)
+    lay = list(lay)
+    data = set(range(N_DATA))
+    touches_data_later = set()     # qubits whose remaining ops include a data interaction
+    nxt = {}                       # qubit -> layer of its next op
+    for i in range(len(ops) - 1, -1, -1):
+        qs = ops[i][1:]
+        if data & set(qs):
+            touches_data_later |= set(qs)
+        elif any(q in touches_data_later for q in qs) and all(q in nxt for q in qs):
+            lay[i] = max(lay[i], min(nxt[q] for q in qs) - 1)
+        for q in qs:
+            nxt[q] = lay[i]
+        if ops[i][0] == "R":
+            touches_data_later.discard(qs[0])
+    return n_layers, lay
+
+
 def build_circuit(template_ops, n_cycles=10, rounds_per_cycle=3, memory="Z", p=1e-3,
                   noisy=True, detectors=True, perfect_final_round=True,
                   schedule_mode="asap", idle_factor=0.1):
@@ -103,7 +124,8 @@ def build_circuit(template_ops, n_cycles=10, rounds_per_cycle=3, memory="Z", p=1
 
     schedule_mode "asap" layers a whole round greedily (every cat state is prepared in the first
     layers and idles until its gadget reaches the data); "serial" runs the H wraps and the six
-    gadgets one after another.  Idle qubits get DEPOLARIZE1(idle_factor * p) per layer.
+    gadgets one after another; "jit" is ASAP with each cat state's preparation delayed until just
+    before its data interaction (schedule_jit).  Idle qubits get DEPOLARIZE1(idle_factor * p) per layer.
     """
     spec = template_spec(template_ops)
     nanc = len(spec["anc"])
@@ -121,6 +143,8 @@ def build_circuit(template_ops, n_cycles=10, rounds_per_cycle=3, memory="Z", p=1
         if schedule_mode == "serial":
             L = len(template_ops)
             n_layers, lay = schedule_serial(ops, [N_DATA, L, L, L, N_DATA, L, L, L])
+        elif schedule_mode == "jit":
+            n_layers, lay = schedule_jit(ops)
         else:
             n_layers, lay = schedule(ops)
         by_layer = [[] for _ in range(n_layers)]

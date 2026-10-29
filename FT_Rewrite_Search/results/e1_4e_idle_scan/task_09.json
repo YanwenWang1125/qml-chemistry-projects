@@ -1,0 +1,66 @@
+{
+ "task": 9,
+ "rows": [
+  {
+   "schedule": "jit",
+   "idle_factor": 0.02,
+   "memory": "Z",
+   "gadget": "baseline",
+   "shots": 200000,
+   "failures": 8942,
+   "ler": 0.04471,
+   "ci95": [
+    0.04381297225652728,
+    0.045624517185412605
+   ],
+   "flag_rounds_per_cycle": 0.09738450000000001,
+   "shots_with_flag": 0.627985
+  },
+  {
+   "schedule": "jit",
+   "idle_factor": 0.02,
+   "memory": "Z",
+   "gadget": "reduced",
+   "shots": 200000,
+   "failures": 5780,
+   "ler": 0.0289,
+   "ci95": [
+    0.0281748003349694,
+    0.029643296429945003
+   ],
+   "flag_rounds_per_cycle": 0.07413,
+   "shots_with_flag": 0.528575
+  },
+  {
+   "schedule": "jit",
+   "idle_factor": 0.02,
+   "memory": "X",
+   "gadget": "baseline",
+   "shots": 200000,
+   "failures": 8566,
+   "ler": 0.04283,
+   "ci95": [
+    0.04195138218542778,
+    0.04372617947455082
+   ],
+   "flag_rounds_per_cycle": 0.09738450000000001,
+   "shots_with_flag": 0.627985
+  },
+  {
+   "schedule": "jit",
+   "idle_factor": 0.02,
+   "memory": "X",
+   "gadget": "reduced",
+   "shots": 200000,
+   "failures": 5669,
+   "ler": 0.028345,
+   "ci95": [
+    0.027626686532838483,
+    0.02908143155176288
+   ],
+   "flag_rounds_per_cycle": 0.07413,
+   "shots_with_flag": 0.528575
+  }
+ ],
+ "seconds": 11.3
+}

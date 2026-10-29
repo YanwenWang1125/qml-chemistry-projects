@@ -1,0 +1,66 @@
+{
+ "task": 6,
+ "rows": [
+  {
+   "schedule": "asap",
+   "idle_factor": 0.1,
+   "memory": "Z",
+   "gadget": "baseline",
+   "shots": 200000,
+   "failures": 12027,
+   "ler": 0.060135,
+   "ci95": [
+    0.05910151592764679,
+    0.06118538098065097
+   ],
+   "flag_rounds_per_cycle": 0.10198950000000001,
+   "shots_with_flag": 0.6446
+  },
+  {
+   "schedule": "asap",
+   "idle_factor": 0.1,
+   "memory": "Z",
+   "gadget": "reduced",
+   "shots": 200000,
+   "failures": 12279,
+   "ler": 0.061395,
+   "ci95": [
+    0.06035133937424656,
+    0.06245550913259972
+   ],
+   "flag_rounds_per_cycle": 0.09136150000000001,
+   "shots_with_flag": 0.60542
+  },
+  {
+   "schedule": "asap",
+   "idle_factor": 0.1,
+   "memory": "X",
+   "gadget": "baseline",
+   "shots": 200000,
+   "failures": 10537,
+   "ler": 0.052685,
+   "ci95": [
+    0.051714470598728336,
+    0.05367271249275477
+   ],
+   "flag_rounds_per_cycle": 0.10198950000000001,
+   "shots_with_flag": 0.6446
+  },
+  {
+   "schedule": "asap",
+   "idle_factor": 0.1,
+   "memory": "X",
+   "gadget": "reduced",
+   "shots": 200000,
+   "failures": 11141,
+   "ler": 0.055705,
+   "ci95": [
+    0.05470834967855186,
+    0.056718717403103094
+   ],
+   "flag_rounds_per_cycle": 0.09136150000000001,
+   "shots_with_flag": 0.60542
+  }
+ ],
+ "seconds": 12.5
+}
