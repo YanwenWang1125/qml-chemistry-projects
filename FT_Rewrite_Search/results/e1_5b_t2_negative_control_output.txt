@@ -1,0 +1,249 @@
+oracle self-test on Steane: 53/53 FT_1 verdicts agree with ftlib
+231 variants: {'P': 11, 'A1': 7, 'A2': 50, 'A3': 123, 'B': 10, 'C': 30}
+[P] original: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.7 s
+[P] relabel ancillas seed 0: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[P] relabel ancillas seed 1: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[P] relabel ancillas seed 2: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[P] relabel ancillas seed 3: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[P] relabel ancillas seed 4: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[P] 3 swaps of adjacent disjoint CNOTs, seed 0: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[P] 3 swaps of adjacent disjoint CNOTs, seed 1: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[P] 3 swaps of adjacent disjoint CNOTs, seed 2: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[P] 3 swaps of adjacent disjoint CNOTs, seed 3: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[P] 3 swaps of adjacent disjoint CNOTs, seed 4: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A1] remove flag q25: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (46 only in root, 27 only in child)) | FT2 part False | 1.0 s
+[A1] remove flag q26: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (46 only in root, 32 only in child)) | FT2 part False | 1.0 s
+[A1] remove flag q27: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (44 only in root, 5 only in child)) | FT2 part False | 1.0 s
+[A1] remove flag q28: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 2 only in child)) | FT2 part False | 0.9 s
+[A1] remove flag q29: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.8 s
+[A1] remove flag q30: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.9 s
+[A1] remove flag q31: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 5 only in child)) | FT2 part False | 0.9 s
+[A2] reorder g8 data CNOTs, seed 0: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (117 only in root, 119 only in child)) | FT2 part True | 1.1 s
+[A2] reorder g8 data CNOTs, seed 1: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (188 only in root, 184 only in child)) | FT2 part True | 1.1 s
+[A2] reorder g8 data CNOTs, seed 2: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (159 only in root, 156 only in child)) | FT2 part True | 1.1 s
+[A2] reorder g8 data CNOTs, seed 3: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (157 only in root, 154 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 4: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (151 only in root, 143 only in child)) | FT2 part True | 1.1 s
+[A2] reorder g8 data CNOTs, seed 5: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (151 only in root, 141 only in child)) | FT2 part True | 1.1 s
+[A2] reorder g8 data CNOTs, seed 6: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (239 only in root, 222 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 7: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (222 only in root, 222 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 8: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (160 only in root, 146 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 9: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (151 only in root, 141 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 10: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (120 only in root, 120 only in child)) | FT2 part True | 1.1 s
+[A2] reorder g8 data CNOTs, seed 11: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (36 only in root, 38 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 12: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (74 only in root, 71 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 13: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (191 only in root, 191 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 14: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (123 only in root, 123 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 15: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (165 only in root, 158 only in child)) | FT2 part True | 1.1 s
+[A2] reorder g8 data CNOTs, seed 16: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (144 only in root, 148 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 17: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (74 only in root, 71 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 18: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (187 only in root, 187 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 19: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (94 only in root, 88 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 20: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (118 only in root, 115 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 21: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (184 only in root, 183 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 22: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (227 only in root, 224 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 23: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (156 only in root, 164 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 24: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (121 only in root, 123 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 25: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (159 only in root, 161 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 26: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (147 only in root, 147 only in child)) | FT2 part True | 1.1 s
+[A2] reorder g8 data CNOTs, seed 27: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (147 only in root, 147 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 28: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (121 only in root, 123 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 29: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (191 only in root, 191 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 30: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (94 only in root, 88 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 31: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (159 only in root, 156 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 32: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (153 only in root, 150 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 33: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (154 only in root, 146 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 34: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (196 only in root, 202 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 35: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (186 only in root, 188 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 36: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (152 only in root, 154 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 37: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (155 only in root, 161 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 38: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (165 only in root, 158 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 39: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (191 only in root, 180 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 40: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (94 only in root, 88 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 41: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (186 only in root, 188 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 42: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (252 only in root, 261 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 43: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (227 only in root, 224 only in child)) | FT2 part True | 1.1 s
+[A2] reorder g8 data CNOTs, seed 44: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (94 only in root, 88 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 45: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (154 only in root, 147 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 46: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (222 only in root, 222 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 47: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (148 only in root, 151 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 48: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (117 only in root, 116 only in child)) | FT2 part True | 1.0 s
+[A2] reorder g8 data CNOTs, seed 49: ideal True, oracle FT1 True FT2 True | checker False (not 2-fault equivalent (261 only in root, 254 only in child)) | FT2 part True | 1.0 s
+[A3] move ('CX', 25, 17) to slot 22: ideal True, oracle FT1 True FT2 False | checker False (not 2-fault equivalent (0 only in root, 1 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 25, 17) to slot 36: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 25, 17) to slot 43: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 7 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 25, 17) to slot 58: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 15 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 25, 17) to slot 59: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 16 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 26, 19) to slot 24: ideal True, oracle FT1 True FT2 False | checker False (not 2-fault equivalent (0 only in root, 1 only in child)) | FT2 part False | 0.9 s
+[A3] move ('CX', 26, 19) to slot 38: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 26, 19) to slot 45: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 4 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 26, 19) to slot 60: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 20 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 26, 19) to slot 61: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 20 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 27, 20) to slot 25: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.9 s
+[A3] move ('CX', 27, 20) to slot 39: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 27, 20) to slot 46: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 2 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 27, 20) to slot 61: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 4 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 27, 20) to slot 62: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 4 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 28, 24) to slot 28: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 28, 24) to slot 35: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 28, 24) to slot 49: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 2 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 28, 24) to slot 53: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 2 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 28, 24) to slot 65: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 2 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 28, 24) to slot 67: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 2 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 28, 24) to slot 71: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 2 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 28, 24) to slot 76: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 2 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 28, 24) to slot 77: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 2 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 25, 18) to slot 23: ideal True, oracle FT1 True FT2 False | checker False (not 2-fault equivalent (0 only in root, 1 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 25, 18) to slot 37: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 25, 18) to slot 44: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 10 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 25, 18) to slot 59: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (46 only in root, 15 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 25, 18) to slot 60: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (46 only in root, 15 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 26, 21) to slot 26: ideal True, oracle FT1 True FT2 False | checker False (not 2-fault equivalent (0 only in root, 2 only in child)) | FT2 part False | 0.9 s
+[A3] move ('CX', 26, 21) to slot 40: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 26, 21) to slot 47: ideal True, oracle FT1 False FT2 False | checker False (not FT_2) | FT2 part False | 0.8 s
+[A3] move ('CX', 26, 21) to slot 62: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (46 only in root, 14 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 26, 21) to slot 63: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (46 only in root, 14 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 27, 22) to slot 27: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.9 s
+[A3] move ('CX', 27, 22) to slot 41: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 27, 22) to slot 48: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 2 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 27, 22) to slot 63: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (44 only in root, 3 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 27, 22) to slot 64: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (44 only in root, 5 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 29, 24) to slot 28: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.9 s
+[A3] move ('CX', 29, 24) to slot 36: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.9 s
+[A3] move ('CX', 29, 24) to slot 49: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 29, 24) to slot 53: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.8 s
+[A3] move ('CX', 29, 24) to slot 65: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.8 s
+[A3] move ('CX', 29, 24) to slot 67: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.8 s
+[A3] move ('CX', 29, 24) to slot 71: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.8 s
+[A3] move ('CX', 29, 24) to slot 76: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.8 s
+[A3] move ('CX', 29, 24) to slot 77: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.8 s
+[A3] move ('CX', 25, 17) to slot 22: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (46 only in root, 17 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 25, 17) to slot 37: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 15 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 25, 17) to slot 44: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 8 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 25, 17) to slot 58: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 25, 17) to slot 59: ideal True, oracle FT1 True FT2 False | checker False (not 2-fault equivalent (0 only in root, 1 only in child)) | FT2 part False | 0.9 s
+[A3] move ('CX', 26, 19) to slot 24: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (46 only in root, 22 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 26, 19) to slot 39: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 20 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 26, 19) to slot 46: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 18 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 26, 19) to slot 60: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 26, 19) to slot 61: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.9 s
+[A3] move ('CX', 27, 20) to slot 25: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (44 only in root, 5 only in child)) | FT2 part False | 1.0 s
+[A3] move ('CX', 27, 20) to slot 40: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 4 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 27, 20) to slot 47: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 2 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 27, 20) to slot 61: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 27, 20) to slot 62: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.9 s
+[A3] move ('CX', 25, 18) to slot 23: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 14 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 25, 18) to slot 38: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 14 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 25, 18) to slot 45: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 5 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 25, 18) to slot 59: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 25, 18) to slot 60: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.9 s
+[A3] move ('CX', 26, 21) to slot 26: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 15 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 26, 21) to slot 41: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 13 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 26, 21) to slot 48: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 13 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 26, 21) to slot 62: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 26, 21) to slot 63: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.9 s
+[A3] move ('CX', 27, 22) to slot 27: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 2 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 27, 22) to slot 42: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 2 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 27, 22) to slot 49: ideal True, oracle FT1 False FT2 False | checker False (not FT_2) | FT2 part False | 0.8 s
+[A3] move ('CX', 27, 22) to slot 63: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 27, 22) to slot 64: ideal True, oracle FT1 True FT2 False | checker False (not 2-fault equivalent (0 only in root, 4 only in child)) | FT2 part False | 0.9 s
+[A3] move ('CX', 30, 24) to slot 28: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 1.0 s
+[A3] move ('CX', 30, 24) to slot 36: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 1.0 s
+[A3] move ('CX', 30, 24) to slot 50: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 1.0 s
+[A3] move ('CX', 30, 24) to slot 54: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 1.0 s
+[A3] move ('CX', 30, 24) to slot 65: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 30, 24) to slot 67: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.9 s
+[A3] move ('CX', 30, 24) to slot 71: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.9 s
+[A3] move ('CX', 30, 24) to slot 76: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.9 s
+[A3] move ('CX', 30, 24) to slot 77: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 1.0 s
+[A3] move ('CX', 31, 23) to slot 65: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 1.0 s
+[A3] move ('CX', 31, 23) to slot 68: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 31, 23) to slot 70: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 3 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 31, 23) to slot 74: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 5 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 31, 23) to slot 75: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 5 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 28, 24) to slot 28: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 2 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 28, 24) to slot 36: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 2 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 28, 24) to slot 50: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.8 s
+[A3] move ('CX', 28, 24) to slot 54: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.8 s
+[A3] move ('CX', 28, 24) to slot 66: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 1.0 s
+[A3] move ('CX', 28, 24) to slot 68: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 28, 24) to slot 71: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 28, 24) to slot 76: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.9 s
+[A3] move ('CX', 28, 24) to slot 77: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.9 s
+[A3] move ('CX', 31, 23) to slot 65: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 5 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 31, 23) to slot 69: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 5 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 31, 23) to slot 71: ideal True, oracle FT1 False FT2 False | checker False (not 2-fault equivalent (0 only in root, 2 only in child)) | FT2 part False | 0.8 s
+[A3] move ('CX', 31, 23) to slot 74: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 31, 23) to slot 75: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 1.0 s
+[A3] move ('CX', 30, 24) to slot 28: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 30, 24) to slot 36: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 30, 24) to slot 50: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.9 s
+[A3] move ('CX', 30, 24) to slot 54: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.9 s
+[A3] move ('CX', 30, 24) to slot 66: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 1.0 s
+[A3] move ('CX', 30, 24) to slot 68: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.9 s
+[A3] move ('CX', 30, 24) to slot 72: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 30, 24) to slot 76: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 30, 24) to slot 77: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 29, 24) to slot 28: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.8 s
+[A3] move ('CX', 29, 24) to slot 36: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.8 s
+[A3] move ('CX', 29, 24) to slot 50: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.8 s
+[A3] move ('CX', 29, 24) to slot 54: ideal True, oracle FT1 True FT2 False | checker False (not FT_2) | FT2 part False | 0.8 s
+[A3] move ('CX', 29, 24) to slot 66: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 29, 24) to slot 68: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 29, 24) to slot 72: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[A3] move ('CX', 29, 24) to slot 77: ideal True, oracle FT1 True FT2 True | checker True (ok) | FT2 part True | 1.0 s
+[B] data CNOT moved to another measurement qubit, seed 0: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.1 s
+[B] data CNOT moved to another measurement qubit, seed 1: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.0 s
+[B] data CNOT moved to another measurement qubit, seed 2: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.0 s
+[B] data CNOT moved to another measurement qubit, seed 3: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.1 s
+[B] data CNOT moved to another measurement qubit, seed 4: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.1 s
+[B] data CNOT moved to another measurement qubit, seed 5: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.1 s
+[B] data CNOT moved to another measurement qubit, seed 6: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.1 s
+[B] data CNOT moved to another measurement qubit, seed 7: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.1 s
+[B] data CNOT moved to another measurement qubit, seed 8: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.0 s
+[B] data CNOT moved to another measurement qubit, seed 9: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.1 s
+[C] random edit seed 0: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.2 s
+[C] random edit seed 1: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.2 s
+[C] random edit seed 2: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.0 s
+[C] random edit seed 3: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.0 s
+[C] random edit seed 4: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.2 s
+[C] random edit seed 5: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.1 s
+[C] random edit seed 6: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.2 s
+[C] random edit seed 7: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.2 s
+[C] random edit seed 8: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.2 s
+[C] random edit seed 9: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.0 s
+[C] random edit seed 10: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.2 s
+[C] random edit seed 11: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.1 s
+[C] random edit seed 12: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.1 s
+[C] random edit seed 13: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.2 s
+[C] random edit seed 14: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.2 s
+[C] random edit seed 15: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.1 s
+[C] random edit seed 16: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.2 s
+[C] random edit seed 17: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.1 s
+[C] random edit seed 18: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.1 s
+[C] random edit seed 19: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.2 s
+[C] random edit seed 20: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.1 s
+[C] random edit seed 21: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.2 s
+[C] random edit seed 22: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.2 s
+[C] random edit seed 23: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.1 s
+[C] random edit seed 24: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.2 s
+[C] random edit seed 25: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.2 s
+[C] random edit seed 26: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.1 s
+[C] random edit seed 27: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.1 s
+[C] random edit seed 28: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.2 s
+[C] random edit seed 29: ideal False, oracle FT1 None FT2 None | checker False (ideal syndrome or flag wrong) | FT2 part None | 0.0 s
+
+summary: {
+ "oracle_self_test": "53/53",
+ "P_pass": "11/11",
+ "K_size": 45,
+ "K_detected": 45,
+ "K_detected_by_FT2_part": 45,
+ "B_rejected": "10/10",
+ "C_rejected": "30/30",
+ "confusion_oracleFT2_vs_checkerFT2part": {
+  "oracle True / checker True": 90,
+  "oracle False / checker False": 101
+ },
+ "wall_seconds": 188.0
+}
+saved

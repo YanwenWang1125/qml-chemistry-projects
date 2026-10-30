@@ -1,0 +1,14 @@
+distinct (ASAP-layer canonical) 126351 | BFS nodes 100000 (cap 100000) | children generated 53310262
+resources(anc,CNOT,H,depth,CNOTdepth)      94
+resources(anc,CNOT,H)                      5
+syndrome+flags layout                      64
+CX-commutation canonical                   180
+gate multiset (order-free)                 61
+
+by Bell reductions: {0: 1, 1: 6188, 2: 73120, 3: 44142, 4: 2900}
+  steps <= 0: asap 1, CX-commutation 1, multiset 1
+  steps <= 1: asap 6189, CX-commutation 13, multiset 8
+  steps <= 2: asap 79309, CX-commutation 67, multiset 27
+  steps <= 3: asap 123451, CX-commutation 153, multiset 52
+  steps <= 4: asap 126351, CX-commutation 180, multiset 61
+saved /home/ywan3625/FT_Rewrite_Search/results/e1_3_recount.json

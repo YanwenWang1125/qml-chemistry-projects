@@ -1,0 +1,21 @@
+{
+ "variant": "root-root",
+ "p": 0.002,
+ "memory": "Z",
+ "x_half": {
+  "ancillas": 46,
+  "cnots": 84,
+  "cnot_depth": 7
+ },
+ "flags": 10,
+ "circuit_distance": 4,
+ "dem_single_wrong": 0,
+ "shots": 20000,
+ "errors": 217,
+ "ler": 0.01085,
+ "ci95": [
+  0.009505251732928106,
+  0.012382617140759049
+ ],
+ "seconds": 59.1
+}

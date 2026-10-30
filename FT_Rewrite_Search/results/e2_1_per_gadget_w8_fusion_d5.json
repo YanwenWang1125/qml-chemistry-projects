@@ -1,0 +1,597 @@
+{
+ "weight": 8,
+ "mode": "fusion",
+ "support": [
+  2,
+  3,
+  5,
+  6,
+  9,
+  10,
+  13,
+  14
+ ],
+ "root": [
+  12,
+  23,
+  8
+ ],
+ "bfs_nodes": 3000,
+ "accepted_asap": 9601,
+ "generated": 417360,
+ "rejected": {
+  "not 2-fault equivalent (0 effects only in root, 2 only in child)": 22318,
+  "not 2-fault equivalent (2 effects only in root, 38 only in child)": 9440,
+  "not 2-fault equivalent (6 effects only in root, 114 only in child)": 37584,
+  "not 2-fault equivalent (0 effects only in root, 6 only in child)": 65572,
+  "not 2-fault equivalent (0 effects only in root, 4 only in child)": 2836,
+  "not 2-fault equivalent (2 effects only in root, 40 only in child)": 1150,
+  "not 2-fault equivalent (6 effects only in root, 116 only in child)": 2814,
+  "not 2-fault equivalent (0 effects only in root, 8 only in child)": 3234,
+  "not 2-fault equivalent (0 effects only in root, 10 only in child)": 4060,
+  "not 2-fault equivalent (0 effects only in root, 22 only in child)": 214,
+  "not 2-fault equivalent (2 effects only in root, 42 only in child)": 224,
+  "not 2-fault equivalent (6 effects only in root, 118 only in child)": 432,
+  "not 2-fault equivalent (0 effects only in root, 12 only in child)": 684,
+  "not 2-fault equivalent (0 effects only in root, 24 only in child)": 178,
+  "not 2-fault equivalent (0 effects only in root, 14 only in child)": 7794,
+  "not 2-fault equivalent (0 effects only in root, 16 only in child)": 1360,
+  "not 2-fault equivalent (0 effects only in root, 20 only in child)": 1046,
+  "not 2-fault equivalent (2 effects only in root, 76 only in child)": 360,
+  "not 2-fault equivalent (6 effects only in root, 148 only in child)": 2736,
+  "not 2-fault equivalent (2 effects only in root, 152 only in child)": 2736,
+  "not 2-fault equivalent (2 effects only in root, 44 only in child)": 2142,
+  "not 2-fault equivalent (0 effects only in root, 30 only in child)": 580,
+  "not 2-fault equivalent (0 effects only in root, 18 only in child)": 11004,
+  "not 2-fault equivalent (0 effects only in root, 26 only in child)": 4446,
+  "not 2-fault equivalent (0 effects only in root, 40 only in child)": 264,
+  "not 2-fault equivalent (0 effects only in root, 28 only in child)": 330,
+  "not 2-fault equivalent (0 effects only in root, 36 only in child)": 64,
+  "not 2-fault equivalent (4 effects only in root, 78 only in child)": 46,
+  "not 2-fault equivalent (8 effects only in root, 158 only in child)": 92,
+  "not 2-fault equivalent (4 effects only in root, 80 only in child)": 18,
+  "not 2-fault equivalent (8 effects only in root, 160 only in child)": 36,
+  "not 2-fault equivalent (2 effects only in root, 46 only in child)": 158,
+  "not 2-fault equivalent (2 effects only in root, 48 only in child)": 86,
+  "not 2-fault equivalent (2 effects only in root, 52 only in child)": 272,
+  "not 2-fault equivalent (2 effects only in root, 54 only in child)": 8,
+  "not 2-fault equivalent (12 effects only in root, 246 only in child)": 46,
+  "not 2-fault equivalent (6 effects only in root, 120 only in child)": 2022,
+  "not 2-fault equivalent (12 effects only in root, 248 only in child)": 18,
+  "not 2-fault equivalent (6 effects only in root, 122 only in child)": 110,
+  "not 2-fault equivalent (6 effects only in root, 124 only in child)": 86,
+  "not 2-fault equivalent (6 effects only in root, 128 only in child)": 200,
+  "not 2-fault equivalent (6 effects only in root, 130 only in child)": 8,
+  "not 2-fault equivalent (6 effects only in root, 216 only in child)": 2376,
+  "not 2-fault equivalent (2 effects only in root, 78 only in child)": 72,
+  "not 2-fault equivalent (6 effects only in root, 150 only in child)": 192,
+  "not 2-fault equivalent (2 effects only in root, 154 only in child)": 192,
+  "not 2-fault equivalent (2 effects only in root, 82 only in child)": 48,
+  "not 2-fault equivalent (6 effects only in root, 154 only in child)": 48,
+  "not 2-fault equivalent (2 effects only in root, 158 only in child)": 48,
+  "not 2-fault equivalent (0 effects only in root, 32 only in child)": 304,
+  "not 2-fault equivalent (2 effects only in root, 56 only in child)": 48,
+  "not 2-fault equivalent (6 effects only in root, 218 only in child)": 120,
+  "not 2-fault equivalent (2 effects only in root, 196 only in child)": 96,
+  "not 2-fault equivalent (6 effects only in root, 280 only in child)": 96,
+  "not 2-fault equivalent (2 effects only in root, 260 only in child)": 96,
+  "not 2-fault equivalent (2 effects only in root, 188 only in child)": 96,
+  "not 2-fault equivalent (6 effects only in root, 256 only in child)": 96,
+  "not 2-fault equivalent (6 effects only in root, 192 only in child)": 96,
+  "not 2-fault equivalent (0 effects only in root, 42 only in child)": 168,
+  "not 2-fault equivalent (0 effects only in root, 44 only in child)": 56
+ },
+ "cost_classes": {
+  "(10, 21, 9)": 52,
+  "(10, 21, 10)": 212,
+  "(10, 21, 11)": 170,
+  "(10, 21, 12)": 266,
+  "(10, 21, 13)": 338,
+  "(10, 21, 14)": 162,
+  "(10, 21, 15)": 122,
+  "(10, 21, 16)": 30,
+  "(11, 22, 8)": 32,
+  "(11, 22, 9)": 516,
+  "(11, 22, 10)": 1830,
+  "(11, 22, 11)": 1690,
+  "(11, 22, 12)": 1568,
+  "(11, 22, 13)": 1206,
+  "(11, 22, 14)": 842,
+  "(11, 22, 15)": 420,
+  "(11, 22, 16)": 144,
+  "(12, 23, 8)": 1
+ },
+ "non_dominated": [
+  [
+   10,
+   21,
+   9
+  ],
+  [
+   11,
+   22,
+   8
+  ]
+ ],
+ "best": [
+  10,
+  21,
+  9
+ ],
+ "best_ops": [
+  [
+   "R",
+   18
+  ],
+  [
+   "R",
+   19
+  ],
+  [
+   "R",
+   20
+  ],
+  [
+   "R",
+   22
+  ],
+  [
+   "R",
+   23
+  ],
+  [
+   "R",
+   24
+  ],
+  [
+   "R",
+   25
+  ],
+  [
+   "R",
+   26
+  ],
+  [
+   "R",
+   27
+  ],
+  [
+   "R",
+   28
+  ],
+  [
+   "H",
+   19
+  ],
+  [
+   "CX",
+   19,
+   9
+  ],
+  [
+   "CX",
+   19,
+   26
+  ],
+  [
+   "CX",
+   19,
+   2
+  ],
+  [
+   "CX",
+   19,
+   18
+  ],
+  [
+   "CX",
+   18,
+   20
+  ],
+  [
+   "CX",
+   18,
+   22
+  ],
+  [
+   "CX",
+   19,
+   23
+  ],
+  [
+   "CX",
+   20,
+   24
+  ],
+  [
+   "CX",
+   19,
+   25
+  ],
+  [
+   "CX",
+   19,
+   27
+  ],
+  [
+   "CX",
+   20,
+   25
+  ],
+  [
+   "CX",
+   20,
+   27
+  ],
+  [
+   "CX",
+   18,
+   26
+  ],
+  [
+   "CX",
+   18,
+   28
+  ],
+  [
+   "CX",
+   18,
+   3
+  ],
+  [
+   "CX",
+   19,
+   5
+  ],
+  [
+   "CX",
+   19,
+   28
+  ],
+  [
+   "CX",
+   20,
+   6
+  ],
+  [
+   "CX",
+   22,
+   10
+  ],
+  [
+   "CX",
+   23,
+   13
+  ],
+  [
+   "CX",
+   24,
+   14
+  ],
+  [
+   "H",
+   18
+  ],
+  [
+   "H",
+   19
+  ],
+  [
+   "H",
+   20
+  ],
+  [
+   "H",
+   22
+  ],
+  [
+   "H",
+   23
+  ],
+  [
+   "H",
+   24
+  ],
+  [
+   "M",
+   18
+  ],
+  [
+   "M",
+   19
+  ],
+  [
+   "M",
+   20
+  ],
+  [
+   "M",
+   22
+  ],
+  [
+   "M",
+   23
+  ],
+  [
+   "M",
+   24
+  ],
+  [
+   "M",
+   25
+  ],
+  [
+   "M",
+   26
+  ],
+  [
+   "M",
+   27
+  ],
+  [
+   "M",
+   28
+  ]
+ ],
+ "best_path": [
+  "commute (5) on q17: 17>19 17>18 17>27 17>2 17>26 17>21",
+  "basis swap on Bell pair (q17, q19)",
+  "Bell reduction (19,17)",
+  "Bell reduction (19,21)"
+ ],
+ "seconds": 600.6,
+ "d5_tried": 143,
+ "d5_passing": [
+  [
+   10,
+   21,
+   10
+  ],
+  [
+   10,
+   21,
+   10
+  ],
+  [
+   10,
+   21,
+   10
+  ],
+  [
+   10,
+   21,
+   10
+  ],
+  [
+   10,
+   21,
+   10
+  ]
+ ],
+ "best_d5": [
+  10,
+  21,
+  10
+ ],
+ "best_d5_ops": [
+  [
+   "R",
+   18
+  ],
+  [
+   "R",
+   19
+  ],
+  [
+   "R",
+   20
+  ],
+  [
+   "R",
+   22
+  ],
+  [
+   "R",
+   23
+  ],
+  [
+   "R",
+   24
+  ],
+  [
+   "R",
+   25
+  ],
+  [
+   "R",
+   26
+  ],
+  [
+   "R",
+   27
+  ],
+  [
+   "R",
+   28
+  ],
+  [
+   "H",
+   19
+  ],
+  [
+   "CX",
+   19,
+   9
+  ],
+  [
+   "CX",
+   19,
+   27
+  ],
+  [
+   "CX",
+   19,
+   26
+  ],
+  [
+   "CX",
+   19,
+   2
+  ],
+  [
+   "CX",
+   19,
+   18
+  ],
+  [
+   "CX",
+   18,
+   20
+  ],
+  [
+   "CX",
+   18,
+   22
+  ],
+  [
+   "CX",
+   19,
+   23
+  ],
+  [
+   "CX",
+   20,
+   24
+  ],
+  [
+   "CX",
+   19,
+   25
+  ],
+  [
+   "CX",
+   20,
+   25
+  ],
+  [
+   "CX",
+   18,
+   26
+  ],
+  [
+   "CX",
+   20,
+   27
+  ],
+  [
+   "CX",
+   18,
+   28
+  ],
+  [
+   "CX",
+   18,
+   3
+  ],
+  [
+   "CX",
+   19,
+   5
+  ],
+  [
+   "CX",
+   19,
+   28
+  ],
+  [
+   "CX",
+   20,
+   6
+  ],
+  [
+   "CX",
+   22,
+   10
+  ],
+  [
+   "CX",
+   23,
+   13
+  ],
+  [
+   "CX",
+   24,
+   14
+  ],
+  [
+   "H",
+   18
+  ],
+  [
+   "H",
+   19
+  ],
+  [
+   "H",
+   20
+  ],
+  [
+   "H",
+   22
+  ],
+  [
+   "H",
+   23
+  ],
+  [
+   "H",
+   24
+  ],
+  [
+   "M",
+   18
+  ],
+  [
+   "M",
+   19
+  ],
+  [
+   "M",
+   20
+  ],
+  [
+   "M",
+   22
+  ],
+  [
+   "M",
+   23
+  ],
+  [
+   "M",
+   24
+  ],
+  [
+   "M",
+   25
+  ],
+  [
+   "M",
+   26
+  ],
+  [
+   "M",
+   27
+  ],
+  [
+   "M",
+   28
+  ]
+ ],
+ "best_d5_path": [
+  "commute (5) on q17: 17>19 17>18 17>2 17>26 17>27 17>21",
+  "basis swap on Bell pair (q17, q19)",
+  "Bell reduction (19,17)",
+  "Bell reduction (19,21)"
+ ]
+}

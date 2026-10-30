@@ -1,0 +1,30 @@
+F0 isomorphic to GOTO: True
+AppC F0: checker (True, 'ok'), ancillas 8, CNOT 18
+AppC F1: checker (True, 'ok'), ancillas 7, CNOT 17
+AppC F2: checker (True, 'ok'), ancillas 6, CNOT 16
+AppC F3a: checker (True, 'ok'), ancillas 5, CNOT 15
+AppC F3b: checker (False, 'ideal syndrome or flag wrong'), ancillas 5, CNOT 15
+AppC F4: checker (True, 'ok'), ancillas 4, CNOT 14
+
+AppC F0 -> AppC F1
+  composite search: NOT reached
+  free BFS: ['commute (6) on q11: 9>11 12>11 8>11 4>11', 'commute (5) on q14: 14>10 14>8 14>12', 'Bell reduction (8,7)']
+
+AppC F1 -> AppC F2
+  composite search: NOT reached
+  free BFS: ['commute (5) on q13: 13>7 13>11 13>9', 'Bell reduction (8,10)']
+
+AppC F2 -> AppC F3a
+  composite search: NOT reached
+  free BFS: ['commute (6) on q9: 10>9 4>9 7>9', 'commute (5) on q12: 12>10 12>7 12>8', 'basis swap on Bell pair (q10, q9)', 'Bell reduction (9,10)']
+
+AppC F2 -> AppC F3b
+  composite search: NOT reached
+  free BFS: NOT reached within 4 rewrites
+
+AppC F3a -> AppC F4
+  composite search: ['Bell reduction (8,10)']
+
+AppC F3b -> AppC F4
+  composite search: NOT reached
+  free BFS: NOT reached within 4 rewrites

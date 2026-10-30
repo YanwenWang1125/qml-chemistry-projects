@@ -62,11 +62,19 @@ def _with(g, ops, syndrome=None, note=""):
 
 # --- Rule 1: restricted commutation, Eqs. (5) and (6) -------------------------------------
 
+COMMUTATION_MODE = "fusion"  # or "jeon"; see restricted_commutation
+
+
 def restricted_commutation(g):
     """Eqs. (5)/(6), read as spider fusion: a fresh |+> qubit and the run of CNOTs it controls
     right after preparation are one Z spider (a fresh |0> and the CNOTs targeting it, one X
     spider), so the run may be put in any order. Jeon's two-gate swap is the case of a run of two;
-    App. C (F1 -> F2) reorders a flag's run of three."""
+    App. C (F1 -> F2) reorders a flag's run of three.
+
+    COMMUTATION_MODE = "jeon" keeps only the literal rule of Jeon Sec. III A: swap the first two
+    CNOTs after the preparation. The fusion reading reaches circuits Jeon reports as unreachable
+    (E1.2: 2 ancillas / 6 CNOTs, effect sets equal to the baseline up to 3 faults, 2026-10-29).
+    """
     ops = g["ops"]
     out = []
     for q in g["syndrome"] + g["flags"]:  # flags may commute; they are only kept out of reductions
@@ -84,7 +92,12 @@ def restricted_commutation(g):
             if len(run) < 2:
                 continue
             from itertools import islice, permutations
-            for perm in islice(permutations(run), 1, MAX_RUN_ORDERS):  # skip the identity
+            if COMMUTATION_MODE == "jeon_noflag" and any(
+                    set(ops[k][1:]) & set(g["flags"]) for k in run[:2]):
+                continue  # E1.2 before E1.3-fix: flag CNOTs never moved
+            perms = ([[run[1], run[0]] + run[2:]] if COMMUTATION_MODE.startswith("jeon")
+                     else islice(permutations(run), 1, MAX_RUN_ORDERS))  # skip the identity
+            for perm in perms:
                 new = _reorder_on_wire(ops, q, run, list(perm))
                 if new is not None:
                     desc = " ".join(f"{ops[k][1]}>{ops[k][2]}" for k in perm)
@@ -186,7 +199,11 @@ def bell_reduction(g, pair=None):
         seen = set()
         # On wire a, a run of consecutive CNOTs that all target a (or all control from a) is one
         # fused spider in the diagram, so any order of the run is a valid extraction (App. C uses this).
-        for perm in _run_orders(wire_a, lambda k: _role(node[k], a)):
+        # Strict modes ("jeon*") keep only the direct extraction R, V^T, U: the reordered runs are
+        # the same fusion reading as restricted_commutation and reach 2/6/6 in E1.2 by themselves.
+        orders = ([wire_a] if COMMUTATION_MODE.startswith("jeon")
+                  else _run_orders(wire_a, lambda k: _role(node[k], a)))
+        for perm in orders:
             order_on[a] = [tl_a[0]] + perm
             new = _topo(node, order_on)
             if new is None:

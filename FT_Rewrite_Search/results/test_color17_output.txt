@@ -1,0 +1,10 @@
+[PASS] X and Z generators commute pairwise (Hx Hz^T = 0 mod 2)
+[PASS] GF(2) rank 8 + 8 = 16, k = 1
+[PASS] logical X and Z commute with the Z and X generators
+[PASS] logical X and Z anticommute
+note: the paper's X_17 anticommutes with Z generators ['g7'] (so it is not a logical of Eq. (1))
+lowest-weight logicals found (0-indexed qubits): {'X': (5, (0, 1, 4, 8, 12)), 'Z': (5, (0, 1, 4, 8, 12))}
+[PASS] distance 5: no logical of weight <= 4, one of weight 5 for both types
+[PASS] stabilizer group via Code: 256 X-type x 256 Z-type elements
+
+ALL PASS

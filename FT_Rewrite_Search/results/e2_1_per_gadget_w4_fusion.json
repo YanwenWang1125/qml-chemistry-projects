@@ -1,0 +1,114 @@
+{
+ "weight": 4,
+ "mode": "fusion",
+ "support": [
+  0,
+  1,
+  2,
+  3
+ ],
+ "root": [
+  5,
+  9,
+  5
+ ],
+ "bfs_nodes": 281,
+ "accepted_asap": 281,
+ "generated": 11629008,
+ "rejected": {
+  "not 2-fault equivalent (2 effects only in root, 2 only in child)": 411608,
+  "not 2-fault equivalent (6 effects only in root, 14 only in child)": 4129856,
+  "not 2-fault equivalent (10 effects only in root, 18 only in child)": 3986360,
+  "not 2-fault equivalent (0 effects only in root, 4 only in child)": 1914176
+ },
+ "cost_classes": {
+  "(2, 6, 6)": 24,
+  "(3, 7, 6)": 126,
+  "(3, 7, 7)": 18,
+  "(4, 8, 5)": 8,
+  "(4, 8, 6)": 76,
+  "(4, 8, 7)": 28,
+  "(5, 9, 5)": 1
+ },
+ "non_dominated": [
+  [
+   2,
+   6,
+   6
+  ],
+  [
+   4,
+   8,
+   5
+  ]
+ ],
+ "best": [
+  2,
+  6,
+  6
+ ],
+ "best_ops": [
+  [
+   "R",
+   17
+  ],
+  [
+   "R",
+   21
+  ],
+  [
+   "H",
+   17
+  ],
+  [
+   "CX",
+   17,
+   2
+  ],
+  [
+   "CX",
+   17,
+   21
+  ],
+  [
+   "CX",
+   17,
+   3
+  ],
+  [
+   "CX",
+   17,
+   1
+  ],
+  [
+   "CX",
+   17,
+   21
+  ],
+  [
+   "CX",
+   17,
+   0
+  ],
+  [
+   "H",
+   17
+  ],
+  [
+   "M",
+   17
+  ],
+  [
+   "M",
+   21
+  ]
+ ],
+ "best_path": [
+  "Bell reduction (17,18)",
+  "commute (5) on q17: 17>20 17>1 17>21 17>19 17>21 17>0",
+  "Bell reduction (17,20)",
+  "commute (5) on q17: 17>19 17>3 17>21 17>1 17>21 17>0",
+  "Bell reduction (17,19)"
+ ],
+ "seconds": 606.0
+}

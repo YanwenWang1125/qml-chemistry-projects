@@ -1,0 +1,16 @@
+baseline: {'ancillas': 8, 'cnots': 18, 'cnot_depth': 7, 'H': 6, 'depth': 8} | ideal ok: True | parities: [[7, 8, 9, 10], [8, 9, 11, 12], [9, 10, 12, 13]] | FT_1: True
+dedup=True: BFS nodes 100000, distinct accepted 126351, children generated 53310262 (distinct checked 254550), rejected rewrites 21646282 {'not FT_1': 21646282}, terminals 5491
+
+best 8 distinct circuits:
+  ancillas 4, CNOT 14, H 2, depth 8, CNOT depth 7, Bell reductions 4
+  ancillas 4, CNOT 14, H 2, depth 9, CNOT depth 7, Bell reductions 4
+  ancillas 4, CNOT 14, H 2, depth 8, CNOT depth 7, Bell reductions 4
+  ancillas 4, CNOT 14, H 2, depth 9, CNOT depth 7, Bell reductions 4
+  ancillas 4, CNOT 14, H 2, depth 8, CNOT depth 8, Bell reductions 4
+  ancillas 4, CNOT 14, H 2, depth 9, CNOT depth 8, Bell reductions 4
+  ancillas 4, CNOT 14, H 2, depth 9, CNOT depth 8, Bell reductions 4
+  ancillas 4, CNOT 14, H 2, depth 9, CNOT depth 8, Bell reductions 4
+distinct circuits by ancilla count: {4: 2900, 5: 44142, 6: 73120, 7: 6188, 8: 1}
+best ops: [('R', 8), ('R', 9), ('R', 10), ('R', 14), ('H', 14), ('CX', 0, 8), ('CX', 5, 9), ('CX', 14, 9), ('CX', 6, 10), ('CX', 9, 10), ('CX', 10, 8), ('CX', 4, 9), ('CX', 8, 9), ('CX', 14, 8), ('CX', 1, 8), ('CX', 3, 10), ('CX', 9, 10), ('CX', 2, 9), ('CX', 14, 10), ('H', 14), ('M', 8), ('M', 9), ('M', 10), ('M', 14)]
+wall time 12432.4 s
+saved /home/ywan3625/FT_Rewrite_Search/results/e1_3_steane_search.json

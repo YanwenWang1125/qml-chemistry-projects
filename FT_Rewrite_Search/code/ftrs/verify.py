@@ -1,9 +1,14 @@
-"""Checker run on every rewrite: ideal behaviour, single-fault equivalence to the root, FT_1.
+"""Checker run on every rewrite: ideal behaviour, fault equivalence to the root, FT_t.
 
-This is check chain C1/C2 of the experiment plan at t = 1, restricted to X-type gadgets on the
-Steane code (the only ones built so far). A pass is evidence, not a proof (see L03, Sec. 4).
+This is check chain C1/C2 of the experiment plan for gadgets with a one-bit syndrome: X-type
+(default) or Z-type (gadget["kind"] = "Z", see ftlib.dual), on any CSS code carried in
+gadget["code"] (default Steane). t = 1 by default; t = 2 catches rewrites that keep the
+single-fault effects but change the two-fault ones (E1.2 regression, 2026-10-29).
+A pass is evidence, not a proof (see L03, Sec. 4).
 """
-from .ftlib import fe_compare, ft1_report, ideal_syndrome_check
+from .ftlib import code_of, effect_signature, ideal_syndrome_check
+
+_root_sigs = {}
 
 
 def ideal_ok(g):
@@ -15,12 +20,19 @@ def ideal_ok(g):
     return True
 
 
-def check(root, g):
+def check(root, g, t=1):
     if not ideal_ok(g):
         return False, "ideal syndrome or flag wrong"
-    only_root, only_g = fe_compare(root, g)
+    if (id(root), t) not in _root_sigs:
+        _root_sigs[(id(root), t)] = effect_signature(root, t, [root["syndrome"]])[0]
+    rsig = _root_sigs[(id(root), t)]
+    sig, bad = effect_signature(g, t, [g["syndrome"]])
+    ident = (code_of(root).canonical_mod(0, 0), (0,))
+    only_root = [k for k, v in rsig.items() if k != ident and sig.get(k) != v]
+    only_g = [k for k, v in sig.items() if k != ident and rsig.get(k) != v]
     if only_root or only_g:
-        return False, f"not single-fault equivalent ({len(only_root)} effects only in root, {len(only_g)} only in child)"
-    if not ft1_report(g)["FT1"]:
-        return False, "not FT_1"
+        order = "single-fault" if t == 1 else f"{t}-fault"
+        return False, f"not {order} equivalent ({len(only_root)} effects only in root, {len(only_g)} only in child)"
+    if bad:
+        return False, f"not FT_{t}"
     return True, "ok"

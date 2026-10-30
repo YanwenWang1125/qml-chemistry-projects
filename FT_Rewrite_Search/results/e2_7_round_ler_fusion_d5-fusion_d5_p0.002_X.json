@@ -1,0 +1,21 @@
+{
+ "variant": "fusion_d5-fusion_d5",
+ "p": 0.002,
+ "memory": "X",
+ "x_half": {
+  "ancillas": 24,
+  "cnots": 63,
+  "cnot_depth": 14
+ },
+ "flags": 11,
+ "circuit_distance": 5,
+ "dem_single_wrong": 0,
+ "shots": 60000,
+ "errors": 559,
+ "ler": 0.009316666666666666,
+ "ci95": [
+  0.008578739791999261,
+  0.010117420846159028
+ ],
+ "seconds": 240.3
+}

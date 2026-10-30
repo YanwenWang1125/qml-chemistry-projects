@@ -1,0 +1,18 @@
+{
+ "counts": {
+  "a": {
+   "rejected: fault equivalence": 12,
+   "PASSED": 1
+  },
+  "b": {
+   "rejected: ideal": 27,
+   "rejected: fault equivalence": 7
+  }
+ },
+ "passed": [
+  [
+   "a",
+   "data CNOT ('CX', 7, 0) -> control q8"
+  ]
+ ]
+}

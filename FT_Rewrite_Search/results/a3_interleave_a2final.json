@@ -1,0 +1,18 @@
+{
+ "name": "a2final",
+ "before": {
+  "ancillas": 18,
+  "cnots": 60,
+  "cnot_depth": 23
+ },
+ "after": {
+  "ancillas": 2,
+  "cnots": 60,
+  "cnot_depth": 18
+ },
+ "layers": 18,
+ "flags": 10,
+ "accepted": false,
+ "reason": "ideal",
+ "seconds": 0.0
+}

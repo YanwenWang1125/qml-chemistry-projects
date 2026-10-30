@@ -1,0 +1,38 @@
+{
+ "distinct_asap": 749,
+ "bfs_nodes": 749,
+ "counts": {
+  "resources(anc,CNOT,H,depth,CNOTdepth)": 37,
+  "resources(anc,CNOT,H)": 5,
+  "syndrome+flags layout": 36,
+  "CX-commutation canonical": 80,
+  "gate multiset (order-free)": 38
+ },
+ "by_steps": {
+  "0": {
+   "asap": 1,
+   "cx_commute": 1,
+   "multiset": 1
+  },
+  "1": {
+   "asap": 95,
+   "cx_commute": 10,
+   "multiset": 7
+  },
+  "2": {
+   "asap": 506,
+   "cx_commute": 41,
+   "multiset": 21
+  },
+  "3": {
+   "asap": 736,
+   "cx_commute": 75,
+   "multiset": 35
+  },
+  "4": {
+   "asap": 749,
+   "cx_commute": 80,
+   "multiset": 38
+  }
+ }
+}

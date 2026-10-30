@@ -1,0 +1,21 @@
+{
+ "variant": "jeon-jeon",
+ "p": 0.002,
+ "memory": "Z",
+ "x_half": {
+  "ancillas": 31,
+  "cnots": 69,
+  "cnot_depth": 16
+ },
+ "flags": 10,
+ "circuit_distance": 4,
+ "dem_single_wrong": 0,
+ "shots": 20000,
+ "errors": 233,
+ "ler": 0.01165,
+ "ci95": [
+  0.010253830714893856,
+  0.013233730901103533
+ ],
+ "seconds": 61.8
+}

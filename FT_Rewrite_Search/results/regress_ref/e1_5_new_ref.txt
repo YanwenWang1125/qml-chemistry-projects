@@ -1,0 +1,5 @@
+group a (same ideal map, broken fault behaviour): 13 mutants -> {'rejected: fault equivalence': 12, 'PASSED': 1}
+group b (random edits): 34 mutants -> {'rejected: ideal': 27, 'rejected: fault equivalence': 7}
+mutants that passed every check:
+  [a] data CNOT ('CX', 7, 0) -> control q8
+saved C:\Users\Administrator\OneDrive - The University of Western Ontario\Documents\ywan3625\Research\Projects\FT_Rewrite_Search\results\e1_5_negative_control.json

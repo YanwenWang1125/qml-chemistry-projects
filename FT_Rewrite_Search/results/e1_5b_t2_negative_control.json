@@ -1,0 +1,3037 @@
+{
+ "summary": {
+  "oracle_self_test": "53/53",
+  "P_pass": "11/11",
+  "K_size": 45,
+  "K_detected": 45,
+  "K_detected_by_FT2_part": 45,
+  "B_rejected": "10/10",
+  "C_rejected": "30/30",
+  "confusion_oracleFT2_vs_checkerFT2part": {
+   "oracle True / checker True": 90,
+   "oracle False / checker False": 101
+  },
+  "wall_seconds": 188.0
+ },
+ "variants": [
+  {
+   "group": "P",
+   "change": "original",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.7
+  },
+  {
+   "group": "P",
+   "change": "relabel ancillas seed 0",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "P",
+   "change": "relabel ancillas seed 1",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "P",
+   "change": "relabel ancillas seed 2",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "P",
+   "change": "relabel ancillas seed 3",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "P",
+   "change": "relabel ancillas seed 4",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "P",
+   "change": "3 swaps of adjacent disjoint CNOTs, seed 0",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "P",
+   "change": "3 swaps of adjacent disjoint CNOTs, seed 1",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "P",
+   "change": "3 swaps of adjacent disjoint CNOTs, seed 2",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "P",
+   "change": "3 swaps of adjacent disjoint CNOTs, seed 3",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "P",
+   "change": "3 swaps of adjacent disjoint CNOTs, seed 4",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A1",
+   "change": "remove flag q25",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX0->17"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (46 only in root, 27 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 1.0
+  },
+  {
+   "group": "A1",
+   "change": "remove flag q26",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX5->19"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (46 only in root, 32 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 1.0
+  },
+  {
+   "group": "A1",
+   "change": "remove flag q27",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX7->20"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (44 only in root, 5 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 1.0
+  },
+  {
+   "group": "A1",
+   "change": "remove flag q28",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX9->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 2 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A1",
+   "change": "remove flag q29",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "prep X q28",
+    "IY on CX14->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A1",
+   "change": "remove flag q30",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX29->24",
+    "IY on CX2->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A1",
+   "change": "remove flag q31",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX7->23"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 5 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 0",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (117 only in root, 119 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.1
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 1",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (188 only in root, 184 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.1
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 2",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (159 only in root, 156 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.1
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 3",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (157 only in root, 154 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 4",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (151 only in root, 143 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.1
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 5",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (151 only in root, 141 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.1
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 6",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (239 only in root, 222 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 7",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (222 only in root, 222 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 8",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (160 only in root, 146 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 9",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (151 only in root, 141 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 10",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (120 only in root, 120 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.1
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 11",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (36 only in root, 38 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 12",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (74 only in root, 71 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 13",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (191 only in root, 191 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 14",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (123 only in root, 123 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 15",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (165 only in root, 158 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.1
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 16",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (144 only in root, 148 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 17",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (74 only in root, 71 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 18",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (187 only in root, 187 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 19",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (94 only in root, 88 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 20",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (118 only in root, 115 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 21",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (184 only in root, 183 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 22",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (227 only in root, 224 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 23",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (156 only in root, 164 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 24",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (121 only in root, 123 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 25",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (159 only in root, 161 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 26",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (147 only in root, 147 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.1
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 27",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (147 only in root, 147 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 28",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (121 only in root, 123 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 29",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (191 only in root, 191 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 30",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (94 only in root, 88 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 31",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (159 only in root, 156 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 32",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (153 only in root, 150 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 33",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (154 only in root, 146 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 34",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (196 only in root, 202 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 35",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (186 only in root, 188 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 36",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (152 only in root, 154 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 37",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (155 only in root, 161 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 38",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (165 only in root, 158 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 39",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (191 only in root, 180 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 40",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (94 only in root, 88 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 41",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (186 only in root, 188 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 42",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (252 only in root, 261 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 43",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (227 only in root, 224 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.1
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 44",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (94 only in root, 88 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 45",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (154 only in root, 147 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 46",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (222 only in root, 222 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 47",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (148 only in root, 151 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 48",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (117 only in root, 116 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A2",
+   "change": "reorder g8 data CNOTs, seed 49",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (261 only in root, 254 only in child)",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 25, 17) to slot 22",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "XY on CX2->17",
+    "XY on CX3->17"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 1 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 25, 17) to slot 36",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 25, 17) to slot 43",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX0->17"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 7 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 25, 17) to slot 58",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX0->17"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 15 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 25, 17) to slot 59",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX0->17"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 16 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 26, 19) to slot 24",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "XY on CX4->19",
+    "YY on CX9->21"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 1 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 26, 19) to slot 38",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 26, 19) to slot 45",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX5->19"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 4 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 26, 19) to slot 60",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX5->19"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 20 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 26, 19) to slot 61",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX5->19"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 20 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 27, 20) to slot 25",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "XY on CX6->20",
+    "YY on CX11->22"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 27, 20) to slot 39",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 27, 20) to slot 46",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX7->20"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 2 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 27, 20) to slot 61",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX7->20"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 4 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 27, 20) to slot 62",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX7->20"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 4 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 28, 24) to slot 28",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 28, 24) to slot 35",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 28, 24) to slot 49",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX9->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 2 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 28, 24) to slot 53",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX9->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 2 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 28, 24) to slot 65",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX9->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 2 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 28, 24) to slot 67",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX9->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 2 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 28, 24) to slot 71",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX9->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 2 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 28, 24) to slot 76",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX9->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 2 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 28, 24) to slot 77",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX9->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 2 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 25, 18) to slot 23",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "XY on CX0->18",
+    "XY on CX3->17"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 1 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 25, 18) to slot 37",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 25, 18) to slot 44",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX2->18"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 10 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 25, 18) to slot 59",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX2->18"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (46 only in root, 15 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 25, 18) to slot 60",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX2->18"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (46 only in root, 15 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 26, 21) to slot 26",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "XY on CX8->21",
+    "YY on CX5->19"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 2 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 26, 21) to slot 40",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 26, 21) to slot 47",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX9->21"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 26, 21) to slot 62",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX9->21"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (46 only in root, 14 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 26, 21) to slot 63",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX9->21"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (46 only in root, 14 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 27, 22) to slot 27",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "XY on CX10->22",
+    "YY on CX7->20"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 27, 22) to slot 41",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 27, 22) to slot 48",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX11->22"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 2 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 27, 22) to slot 63",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX11->22"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (44 only in root, 3 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 27, 22) to slot 64",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX11->22"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (44 only in root, 5 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 29, 24) to slot 28",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX28->24",
+    "IY on CX5->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 29, 24) to slot 36",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX29->24",
+    "IY on CX5->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 29, 24) to slot 49",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 29, 24) to slot 53",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "prep X q28",
+    "IY on CX14->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 29, 24) to slot 65",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "prep X q28",
+    "IY on CX14->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 29, 24) to slot 67",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "prep X q28",
+    "IY on CX14->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 29, 24) to slot 71",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "prep X q28",
+    "IY on CX14->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 29, 24) to slot 76",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "prep X q28",
+    "IY on CX14->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 29, 24) to slot 77",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "prep X q28",
+    "IY on CX14->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 25, 17) to slot 22",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX0->17"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (46 only in root, 17 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 25, 17) to slot 37",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX0->17"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 15 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 25, 17) to slot 44",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX25->17"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 8 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 25, 17) to slot 58",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 25, 17) to slot 59",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "XY on CX0->17",
+    "XY on CX1->17"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 1 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 26, 19) to slot 24",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX5->19"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (46 only in root, 22 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 26, 19) to slot 39",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX5->19"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 20 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 26, 19) to slot 46",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX26->19"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 18 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 26, 19) to slot 60",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 26, 19) to slot 61",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "XY on CX5->19",
+    "XY on CX9->19"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 27, 20) to slot 25",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX7->20"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (44 only in root, 5 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 27, 20) to slot 40",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX7->20"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 4 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 27, 20) to slot 47",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX27->20"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 2 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 27, 20) to slot 61",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 27, 20) to slot 62",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "XY on CX7->20",
+    "XY on CX10->20"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 25, 18) to slot 23",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX2->18"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 14 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 25, 18) to slot 38",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX2->18"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 14 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 25, 18) to slot 45",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX25->18"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 5 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 25, 18) to slot 59",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 25, 18) to slot 60",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "XY on CX0->17",
+    "XY on CX5->18"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 26, 21) to slot 26",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX9->21"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 15 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 26, 21) to slot 41",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX9->21"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 13 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 26, 21) to slot 48",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX26->21"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 13 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 26, 21) to slot 62",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 26, 21) to slot 63",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "XY on CX5->19",
+    "XY on CX13->21"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 27, 22) to slot 27",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX11->22"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 2 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 27, 22) to slot 42",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX11->22"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 2 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 27, 22) to slot 49",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX27->22"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 27, 22) to slot 63",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 27, 22) to slot 64",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "XY on CX7->20",
+    "XY on CX14->22"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 4 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 30, 24) to slot 28",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX29->24",
+    "IY on CX2->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 30, 24) to slot 36",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX29->24",
+    "IY on CX2->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 30, 24) to slot 50",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX30->24",
+    "IY on CX2->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 30, 24) to slot 54",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX30->24",
+    "IY on CX6->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 30, 24) to slot 65",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 30, 24) to slot 67",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX29->24",
+    "IY on CX2->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 30, 24) to slot 71",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX29->24",
+    "IY on CX2->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 30, 24) to slot 76",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX29->24",
+    "IY on CX2->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 30, 24) to slot 77",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX29->24",
+    "IY on CX2->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 31, 23) to slot 65",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "XY on CX11->23",
+    "XY on CX16->23"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 31, 23) to slot 68",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 31, 23) to slot 70",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX7->23"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 3 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 31, 23) to slot 74",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX7->23"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 5 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 31, 23) to slot 75",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX7->23"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 5 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 28, 24) to slot 28",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX9->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 2 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 28, 24) to slot 36",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX9->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 2 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 28, 24) to slot 50",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "prep X q29",
+    "IY on CX14->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 28, 24) to slot 54",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "prep X q29",
+    "IY on CX28->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 28, 24) to slot 66",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX28->24",
+    "IY on CX3->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 28, 24) to slot 68",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 28, 24) to slot 71",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 28, 24) to slot 76",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX9->24",
+    "IY on CX29->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 28, 24) to slot 77",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX9->24",
+    "IY on CX29->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 31, 23) to slot 65",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX7->23"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 5 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 31, 23) to slot 69",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX7->23"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 5 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 31, 23) to slot 71",
+   "oracle_ideal": true,
+   "oracle_FT1": false,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX31->23"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not 2-fault equivalent (0 only in root, 2 only in child)",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 31, 23) to slot 74",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 31, 23) to slot 75",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "XY on CX7->23",
+    "XY on CX15->23"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 30, 24) to slot 28",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 30, 24) to slot 36",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 30, 24) to slot 50",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX29->24",
+    "IY on CX2->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 30, 24) to slot 54",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX29->24",
+    "IY on CX2->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 30, 24) to slot 66",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX29->24",
+    "IY on CX2->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 30, 24) to slot 68",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "IY on CX29->24",
+    "IY on CX30->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.9
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 30, 24) to slot 72",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 30, 24) to slot 76",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 30, 24) to slot 77",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 29, 24) to slot 28",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "prep X q28",
+    "IY on CX14->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 29, 24) to slot 36",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "prep X q28",
+    "IY on CX14->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 29, 24) to slot 50",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "prep X q28",
+    "IY on CX14->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 29, 24) to slot 54",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": false,
+   "oracle_violation": [
+    "prep X q28",
+    "IY on CX29->24"
+   ],
+   "checker_pass": false,
+   "checker_reason": "not FT_2",
+   "checker_FT2_part": false,
+   "seconds": 0.8
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 29, 24) to slot 66",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 29, 24) to slot 68",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 29, 24) to slot 72",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "A3",
+   "change": "move ('CX', 29, 24) to slot 77",
+   "oracle_ideal": true,
+   "oracle_FT1": true,
+   "oracle_FT2": true,
+   "oracle_violation": null,
+   "checker_pass": true,
+   "checker_reason": "ok",
+   "checker_FT2_part": true,
+   "seconds": 1.0
+  },
+  {
+   "group": "B",
+   "change": "data CNOT moved to another measurement qubit, seed 0",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.1
+  },
+  {
+   "group": "B",
+   "change": "data CNOT moved to another measurement qubit, seed 1",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.0
+  },
+  {
+   "group": "B",
+   "change": "data CNOT moved to another measurement qubit, seed 2",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.0
+  },
+  {
+   "group": "B",
+   "change": "data CNOT moved to another measurement qubit, seed 3",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.1
+  },
+  {
+   "group": "B",
+   "change": "data CNOT moved to another measurement qubit, seed 4",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.1
+  },
+  {
+   "group": "B",
+   "change": "data CNOT moved to another measurement qubit, seed 5",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.1
+  },
+  {
+   "group": "B",
+   "change": "data CNOT moved to another measurement qubit, seed 6",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.1
+  },
+  {
+   "group": "B",
+   "change": "data CNOT moved to another measurement qubit, seed 7",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.1
+  },
+  {
+   "group": "B",
+   "change": "data CNOT moved to another measurement qubit, seed 8",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.0
+  },
+  {
+   "group": "B",
+   "change": "data CNOT moved to another measurement qubit, seed 9",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.1
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 0",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.2
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 1",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.2
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 2",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.0
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 3",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.0
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 4",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.2
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 5",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.1
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 6",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.2
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 7",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.2
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 8",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.2
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 9",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.0
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 10",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.2
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 11",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.1
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 12",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.1
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 13",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.2
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 14",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.2
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 15",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.1
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 16",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.2
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 17",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.1
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 18",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.1
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 19",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.2
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 20",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.1
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 21",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.2
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 22",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.2
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 23",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.1
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 24",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.2
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 25",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.2
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 26",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.1
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 27",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.1
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 28",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.2
+  },
+  {
+   "group": "C",
+   "change": "random edit seed 29",
+   "oracle_ideal": false,
+   "oracle_FT1": null,
+   "oracle_FT2": null,
+   "oracle_violation": null,
+   "checker_pass": false,
+   "checker_reason": "ideal syndrome or flag wrong",
+   "checker_FT2_part": null,
+   "seconds": 0.0
+  }
+ ]
+}

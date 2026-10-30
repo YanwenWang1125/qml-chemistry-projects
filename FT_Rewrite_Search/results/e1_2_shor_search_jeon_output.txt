@@ -1,0 +1,18 @@
+checker order t = 1 | commutation mode jeon
+dedup=True: BFS nodes 5, distinct accepted circuits 5, rejected rewrites 0, terminal nodes 3
+rejected rewrites by reason: none
+
+distinct circuits reachable from the baseline (sorted by ancillas, CNOT depth, CNOTs):
+  #0: ancillas 3, CNOTs 7, CNOT depth 6, Bell reductions 2; path: commute (5) on q7: 7>9 7>8 7>11 7>0 | Bell reduction (7,9) | commute (5) on q7: 7>8 7>2 7>11 7>0 | basis swap on Bell pair (q7, q8) | Bell reduction (8,7)
+  #1: ancillas 4, CNOTs 8, CNOT depth 5, Bell reductions 1; path: commute (5) on q7: 7>9 7>8 7>11 7>0 | Bell reduction (7,9)
+  #2: ancillas 4, CNOTs 8, CNOT depth 6, Bell reductions 1; path: basis swap on Bell pair (q7, q8) | Bell reduction (8,7)
+  #3: ancillas 4, CNOTs 8, CNOT depth 6, Bell reductions 1; path: commute (5) on q7: 7>9 7>8 7>11 7>0 | basis swap on Bell pair (q7, q9) | Bell reduction (9,7)
+  #4: ancillas 5, CNOTs 9, CNOT depth 5, Bell reductions 0; path: (baseline)
+
+best circuit: {'ancillas': 3, 'cnots': 7, 'cnot_depth': 6}
+identical (canonical form) to Jeon Fig. 1b: False
+Jeon Fig. 1b among the reachable circuits: False
+ops of the best circuit: [('R', 8), ('R', 10), ('R', 11), ('H', 8), ('CX', 8, 0), ('CX', 8, 11), ('CX', 8, 2), ('CX', 8, 10), ('CX', 8, 11), ('CX', 8, 1), ('CX', 10, 3), ('H', 8), ('H', 10), ('M', 8), ('M', 10), ('M', 11)]
+
+wall time 0.0 s
+saved C:\Users\Administrator\OneDrive - The University of Western Ontario\Documents\ywan3625\Research\Projects\FT_Rewrite_Search\results\e1_2_shor_search_jeon.json

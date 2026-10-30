@@ -1,0 +1,21 @@
+{
+ "variant": "fusion-jeon",
+ "p": 0.002,
+ "memory": "Z",
+ "x_half": {
+  "ancillas": 24,
+  "cnots": 62,
+  "cnot_depth": 13
+ },
+ "flags": 10,
+ "circuit_distance": 4,
+ "dem_single_wrong": 0,
+ "shots": 20000,
+ "errors": 186,
+ "ler": 0.0093,
+ "ci95": [
+  0.008060738256756444,
+  0.010727725928704634
+ ],
+ "seconds": 54.2
+}

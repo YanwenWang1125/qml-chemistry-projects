@@ -1,0 +1,21 @@
+{
+ "variant": "jeon_d5-jeon_d5",
+ "p": 0.001,
+ "memory": "Z",
+ "x_half": {
+  "ancillas": 32,
+  "cnots": 71,
+  "cnot_depth": 18
+ },
+ "flags": 11,
+ "circuit_distance": 5,
+ "dem_single_wrong": 0,
+ "shots": 160000,
+ "errors": 419,
+ "ler": 0.00261875,
+ "ci95": [
+  0.0023799917427475134,
+  0.002881391053723371
+ ],
+ "seconds": 158.9
+}

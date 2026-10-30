@@ -2,20 +2,28 @@
 
 Target (Jeon Sec. V B 2, Table I): 7 reachable circuits per gadget; best 3 ancillas, 7 CNOTs,
 CNOT depth 6. Every rewrite is checked (ideal, single-fault equivalence to the baseline, FT_1).
-Writes results/e1_2_shor_search.json.
-Run:  C:/Users/Administrator/venvs/qml/Scripts/python.exe e1_2_shor_search.py
+Writes results/e1_2_shor_search.json (or e1_2_shor_search_t2.json with checker order t = 2).
+Run:  python e1_2_shor_search.py [t] [fusion|jeon]   (checker order, default 1; commutation mode, default fusion)
 """
 import json
 import os
+import sys
 import time
 
 from ftrs.ftlib import BASELINE, REDUCED, resources
 from ftrs.search import bfs, canonical, summary_rows
+from ftrs.verify import check
+from ftrs import rules
+
+T = int(sys.argv[1]) if len(sys.argv) > 1 else 1
+MODE = sys.argv[2] if len(sys.argv) > 2 else "fusion"  # restricted commutation: "fusion", "jeon" or "jeon_noflag"
+rules.COMMUTATION_MODE = MODE
+print("checker order t =", T, "| commutation mode", MODE)
 
 t0 = time.time()
 res = {}
-for dedup in (False, True):
-    r = bfs(BASELINE, dedup=dedup)
+for dedup in (True,):  # the no-dedup tree OOMs at 32G under the new rules (Fir job 1158940_1)
+    r = bfs(BASELINE, dedup=dedup, check=lambda root, g: check(root, g, T))
     res[dedup] = r
     print(f"dedup={dedup}: BFS nodes {r['nodes']}, distinct accepted circuits {len(r['accepted'])}, "
           f"rejected rewrites {sum(r['rejected'].values())}, terminal nodes {len(r['terminals'])}")
@@ -38,9 +46,9 @@ print("Jeon Fig. 1b among the reachable circuits:", canonical(REDUCED) in r["acc
 print("ops of the best circuit:", best["gadget"]["ops"])
 print(f"\nwall time {time.time() - t0:.1f} s")
 
-out = os.path.join(os.path.dirname(__file__), "..", "results", "e1_2_shor_search.json")
+out = os.path.join(os.path.dirname(__file__), "..", "results", "e1_2_shor_search" + ("_t2" if T == 2 else "") + ("_" + MODE if MODE != "fusion" else "") + ".json")
 json.dump({
-    "bfs_nodes_no_dedup": res[False]["nodes"], "bfs_nodes_dedup": r["nodes"],
+    "bfs_nodes_dedup": r["nodes"],
     "distinct_circuits": len(r["accepted"]), "rejected": reasons,
     "circuits": [{k: v for k, v in row.items() if k != "gadget"} | {"ops": row["gadget"]["ops"],
                  "syndrome": row["gadget"]["syndrome"], "flags": row["gadget"]["flags"]} for row in rows],

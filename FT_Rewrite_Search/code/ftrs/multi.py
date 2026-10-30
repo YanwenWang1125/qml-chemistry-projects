@@ -10,14 +10,12 @@ Gadget dict keys: ops, syndrome (ancillas allowed in rules), flags, and
 import numpy as np
 import stim
 
-from .ftlib import STEANE_GROUP, canonical_mod, single_faults, effect, weight_mod
-
-N_DATA = 7
+from .ftlib import code_of, effect, effect_signature, propagate, single_faults
 
 
 def _circuit(g, shots_err=True):
     c = stim.Circuit()
-    d = list(range(N_DATA))
+    d = list(range(code_of(g).n_data))
     if g["kind"] == "Z":
         c.append("R", d)
         if shots_err:
@@ -79,46 +77,55 @@ def derive(g, shots=600, seed=5):
     return parities, True
 
 
-def effects(g, parities, group=STEANE_GROUP):
+def effects(g, parities, code=None):
     """{(data coset, syndrome flip vector)} for undetected single faults, plus FT_1 violations."""
+    code = code_of(g, code)
     sig, bad = {}, []
     for label, start, x, z in single_faults(g["ops"]):
-        dx, dz, _, fflips = effect(g["ops"], start, x, z, [], g["flags"], N_DATA)
+        dx, dz, _, fflips = effect(g["ops"], start, x, z, [], g["flags"], code.n_data)
         if any(fflips):
             continue
-        xx, _ = __import__("ftrs.ftlib", fromlist=["propagate"]).propagate(x, z, g["ops"][start:])
+        xx, _ = propagate(x, z, g["ops"][start:])
         flips = tuple(sum((xx >> q) & 1 for q in par) % 2 for par in parities)
-        sig.setdefault((canonical_mod(dx, dz, group), flips), label)
-        if weight_mod(dx, dz, group) > 1:
+        sig.setdefault((code.canonical_mod(dx, dz), flips), label)
+        if code.weight_mod(dx, dz) > 1:
             bad.append(label)
     return sig, bad
 
 
-def check_factory(root):
+def check_factory(root, t=1):
     rp, ok = derive(root)
     assert ok, "root gadget fails its own ideal check"
-    rsig, rbad = effects(root, rp)
-    assert not rbad, "root gadget is not FT_1"
+    rsig, rbad = effect_signature(root, t, rp)
+    assert not rbad, f"root gadget is not FT_{t}"
     # Compare only the error type this gadget handles (X data errors for kind "Z", Z for "X")
-    # plus syndrome flips; the other type only has to keep weight <= 1 (the FT_1 test below).
+    # plus syndrome flips; the other type only has to keep weight <= s (the FT_t test below).
     # Jeon's App. C steps differ from the baseline only in residual weight-1 Z errors (E1.3-fix).
     part = 0 if root["kind"] == "Z" else 1
-    proj = lambda keys: {(k[0][part], k[1]) for k in keys}
+
+    def proj(sig):  # keep the smallest fault count per projected effect
+        out = {}
+        for k, s in sig.items():
+            pk = (k[0][part], k[1])
+            out[pk] = min(out.get(pk, s), s)
+        return out
+
     rsig = proj(rsig)
-    ident = (canonical_mod(0, 0, STEANE_GROUP)[part], tuple(0 for _ in rp))
+    ident = (code_of(root).canonical_mod(0, 0)[part], tuple(0 for _ in rp))
 
     def check(_root, g):
         p, ok = derive(g)
         if not ok:
             return False, "ideal syndrome or flag wrong"
-        sig, bad = effects(g, p)
+        sig, bad = effect_signature(g, t, p)
         sig = proj(sig)
-        a =[k for k in rsig if k not in sig and k != ident]
-        b = [k for k in sig if k not in rsig and k != ident]
+        a = [k for k, v in rsig.items() if k != ident and sig.get(k) != v]
+        b = [k for k, v in sig.items() if k != ident and rsig.get(k) != v]
         if a or b:
-            return False, f"not single-fault equivalent ({len(a)} only in root, {len(b)} only in child)"
+            order = "single-fault" if t == 1 else f"{t}-fault"
+            return False, f"not {order} equivalent ({len(a)} only in root, {len(b)} only in child)"
         if bad:
-            return False, "not FT_1"
+            return False, f"not FT_{t}"
         return True, "ok"
     return check
 

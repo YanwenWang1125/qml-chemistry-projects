@@ -1,0 +1,38 @@
+{
+ "verification_pairs": {
+  "4": [
+   [
+    0,
+    1
+   ]
+  ],
+  "8": [
+   [
+    2,
+    3
+   ],
+   [
+    0,
+    1
+   ],
+   [
+    0,
+    3
+   ],
+   [
+    1,
+    2
+   ]
+  ]
+ },
+ "x_half": {
+  "ancillas": 47,
+  "cnots": 86,
+  "cnot_depth": 8
+ },
+ "circuit_distance": {
+  "Z": 5,
+  "X": 5
+ },
+ "seconds": 560.4
+}

@@ -1,0 +1,61 @@
+mode fusion: Bell pairs 0, target swaps 0, restricted commutations 2646; root cost (15, 56, 14, 14)
+{
+ "mode": "fusion",
+ "children": 2646,
+ "accepted_asap": 231,
+ "rejected": {
+  "not 2-fault equivalent (0 only in root, 1 only in child)": 104,
+  "not 2-fault equivalent (0 only in root, 8 only in child)": 38,
+  "not 2-fault equivalent (0 only in root, 4 only in child)": 181,
+  "not 2-fault equivalent (0 only in root, 2 only in child)": 441,
+  "not 2-fault equivalent (0 only in root, 3 only in child)": 136,
+  "not FT_2": 775,
+  "not 2-fault equivalent (0 only in root, 15 only in child)": 26,
+  "not 2-fault equivalent (0 only in root, 11 only in child)": 42,
+  "not 2-fault equivalent (0 only in root, 7 only in child)": 67,
+  "not 2-fault equivalent (0 only in root, 9 only in child)": 64,
+  "not 2-fault equivalent (0 only in root, 16 only in child)": 18,
+  "not 2-fault equivalent (0 only in root, 13 only in child)": 58,
+  "not 2-fault equivalent (0 only in root, 5 only in child)": 109,
+  "not 2-fault equivalent (0 only in root, 12 only in child)": 37,
+  "not 2-fault equivalent (0 only in root, 19 only in child)": 33,
+  "not 2-fault equivalent (0 only in root, 18 only in child)": 33,
+  "not 2-fault equivalent (0 only in root, 14 only in child)": 55,
+  "not 2-fault equivalent (0 only in root, 10 only in child)": 38,
+  "not 2-fault equivalent (0 only in root, 6 only in child)": 98,
+  "not 2-fault equivalent (0 only in root, 20 only in child)": 9,
+  "not 2-fault equivalent (0 only in root, 21 only in child)": 1,
+  "not 2-fault equivalent (0 only in root, 27 only in child)": 1,
+  "not 2-fault equivalent (0 only in root, 25 only in child)": 14,
+  "not 2-fault equivalent (0 only in root, 17 only in child)": 9,
+  "not 2-fault equivalent (0 only in root, 22 only in child)": 9,
+  "not 2-fault equivalent (0 only in root, 23 only in child)": 14,
+  "not 2-fault equivalent (46 only in root, 1 only in child)": 4,
+  "not 2-fault equivalent (44 only in root, 1 only in child)": 1
+ },
+ "structure_cost_classes": 7,
+ "cost_classes": {
+  "(15, 56, 14, 14)": 129,
+  "(15, 56, 20, 20)": 1,
+  "(15, 56, 22, 22)": 1,
+  "(15, 56, 18, 18)": 1,
+  "(15, 56, 16, 16)": 2,
+  "(15, 56, 15, 15)": 1,
+  "(15, 56, 14, 15)": 96
+ },
+ "non_dominated": [
+  [
+   15,
+   56,
+   14,
+   14
+  ]
+ ],
+ "root_cost": [
+  15,
+  56,
+  14,
+  14
+ ],
+ "seconds": 455.8
+}

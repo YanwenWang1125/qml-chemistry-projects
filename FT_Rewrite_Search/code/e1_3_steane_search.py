@@ -2,15 +2,17 @@
 
 Targets (Sec. V C, Table III): baseline 8 ancillas / 18 CNOT / 6 H / depth 8 / CNOT depth 7;
 the search generates 391 candidates; best has 4 ancillas / 14 CNOT / 2 H / depth 8 / CNOT depth 7.
-Run:  C:/Users/Administrator/venvs/qml/Scripts/python.exe e1_3_steane_search.py
+Run:  python e1_3_steane_search.py [t] [fusion|jeon]   (checker order, default 1; commutation mode, default fusion)
 """
 import json
 import os
+import sys
 import time
 
 from ftrs.ftlib import resources
 from ftrs.multi import GOTO, check_factory, derive, effects
 from ftrs.search import bfs, summary_rows
+from ftrs import rules
 
 
 def total_depth(ops):
@@ -35,7 +37,11 @@ sig, bad = effects(GOTO, p)
 print("baseline:", describe(GOTO), "| ideal ok:", ok, "| parities:", p, "| FT_1:", not bad)
 
 L = 2  # E1.3-fix: App. C needs two enabling rewrites per step
-check = check_factory(GOTO)
+T = int(sys.argv[1]) if len(sys.argv) > 1 else 1  # checker order; t = 2 since the E1.2 regression
+MODE = sys.argv[2] if len(sys.argv) > 2 else "fusion"  # restricted commutation: "fusion", "jeon" or "jeon_noflag"
+rules.COMMUTATION_MODE = MODE
+print("checker order t =", T, "| commutation mode", MODE)
+check = check_factory(GOTO, T)
 res = {}
 for dedup in (True,):  # without dedup the L=2 tree is exponential; report generated children instead
     r = bfs(GOTO, dedup=dedup, check=check, L=L)
@@ -60,7 +66,7 @@ print("distinct circuits by ancilla count:", dict(sorted(hist.items())))
 print("best ops:", rows[0]["gadget"]["ops"])
 print(f"wall time {time.time() - t0:.1f} s")
 
-out = os.path.join(os.path.dirname(__file__), "..", "results", "e1_3_steane_search.json")
+out = os.path.join(os.path.dirname(__file__), "..", "results", "e1_3_steane_search" + ("_t2" if T == 2 else "") + ("_" + MODE if MODE != "fusion" else "") + ".json")
 json.dump({"L": L, "children_generated": res[True]["generated"], "distinct_checked": res[True]["checked"],
            "rejected": dict(res[True]["rejected"]), "bfs_nodes_dedup": res[True]["nodes"],
            "distinct": len(res[True]["accepted"]),

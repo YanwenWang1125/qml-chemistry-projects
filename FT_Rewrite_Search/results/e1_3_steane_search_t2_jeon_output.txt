@@ -1,0 +1,17 @@
+baseline: {'ancillas': 8, 'cnots': 18, 'cnot_depth': 7, 'H': 6, 'depth': 8} | ideal ok: True | parities: [[7, 8, 9, 10], [8, 9, 11, 12], [9, 10, 12, 13]] | FT_1: True
+checker order t = 2 | commutation mode jeon
+dedup=True: BFS nodes 749, distinct accepted 749, children generated 6760 (distinct checked 803), rejected rewrites 320 {'not FT_2': 156, 'not 2-fault equivalent (0 only in root, 2 only in child)': 164}, terminals 158
+
+best 8 distinct circuits:
+  ancillas 4, CNOT 14, H 2, depth 9, CNOT depth 9, Bell reductions 4
+  ancillas 4, CNOT 14, H 2, depth 9, CNOT depth 9, Bell reductions 4
+  ancillas 4, CNOT 14, H 2, depth 10, CNOT depth 9, Bell reductions 4
+  ancillas 4, CNOT 14, H 2, depth 10, CNOT depth 10, Bell reductions 4
+  ancillas 4, CNOT 14, H 2, depth 10, CNOT depth 10, Bell reductions 4
+  ancillas 4, CNOT 14, H 2, depth 10, CNOT depth 10, Bell reductions 4
+  ancillas 4, CNOT 14, H 2, depth 11, CNOT depth 10, Bell reductions 4
+  ancillas 4, CNOT 14, H 2, depth 10, CNOT depth 10, Bell reductions 4
+distinct circuits by ancilla count: {4: 13, 5: 230, 6: 411, 7: 94, 8: 1}
+best ops: [('R', 8), ('R', 11), ('R', 12), ('R', 14), ('H', 14), ('CX', 2, 11), ('CX', 3, 8), ('CX', 14, 8), ('CX', 11, 8), ('CX', 6, 12), ('CX', 8, 12), ('CX', 0, 8), ('CX', 12, 11), ('CX', 8, 11), ('CX', 14, 8), ('CX', 1, 8), ('CX', 14, 12), ('H', 14), ('CX', 4, 11), ('CX', 5, 12), ('M', 8), ('M', 11), ('M', 12), ('M', 14)]
+wall time 21.0 s
+saved /home/ywan3625/FT_Rewrite_Search/results/e1_3_steane_search_t2_jeon.json

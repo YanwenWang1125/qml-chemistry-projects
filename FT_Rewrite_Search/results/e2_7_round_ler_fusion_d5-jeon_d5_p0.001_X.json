@@ -1,0 +1,21 @@
+{
+ "variant": "fusion_d5-jeon_d5",
+ "p": 0.001,
+ "memory": "X",
+ "x_half": {
+  "ancillas": 25,
+  "cnots": 64,
+  "cnot_depth": 15
+ },
+ "flags": 11,
+ "circuit_distance": 5,
+ "dem_single_wrong": 0,
+ "shots": 260000,
+ "errors": 402,
+ "ler": 0.0015461538461538462,
+ "ci95": [
+  0.0014023139622722086,
+  0.0017047226656794583
+ ],
+ "seconds": 246.6
+}

@@ -1,0 +1,7 @@
+dashed groups that reuse a qubit: {6: [('CX', 5, 24), ('CX', 25, 18), ('CX', 26, 21), ('CX', 27, 22), ('CX', 30, 24)]}
+CNOTs 56, time steps 14, ancillas 8 + 7; resources {'ancillas': 15, 'cnots': 56, 'cnot_depth': 14}
+paper Table I [2;2;2;1;1]: 56 CNOTs, depth 14, 17+15 qubits
+noiseless check (syndrome bit i = measurement qubit m_i alone, flags always 0): True | each stabilizer read by its own m: True
+single-round FT_1 (plan Sec. 0.3; only reported, not the pass criterion): 0 violating fault sets, 177 distinct unflagged effects, 0.0 s
+single-round FT_2 (plan Sec. 0.3; only reported, not the pass criterion): 0 violating fault sets, 12236 distinct unflagged effects, 1.2 s
+saved

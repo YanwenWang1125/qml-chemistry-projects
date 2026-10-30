@@ -1,0 +1,8 @@
+  weight 4: +(0, 1) -> 0 violations (3 s)
+weight 4: verification pairs [(0, 1)]
+  weight 8: +(2, 3) -> 155944 violations (100 s)
+  weight 8: +(0, 1) -> 51115 violations (216 s)
+  weight 8: +(0, 3) -> 3771 violations (359 s)
+  weight 8: +(1, 2) -> 0 violations (535 s)
+weight 8: verification pairs [(2, 3), (0, 1), (0, 3), (1, 2)]
+{"verification_pairs": {"4": [[0, 1]], "8": [[2, 3], [0, 1], [0, 3], [1, 2]]}, "x_half": {"ancillas": 47, "cnots": 86, "cnot_depth": 8}, "circuit_distance": {"Z": 5, "X": 5}, "seconds": 560.4}

@@ -6,9 +6,10 @@ Enabling rewrites are used only when they immediately expose a Bell pair (Jeon's
 Every child is checked against the root (verify.check); failing children are counted and dropped.
 Unlike Jeon, we also deduplicate with an approximate canonical form.
 """
+import hashlib
 from collections import Counter, deque
 
-from .ftlib import resources
+from .ftlib import code_of, resources
 from .rules import basis_swap, bell_pairs, bell_reduction, restricted_commutation, target_swap
 from .verify import check
 
@@ -26,10 +27,11 @@ def canonical(g):
         return [op for _, op in sorted(keyed, key=lambda t: (t[0], t[1]))]
 
     ops = layered(g["ops"])
-    mapping, nxt = {}, 7
+    n_data = code_of(g).n_data
+    mapping, nxt = {}, n_data
     for op in ops:
         for q in op[1:]:
-            if q >= 7 and q not in mapping:
+            if q >= n_data and q not in mapping:
                 mapping[q] = nxt
                 nxt += 1
     rl = lambda op: tuple([op[0]] + [mapping.get(x, x) for x in op[1:]])
@@ -97,9 +99,10 @@ def bfs(root, dedup=True, max_nodes=100000, check=check, L=1):
         for child, steps in composite_reductions(g, L):
             generated += 1
             key = canonical(child)
-            if key not in verdict:  # the checker only depends on the circuit
-                verdict[key] = check(root, child)
-            ok, why = verdict[key]
+            vkey = hashlib.blake2b(repr(key).encode(), digest_size=16).digest()  # 16 bytes, not the op tuple
+            if vkey not in verdict:  # the checker only depends on the circuit
+                verdict[vkey] = check(root, child)
+            ok, why = verdict[vkey]
             if not ok:
                 rejected[why] += 1  # counts only: storing paths ran out of memory (E1.3-fix)
                 continue

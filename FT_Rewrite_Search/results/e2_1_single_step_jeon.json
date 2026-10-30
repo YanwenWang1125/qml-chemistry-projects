@@ -1,0 +1,30 @@
+{
+ "mode": "jeon",
+ "children": 11,
+ "accepted_asap": 4,
+ "rejected": {
+  "not 2-fault equivalent (0 only in root, 1 only in child)": 3,
+  "not FT_2": 3,
+  "not 2-fault equivalent (0 only in root, 2 only in child)": 1
+ },
+ "structure_cost_classes": 2,
+ "cost_classes": {
+  "(15, 56, 14, 15)": 1,
+  "(15, 56, 14, 14)": 3
+ },
+ "non_dominated": [
+  [
+   15,
+   56,
+   14,
+   14
+  ]
+ ],
+ "root_cost": [
+  15,
+  56,
+  14,
+  14
+ ],
+ "seconds": 2.7
+}
