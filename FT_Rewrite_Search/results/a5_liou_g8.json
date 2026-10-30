@@ -1,0 +1,185 @@
+{
+ "start": {
+  "ancillas": 18,
+  "cnots": 56,
+  "cnot_depth": 30
+ },
+ "start_flags": 10,
+ "start_accepted": true,
+ "start_reason": "ok",
+ "start_interleaved": {
+  "resources": {
+   "ancillas": 18,
+   "cnots": 56,
+   "cnot_depth": 14
+  },
+  "flags": 10,
+  "accepted": true,
+  "reason": "ok",
+  "ler": [
+   {
+    "p": 0.001,
+    "memory": "Z",
+    "errors": 408,
+    "shots": 360000,
+    "ler": 0.0011333333333333334,
+    "ci95": [
+     0.001028620261303859,
+     0.0012486928237412968
+    ]
+   },
+   {
+    "p": 0.001,
+    "memory": "X",
+    "errors": 420,
+    "shots": 360000,
+    "ler": 0.0011666666666666668,
+    "ci95": [
+     0.0010603523930376004,
+     0.00128362664730055
+    ]
+   },
+   {
+    "p": 0.002,
+    "memory": "Z",
+    "errors": 497,
+    "shots": 80000,
+    "ler": 0.0062125,
+    "ci95": [
+     0.005691225327811712,
+     0.006781194003881249
+    ]
+   },
+   {
+    "p": 0.002,
+    "memory": "X",
+    "errors": 407,
+    "shots": 60000,
+    "ler": 0.006783333333333333,
+    "ci95": [
+     0.006157397429360224,
+     0.007472420911219863
+    ]
+   }
+  ]
+ },
+ "final_interleaved": {
+  "resources": {
+   "ancillas": 13,
+   "cnots": 56,
+   "cnot_depth": 14
+  },
+  "flags": 5,
+  "accepted": true,
+  "reason": "ok",
+  "ler": [
+   {
+    "p": 0.001,
+    "memory": "Z",
+    "errors": 418,
+    "shots": 320000,
+    "ler": 0.00130625,
+    "ci95": [
+     0.001186952360747536,
+     0.0014375206924260085
+    ]
+   },
+   {
+    "p": 0.001,
+    "memory": "X",
+    "errors": 408,
+    "shots": 300000,
+    "ler": 0.00136,
+    "ci95": [
+     0.0012343566268360365,
+     0.0014984132431565375
+    ]
+   },
+   {
+    "p": 0.002,
+    "memory": "Z",
+    "errors": 430,
+    "shots": 60000,
+    "ler": 0.007166666666666667,
+    "ci95": [
+     0.0065225561577123775,
+     0.007873879767369675
+    ]
+   },
+   {
+    "p": 0.002,
+    "memory": "X",
+    "errors": 440,
+    "shots": 60000,
+    "ler": 0.007333333333333333,
+    "ci95": [
+     0.006681475450542604,
+     0.008048272467801171
+    ]
+   }
+  ]
+ },
+ "merge_steps": [
+  {
+   "merge": [
+    30,
+    34
+   ],
+   "resources": {
+    "ancillas": 17,
+    "cnots": 56,
+    "cnot_depth": 30
+   },
+   "flags": 9
+  },
+  {
+   "merge": [
+    28,
+    33
+   ],
+   "resources": {
+    "ancillas": 16,
+    "cnots": 56,
+    "cnot_depth": 30
+   },
+   "flags": 8
+  },
+  {
+   "merge": [
+    26,
+    32
+   ],
+   "resources": {
+    "ancillas": 15,
+    "cnots": 56,
+    "cnot_depth": 30
+   },
+   "flags": 7
+  },
+  {
+   "merge": [
+    24,
+    28
+   ],
+   "resources": {
+    "ancillas": 14,
+    "cnots": 56,
+    "cnot_depth": 30
+   },
+   "flags": 6
+  },
+  {
+   "merge": [
+    20,
+    22
+   ],
+   "resources": {
+    "ancillas": 13,
+    "cnots": 56,
+    "cnot_depth": 30
+   },
+   "flags": 5
+  }
+ ],
+ "seconds": 1924.6
+}
