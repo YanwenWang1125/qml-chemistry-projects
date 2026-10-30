@@ -647,3 +647,17 @@ d=5 轮（最后一轮无噪声），计划 0.4 节噪声（空闲 p/10，ASAP�
 - 在线版补充计划（Claude Docs `https://claude.ai/artifact/RTwZqgmJAcxmqKRvjyD9aP`）：在第 0 节前插入"【修订 10-29/30】与本地版本同步"一节（一张表，10 行：E1.3 标准、检查器阶数、E2.0 起点与容错判据、原文逻辑算符错误、E1.5b、E2.4d、G1、阶段 2 方向 A）。其余原文未改。
 - 8 项状态：1 完成；2 完成（13 辅助 / 56 CNOT / 深度 14，LER 高约 10%；18 辅助版与 Liou 持平）；3 完成（推导 + 局部判据无假阳性）；4 部分完成（宽掩码与哈希缓存完成；权重 8 fusion BFS 仍 OOM）；5 完成（E2.1 数字，Jeon 规则下空间小）；6 用户判定 G1 通过；7 决定暂不做完整设定 A（理由见上）；8 完成（git `cfce6b3` + 本次补充提交；在线计划已同步）。
 - Fir 上无作业。下一步建议（未执行）：用更多 shots 和更多 p 点确认 13 辅助版与 Liou 的 LER 差异；在 flag 合并后接着做约简/换序，看能否同时赢资源和 LER；解决权重 8 fusion 搜索的内存问题。
+
+### 交接说明（2026-10-30，本会话结束；新会话从这里读起）
+
+**现状**：G1 通过（附差异清单，`notes/G1_decision_memo.md`）。阶段 2 按方向 A（扩展规则：flag 合并 R5 + 交错排程）进行。最好结果：[[17,1,5]] 一轮 13 辅助 / 56 CNOT / 深度 14（`data/circuits/a5_final.json`），LER 比 Liou 高约 10%；未合并版 18 辅助与 Liou 持平（`a5_start.json`）。AUTOLOOP 已暂停，Fir 上无作业。代码在分支 `ft-rewrite-search-e1-4`（已推送 GitHub，提交 `ec01f64` 及本条）。
+
+**离 ML 还有多远（用户问，2026-10-30 的回答）**：计划规定 G2 两个问题都为"是"才进 ML：(1) 可达空间大（成本类 ≥ 10⁴、非支配 ≥ 10²）；(2) 简单指标排不准 LER。现在：Jeon 规则下空间小（分支 A 判据）；扩展规则后的空间未正式计数；(2) 未做（只有 4–5 个电路的 LER）。苗头：差异细（~10%）、简单指标互相矛盾（辅助少 ≠ LER 低）→ 有利于 ML；但验收贵（距离搜索数秒/个、LER 数分钟/个）→ 标签成本高。
+
+**下一步（按顺序）**：
+1. 统一的扩展规则搜索器：Jeon 规则 + flag 合并 + 交错放进同一个 BFS/beam；用局部判据 K（无假阳性，`code/a4_merge_predict.py`）先筛，再做电路距离搜索；解决权重 8 fusion 的内存问题（每节点生成的重排子电路太多）。约 1 周。
+2. 扩展规则下的 E2.1 正式计数（结构 + 成本口径，`experiments/LOG.md` A3 节），判 A 还是继续。约 1 周。
+3. E2.4：几百个候选的 LER（重要性采样），简单指标的头部 Spearman / top-5% recall。约 1–2 周。
+4. G2 判定；分支 C 才进 ML（计划阶段 3，2027-01/02）。
+
+**相关文件**：`experiments/AUTOLOOP.md`（队列与规则）、`notes/flag_merge_theory.md`、`notes/liou2024_extract.md`、`notes/Supplementary_experiment_plan_2026-10-29.md`（含【修订 10-29】）、`FT_Rewrite_Search_Plan.md` 第 5 节修订 4–8、`Research/Fir/LOG.md` 第 11 节起。规则：小任务本地、中大任务和拿不准的交 Fir；每次运行完写 LOG。
